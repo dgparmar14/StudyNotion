@@ -23,17 +23,17 @@ require("dotenv").config();
  app.use(express.json());
  app.use(coockieParser());
  app.use(
-    cors({
-        origin : "http://localhost:3000",
-        credentials : true,
-    })
- )
- app.use(
-    fileUpload({
-        useTempFiles : true,
-        tempfiledir : "/tmp",
-    })
- )
+	cors({
+		origin: "*",
+		credentials: true,
+	})
+);
+app.use(
+	fileUpload({
+		useTempFiles: true,
+		tempFileDir: "/tmp/",
+	})
+);
 
  app.use("/api/v1/auth", userRoute);
  app.use("/api/v1/course", courseRoute);
