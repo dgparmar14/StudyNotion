@@ -41,8 +41,8 @@ require("dotenv").config();
  app.use("/api/v1/payment", paymentRoute);
  app.use("/api/v1/reach", contactRoute);
 
- app.get("/", (req, res) => {
-    console.log("Your app is running successfully")   ;
+ app.get('/', (req, res) => {
+   res.sendStatus(200)
  })
 
  app.listen(PORT, ()=>{
