@@ -16,7 +16,7 @@ function RenderItems() {
       return average
     }
 
-    console.log("Course printing : ", cart.course);
+    //console.log("Course printing : ", cart.course);
   
   return (
     <div className='w-8/12'>
@@ -24,7 +24,7 @@ function RenderItems() {
         {
             cart.map((course,index)  => {
                 //getaverageRating(course);
-                console.log("Printing course", course)
+                //console.log("Printing course", course)
                 return(
                   
                     <div key={index} className={`${index===cart.length-1 ? "border-b border-b-richblack-400" : ""} border-b border-b-richblack-400 py-7 mt-2 gap-4 flex flex-wrap flex-row`}> 

@@ -30,7 +30,7 @@ function Publish() {
 
 
   function back(){
-    console.log('back function is called')
+    //console.log('back function is called')
     dispatch(setStep(2));
   }
 

@@ -11,7 +11,7 @@ exports.resetPasswordToken = async (req, res) => {
         //Verify email and existing user
         
         const user = await User.findOne({email});
-        console.log(user);
+        //console.log(user);
         if(!user){
             return res.json({
                 success : false,
@@ -62,7 +62,7 @@ exports.resetPassword = async (req, res) => {
     try{
         //fetch data from request body
         const {password, confirmPassword, token} = req.body;
-        console.log("Printing token inside backend : ", token);
+        //console.log("Printing token inside backend : ", token);
 
         //check for valid entry
         if(!confirmPassword || !password){
@@ -80,7 +80,7 @@ exports.resetPassword = async (req, res) => {
         }
         //get user data usig token
         const userDetails = await User.findOne({token : token});
-        console.log("User details : ", userDetails)
+        //console.log("User details : ", userDetails)
 
         //check if user exist or not
         if(!userDetails){

@@ -19,7 +19,7 @@ exports.createCategory = async (req, res) => {
         //creation of tag in db
         const catagory = await Catagories.create({
             name : name,
-            description : description
+            description : description,
         });
 
 
@@ -76,7 +76,7 @@ exports.catagoryPageDetails = async (req, res) => {
           populate: "ratingAndReviews",
         })
         .exec()
-        console.log("Printing selected detail -----------------", selectedCategory);
+        //console.log("Printing selected detail -----------------", selectedCategory);
   
       //console.log("SELECTED COURSE", selectedCategory)
       // Handle the case when the category is not found

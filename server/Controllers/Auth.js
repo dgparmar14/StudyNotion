@@ -212,7 +212,7 @@ exports.login = async (req, res) => {
         user.token = token;
         user.password = undefined;
 
-        console.log("Printing token inside login controller : ", token);
+        //console.log("Printing token inside login controller : ", token);
 
         const options = {
             expiresIn : new Date(Date.now() + 3*24*60*60*1000),

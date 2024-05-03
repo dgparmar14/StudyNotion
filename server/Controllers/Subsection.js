@@ -9,9 +9,9 @@ const { default: mongoose } = require("mongoose");
 exports.createSubSection = async (req, res) => {
     try{
         //Fetch data
-        console.log(req.body);
+        //console.log(req.body);
        
-        console.log(req.files);
+        //console.log(req.files);
         const {title, description, timeDureation,sectionId} = req.body;
         // const sectionId = JSON.stringify(req.body.sectionId);
       
@@ -41,7 +41,7 @@ exports.createSubSection = async (req, res) => {
                                                     videoUrl : uploadVideoCludinary.secure_url});
         
         //HW : Use poppulate method
-        console.log("New subsection :", newSubSection);
+        //console.log("New subsection :", newSubSection);
 
         //Upload subSection Id in section
 
@@ -86,10 +86,10 @@ exports.updateSubsection = async (req, res) => {
                                                                     videoUrl : newVideo.secure_url}, 
                                                                     {new : true})
                                     
-        console.log("Printing updated subsection : ------", updatedSubSection);
+        //console.log("Printing updated subsection : ------", updatedSubSection);
         const updatdSection = await Section.findById(sectionId).populate("subSections");
 
-        console.log("Printing Updated section ---------", updatdSection);
+        //console.log("Printing Updated section ---------", updatdSection);
         return res.status(200).json({
             success : true,
             message : "Subsection updated successfully",

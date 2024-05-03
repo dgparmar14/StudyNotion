@@ -10,7 +10,7 @@ exports.createSection = async (req, res) => {
     try{
         //fetch data
         const {sectionName, courceId} = req.body;
-        console.log("Printing body : ", req.body);
+        //console.log("Printing body : ", req.body);
 
         //Validate Data
         if(!sectionName || !courceId){
@@ -55,7 +55,7 @@ exports.createSection = async (req, res) => {
 exports.updateSection = async (req, res) => {
     try{
         //Fetch data
-        console.log(req.body);
+        //console.log(req.body);
 
         const {sectionName, sectionId, coid} = req.body;
 

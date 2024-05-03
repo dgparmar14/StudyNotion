@@ -30,7 +30,7 @@ import Settings from "./Components/Cores/Dashboard/Settings/ProfileSetting";
 
 
 function App() {
-  console.log("inside App");
+  //console.log("inside App");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const {user} = useSelector( (state) => state.profile)
   

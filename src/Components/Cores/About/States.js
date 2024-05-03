@@ -29,7 +29,7 @@ function States() {
             <div className='flex flex-row flex-wrap justify-between'>
                 {
                     data.map( (element, index) => {
-                        console.log("Element : ", element)
+                        //console.log("Element : ", element)
                         return (<div key={index} className='flex flex-col gap-3'>
                             <p className='text-3xl font-semibold text-richblack-5'>{element.Number}</p>
                             <p className='text-[16px] text-richblack-200'>{element.title}</p>

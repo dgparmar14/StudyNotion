@@ -15,13 +15,13 @@ function EditCourse() {
     useEffect(()=>{
         const getFullCourseDetails = async(req, res)=>{
             
-            console.log("Printing courseId", courseId);
+            //console.log("Printing courseId", courseId);
             setLoading(true);
             const result = await getFullDetailsOfCourse(courseId, token);
-            console.log("Printing course detals : ", result);
+            //console.log("Printing course detals : ", result);
 
             if(result){
-                console.log("here");
+                //console.log("here");
                 dispatch(setEditCourse(true));
                 dispatch(setCourse(result.data.data.courseDetails));
             }

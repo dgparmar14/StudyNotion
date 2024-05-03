@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const MailSender = async(email, title, body) => {
     try{
-        console.log('Creation of transpoter started');
+        // console.log('Creation of transpoter started');
         const transporter = nodeMailer.createTransport({
             host : process.env.MAIL_HOST,
             auth : {
@@ -11,8 +11,8 @@ const MailSender = async(email, title, body) => {
                 pass : process.env.MAIL_PASS
             }
         });
-        console.log("Trasporetr created")
-        console.log(email);
+        // console.log("Trasporetr created")
+        // console.log(email);
         
         let info = await transporter.sendMail({
             from : "Study Notion || Codehelp -by Babbar",
@@ -20,9 +20,9 @@ const MailSender = async(email, title, body) => {
             subject : `${title}`,
             html : `${body}`
         });
-        console.log(email);
-        console.log("Mail sent")
-        console.log("Info : ", info);
+        // console.log(email);
+        // console.log("Mail sent")
+        // console.log("Info : ", info);
 
         return info;
     }

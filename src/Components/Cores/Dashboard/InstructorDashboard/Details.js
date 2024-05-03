@@ -21,7 +21,7 @@ export default function Instructor() {
       
       const instructorApiData = await instructorDataAPI(token)
       const result = await getInsructorCourses(token)
-      console.log("Printing instructor DATA TYPE : ",instructorApiData);
+      //console.log("Printing instructor DATA TYPE : ",instructorApiData);
       if (instructorApiData.length) 
       {
         setInstructorData(instructorApiData);
@@ -46,8 +46,8 @@ export default function Instructor() {
     0
   );
 
-  console.log("Writing cources : ", courses);
-  console.log("Writing instructordata : ", instructorData);
+  // console.log("Writing cources : ", courses);
+  // console.log("Writing instructordata : ", instructorData);
 
   return (
     <div>

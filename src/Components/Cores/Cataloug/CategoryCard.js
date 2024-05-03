@@ -10,7 +10,7 @@ function CategoryCard({Course, Height}) {
         const count = averageRating(Course.ratingAndReviews);
         setAverage(count);
     }, [Course])
-    console.log("Printing course : ------------", Course);
+    //console.log("Printing course : ------------", Course);
   return (
     <div>
         <Link to={`/course/${Course._id}`}>

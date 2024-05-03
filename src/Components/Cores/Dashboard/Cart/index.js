@@ -6,7 +6,7 @@ import RenderTotalPrice from './RenderTotalPrice'
 function Cart() {
     const {totalItems, total} = useSelector((state) => state.cart)
     const {cart} = useSelector((state)=>state.cart);
-    console.log("Printing cart : ", cart);
+    //console.log("Printing cart : ", cart);
   return (
     <div className=''>
         <p className='text-3xl font-semibold text-richblack-5 -mt-3'>My Wishlist</p>

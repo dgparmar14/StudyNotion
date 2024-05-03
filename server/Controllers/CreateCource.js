@@ -14,12 +14,12 @@ require("dotenv").config();
 
 exports.createCource = async (req, res) => {
     try{
-        console.log("Printing request body : ", req.body);
+        //console.log("Printing request body : ", req.body);
        
         const {courseName, tags, status, instructions, courseDescription, price, whatYouWillLearn, category} = req.body;
        
         const thumbNail = req.files.thumbNail;
-        console.log(courseName, courseDescription, price, whatYouWillLearn, category, thumbNail, tags);
+        //console.log(courseName, courseDescription, price, whatYouWillLearn, category, thumbNail, tags);
         
         if(!courseName || !courseDescription || !price || !whatYouWillLearn || !category || !thumbNail || !tags){
             return res.status(403).json({
@@ -32,8 +32,8 @@ exports.createCource = async (req, res) => {
         //TODO : check userId and insttuctor._Id is same or not
         const userId = req.user.id;
         const instructor = await User.findById({_id : userId}, {accountType : "Instructor"});
-        console.log("Instructor details get");
-        console.log("Instructor : ", instructor);
+        //console.log("Instructor details get");
+        //console.log("Instructor : ", instructor);
 
         if(!instructor){
             return res.status(403).json({
@@ -43,7 +43,7 @@ exports.createCource = async (req, res) => {
         }
 
         const findCatagory = await Catagories.findById(category);
-        console.log("Printing catagory ---------", findCatagory);
+        //console.log("Printing catagory ---------", findCatagory);
 
         if(!findCatagory){
             return res.status(403).json({
@@ -52,7 +52,7 @@ exports.createCource = async (req, res) => {
             });
         }
         const thumbNailImage = await imageUpload(thumbNail, process.env.FOLDER_NAME, 1000, 1000);
-        console.log(courseName);
+        //console.log(courseName);
         const newcource = await Cource.create({
             courceName : courseName,
             description : courseDescription,
@@ -66,7 +66,7 @@ exports.createCource = async (req, res) => {
             thumbNail : thumbNailImage.secure_url,
             insstructions : instructions
         });
-        console.log("new Course :", newcource);
+        //console.log("new Course :", newcource);
 
         await User.findByIdAndUpdate({_id : instructor._id},
                                     {
@@ -155,7 +155,7 @@ exports.editCourse = async(req, res)=>{
                 messege : "Course not found"
             })
         }
-        console.log(updatedCourse);
+        //console.log(updatedCourse);
         return res.status(200).json({
             success : true,
             message : "Course edited successfully",
@@ -322,10 +322,10 @@ exports.getAllCourseCategories = async(req, res)=>{
 
 exports.getFullDetailsOfCourse = async(req, res) => {
     try{
-        console.log("Coursr id : ", req.body);
+        //console.log("Coursr id : ", req.body);
         const userId = req.user.id;
         const {courseId } = req.body;
-        console.log(courseId);
+        //console.log(courseId);
         
         const courseDetails = await Cource.findById({_id : courseId})
         .populate("instructor")
@@ -357,7 +357,7 @@ exports.getFullDetailsOfCourse = async(req, res) => {
     
         const totalDuration = convertSecondsToDuration(totalDurationInSeconds)
 
-        console.log('Pritnting result : ', courseDetails);
+        //console.log('Pritnting result : ', courseDetails);
         if(!courseDetails){
             return res.status(402).json({
                 success : false,
@@ -369,7 +369,7 @@ exports.getFullDetailsOfCourse = async(req, res) => {
             userId : userId
         });
 
-        console.log("Printing course progressCount : ", courseProgressDetails);
+        //console.log("Printing course progressCount : ", courseProgressDetails);
 
 
         // const totalTimeDuration = convertSecondsToDuration(totalDuration);
@@ -400,7 +400,7 @@ exports.deleteCourse = async(req, res)=>{
         const { courseId } = req.body
         const userId = req.user.id;
        
-        console.log("Printng body ---------", req.body);
+        //console.log("Printng body ---------", req.body);
 
         // Find the course
         const course = await Cource.findById({_id : courseId})
@@ -414,7 +414,7 @@ exports.deleteCourse = async(req, res)=>{
             }
         });
 
-        console.log("Printing course catagories after pulling deleted couerseId : ", catagoryUpdate);
+        //console.log("Printing course catagories after pulling deleted couerseId : ", catagoryUpdate);
     
         // Unenroll students from the course
         const studentsEnrolled = course.studentsEnrolled
