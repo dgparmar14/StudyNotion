@@ -31,7 +31,7 @@ function Navbar() {
     const navigate = useNavigate();
     function matchRoute(route){
         return matchPath({path : route},location.pathname)
-    }
+    }   
 
     const [subLinks, setSubLinks] = useState([]);
    

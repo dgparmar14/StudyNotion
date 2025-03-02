@@ -89,6 +89,8 @@ exports.resetPassword = async (req, res) => {
                 message : "User not exist"
             })
         }
+
+        
         
         //token time check
         if(userDetails.expirationTime < Date.now()){

@@ -242,7 +242,7 @@ const onSubmitHandler = async(data) => {
                         getValues={getValues}></CourseTagNames>
            <Upload 
                   name="courseImage"
-                  label="Coutse Image"
+                  label="Course Image"
                   register={register}
                   errors={errors}
                   getValues={getValues}

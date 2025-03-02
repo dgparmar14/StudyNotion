@@ -40,7 +40,7 @@ exports.sendOtp = async (req, res) => {
 
             });
     
-            let result = await OTP.findOne({otp : otp});
+            result = await OTP.findOne({otp : otp});
     
         }
 
