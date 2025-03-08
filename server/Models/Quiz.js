@@ -18,25 +18,26 @@ const questionSchema = new mongoose.Schema({
     difficultyLevel : {
         type : String,
         required : true,
-        num: ["easy", "medium", "hard"], 
+        enum: ["easy", "medium", "hard"], 
     },
     marks : {
-        type : int,
+        type : Number,
         required : true
     },
-    passingPercentage : {
-        type : int,
-        required : true
-    }
+    
 }, {_id : false});
 
-const categorySchema = new mongoose.Schema({
-    categoryId : {
-        type : mongoose.Schema.Types.ObjectId,
-        required : true,
-        ref : "Catagory"
+const quizSchema = new mongoose.Schema({
+    questions : [questionSchema],
+    duration: {
+        type : Number,
+        required:true
     },
-    questions : [questionSchema]
-});
+    passingPercentage : {
+        type : Number,
+        required : true
+    },
+  
+})
 
-module.exports = mongoose.model("Quiz", categorySchema);
+module.exports = mongoose.model("Quiz", quizSchema);

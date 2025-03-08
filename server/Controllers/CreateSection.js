@@ -1,4 +1,4 @@
-const Section = require("../Models/Section");
+    const Section = require("../Models/Section");
 const Cource = require("../Models/Cource");
 const { TokenExpiredError } = require("jsonwebtoken");
 const CourseProgress = require("../Models/CourceProgress");
@@ -9,7 +9,7 @@ var ObjectId = require('mongodb').ObjectId;
 exports.createSection = async (req, res) => {
     try{
         //fetch data
-        const {sectionName, courceId} = req.body;
+        const {sectionName, courceId} = rezq.body;
         //console.log("Printing body : ", req.body);
 
         //Validate Data

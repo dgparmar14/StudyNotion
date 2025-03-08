@@ -18,6 +18,11 @@ const CatagorySchema = new mongoose.Schema({
         type : String,
         required : true,
         trim : true
+    },
+    quiz : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Quiz",
+        required : false
     }
 });
 

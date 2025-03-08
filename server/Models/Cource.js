@@ -78,6 +78,11 @@ const courceSchema = new mongoose.Schema({
     },
     progressPercentage : {
         type : Number,
+    },
+    quiz : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Quiz",
+        required : false
     }
 });
 
