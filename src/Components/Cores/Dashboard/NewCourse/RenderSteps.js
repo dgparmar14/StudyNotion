@@ -17,6 +17,10 @@ const steps = [
     },
     {
         id : 3,
+        title : "Add Quiz",
+    },
+    {
+        id : 4,
         title : "Publish",
     }
 ]

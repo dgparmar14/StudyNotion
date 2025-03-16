@@ -210,7 +210,7 @@ const onSubmitHandler = async(data) => {
           </div>
 
           <div className='flex flex-col gap-1 justify-center'>
-            <label htmlFor='courseCategory' className='text-[14px] text-richblack-5'>Caragories<sup className='text-pink-200'>*</sup></label>
+            <label htmlFor='courseCategory' className='text-[14px] text-richblack-5'>Catagories<sup className='text-pink-200'>*</sup></label>
             <select
               id='courseCategory'
               {...register("courseCategory", {required:true})}
