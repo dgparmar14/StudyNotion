@@ -14,14 +14,14 @@ import Footer from "../Components/Common/Footer"
 
 function HomePage() {
   return (
-    <div>
+    <div className=" bg-navbarBgColor">
     {/* section-1 */}
       <div className='relative mx-auto w-11/12 max-w-maxContent text-white flex flex-col items-center justify-between pb-[8rem]'>
         <Link to={"/signUp"}>
          
-          <div className='flex mx-auto mt-16  group rounded-full text-[1rem] font-bold bg-richblack-800 InstructorShadow
-border-radius: 500px; hover:scale-95 text-richblack-200 transition-all duration-200 '> 
-            <div className='flex gap-2 items-center px-8 py-[7px] group-hover:bg-richblack-900 rounded-full transition-all duration-200'>
+          <div className='flex mx-auto mt-16  group rounded-full text-[1rem] font-bold bg-green InstructorShadow
+border-radius: 500px; hover:scale-95 text-white transition-all duration-200 '> 
+            <div className='flex gap-2 items-center px-8 py-[7px] group-hover:bg-white group-hover:text-black rounded-full transition-all duration-200'>
               <p>Bocome an instuctor</p>
               <FaArrowRight></FaArrowRight>
 
@@ -151,7 +151,7 @@ border-radius: 500px; hover:scale-95 text-richblack-200 transition-all duration-
       {/* section-2 */}
       <div className='bg-[#F9F9F9] text-richblack-700'>
 
-          <div className='bgImage h-[250px] flex justify-center items-center'>
+          <div className='bg-[linear-gradient(to_top,#07A698,#1B282F)] h-[250px] flex justify-center items-center'>
             <div className='w-11/12 max-w-maxContent mx-auto flex justify-center items-center'>
               <div className='flex justify-center items-center gap-7'>
                 <CTABUtton routLocation={"/signup"} active={"true"}>
@@ -194,7 +194,7 @@ border-radius: 500px; hover:scale-95 text-richblack-200 transition-all duration-
       </div>
 
       {/* section-3 */}
-      <div className='flex flex-col w-11/12 max-w-maxContent justify-center items-center gap-14 my-14 bg-richblack-900  text-richblack-300  mx-auto'>
+      <div className='flex flex-col w-11/12 max-w-maxContent justify-center items-center gap-14 my-14 text-richblack-300  mx-auto'>
           <BecomeAnInstructor></BecomeAnInstructor>
           <h2 className='text-4xl font-semibold'>Reviews from other learners</h2>
           <CourseSlider></CourseSlider>

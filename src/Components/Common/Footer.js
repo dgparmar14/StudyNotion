@@ -24,14 +24,14 @@ const Community = ["Forums", "Chapters", "Events"];
 
 const Footer = () => {
   return (
-    <div className="bg-richblack-800">
+    <div className="bg-white">
       <div className="flex lg:flex-row gap-8 items-center justify-between w-11/12 max-w-maxContent text-richblack-400 leading-6 mx-auto relative py-14">
         <div className="border-b w-[100%] flex flex-col lg:flex-row pb-5 border-richblack-700">
           {/* Section 1 */}
           <div className="lg:w-[50%] flex flex-wrap flex-row justify-between lg:border-r lg:border-richblack-700 pl-3 lg:pr-5 gap-3">
             <div className="w-[30%] flex flex-col gap-3 lg:w-[30%] mb-7 lg:pl-0">
-              <img src={Logo} alt="" className="object-contain" />
-              <h1 className="text-richblack-50 font-semibold text-[16px]">
+             
+              <h1 className="text-richblack-400 font-semibold text-[16px]">
                 Company
               </h1>
               <div className="flex flex-col gap-2">
@@ -56,7 +56,7 @@ const Footer = () => {
             </div>
 
             <div className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
-              <h1 className="text-richblack-50 font-semibold text-[16px]">
+              <h1 className="text-richblack-400 font-semibold text-[16px]">
                 Resources
               </h1>
 
@@ -75,7 +75,7 @@ const Footer = () => {
                 })}
               </div>
 
-              <h1 className="text-richblack-50 font-semibold text-[16px] mt-7">
+              <h1 className="text-richblack-400 font-semibold text-[16px] mt-7">
                 Support
               </h1>
               <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200 mt-2">
@@ -84,7 +84,7 @@ const Footer = () => {
             </div>
 
             <div className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
-              <h1 className="text-richblack-50 font-semibold text-[16px]">
+              <h1 className="text-richblack-400 font-semibold text-[16px]">
                 Plans
               </h1>
 
@@ -102,7 +102,7 @@ const Footer = () => {
                   );
                 })}
               </div>
-              <h1 className="text-richblack-50 font-semibold text-[16px] mt-7">
+              <h1 className="text-richblack-400 font-semibold text-[16px] mt-7">
                 Community
               </h1>
 
@@ -128,7 +128,7 @@ const Footer = () => {
             {FooterLink2.map((ele, i) => {
               return (
                 <div key={i} className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
-                  <h1 className="text-richblack-50 font-semibold text-[16px]">
+                  <h1 className="text-richblack-400 font-semibold text-[16px]">
                     {ele.title}
                   </h1>
                   <div className="flex flex-col gap-2 mt-2">

@@ -47,7 +47,7 @@ const LearningGridArray = [
 
 function LearningGrid() {
   return (
-    <div className="bg-richblack-900 mt-8 px-4 py-12">
+    <div className="bg-richblack-900 px-4 py-12">
         <div className="w-11/12 max-w-maxContent grid grid-cols-1 lg:grid-cols-4 mx-auto px-4 py-4">
             {
                 LearningGridArray.map( (element, index) => {

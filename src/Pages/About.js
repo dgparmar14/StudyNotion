@@ -14,9 +14,9 @@ import CourseSlider from '../Components/Cores/Home/CourseSlider'
 function About() {
     const enrolledCourses = ProfileAPI.get
   return (
-    <div className=''>
+    <div className='bg-navbarBgColor'>
         {/* Section-1 */}
-        <section className=' bg-richblack-800 pb-[18rem] mb-[70rem] lg:mb-0'>
+        <section className=' bg-navbarBgColor pb-[18rem] mb-[70rem] lg:mb-0'>
             <div className='w-11/12 max-w-maxContent relative flex flex-col gap-5 mx-auto justify-center items-center pt-14'>
                 <p className='text-richblack-5 text-4xl font-semibold w-[70%] text-center'>Driving Innovation in Online Education for a <Hilighted text={"Brighter Future"}></Hilighted> </p>
                 <p className='text-[16px] text-richblack-200 text-center w-[62%] mt-2'>Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
@@ -67,7 +67,7 @@ function About() {
         </section>
 
         {/* section-6 */}
-        <section className='mt-12'>
+        <section>
             <LearningGrid></LearningGrid>
         </section>
 

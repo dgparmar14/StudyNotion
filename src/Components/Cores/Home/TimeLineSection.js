@@ -65,14 +65,14 @@ function TimeLineSection() {
                 <div className='w-[98%] order-1 flex'>
                     <img src={TimeLineImage} className='z-10'></img>
                 </div>
-                <div className='z-10 absolute bg-[#014A32] px-10 py-7 flex lg:flex-row flex-col translate-x-[23%] -translate-y-[50%]'>
+                <div className='z-10 absolute bg-[linear-gradient(to_top,#07A698,#1B282F)] px-10 py-7 flex lg:flex-row flex-col translate-x-[23%] -translate-y-[50%]'>
                     <div className='flex flex-row gap-4 lg:border-r-2 border-[#037957] lg:pr-4 justify-center items-center'>
                         <p className='text-5xl text-white font-bold '>10</p>
-                        <p className='text-[1.2rem] text-caribbeangreen-400'>Years <br></br> of experience</p>
+                        <p className='text-[1.2rem] text-white'>Years <br></br> of experience</p>
                     </div>
                     <div className='flex flex-row gap-4 lg:pl-4 justify-center items-center'>
                         <p className='text-5xl text-white font-bold '>250</p>
-                        <p className='text-[1.2rem] text-caribbeangreen-400'>Types <br></br> of courses</p>
+                        <p className='text-[1.2rem] text-white'>Types <br></br> of courses</p>
                     </div>
                 </div>
                 

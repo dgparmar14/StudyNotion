@@ -10,7 +10,13 @@ module.exports = {
     colors: {
       white: "#fff",
       black: "#000",
+      navbarBgColor: "#1B282F",
+      
+      green:"#07A698",
       transparent: "#ffffff00",
+      backgroundImage: {
+        'custom-gradient': "linear-gradient(to right, #07A698, #4ADE80)", // Green blend
+      },
       richblack: {
         5: "#F1F2FF",
         25: "#DBDDEA",
@@ -123,6 +129,8 @@ module.exports = {
         800: "#171717",
         900: "#141414",
       },
+
+      
     },
     extend: {
       maxWidth: {
