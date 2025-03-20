@@ -10,9 +10,8 @@ module.exports = {
     colors: {
       white: "#fff",
       black: "#000",
-      navbarBgColor: "#1B282F",
-      
-      green:"#07A698",
+      // navbarBgColor: "#1B282F",
+      // green:"#07A698",
       transparent: "#ffffff00",
       backgroundImage: {
         'custom-gradient': "linear-gradient(to right, #07A698, #4ADE80)", // Green blend
@@ -29,7 +28,8 @@ module.exports = {
         600: "#424854",
         700: "#2C333F",
         800: "#161D29",
-        900: "#000814",
+        900: "#1B282F", //navbar
+        // 900: "#000814",
       },
       richblue: {
         5: "#ECF5FF",
@@ -104,8 +104,11 @@ module.exports = {
       yellow: {
         5: "#FFF970",
         25: "#FFE83D",
-        50: "#FFD60A",
-        100: "#E7C009",
+        // green button color
+        50: "#07A698",
+        100: "#07A698",
+        // 50: "#FFD60A",
+        // 100: "#E7C009",
         200: "#CFAB08",
         300: "#B69507",
         400: "#9E8006",
