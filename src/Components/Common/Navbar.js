@@ -53,9 +53,9 @@ function Navbar() {
     useEffect(() => {
         fetchSubLinks();
     },[])
-  return (
-    <div className='w-full bg-navbarBgColor'>
-    <div className='w-11/12 max-w-maxContent flex  bg-navbarBgColor justify-between items-center mx-auto px-3 py-2'>
+  return (  
+    
+    <div className='w-[100%] flex bg-opacity-95 justify-between items-center  px-[30px] py-2 shadow-[rgba(0,0,0,0.89)_0px_25px_20px_-20px] bg-navbarBgColor '>
         <div>
             <img src={Logo} className='h-[35px]'></img>
         </div>
@@ -146,7 +146,6 @@ function Navbar() {
         </div>
     </div>
 
-    </div>
 
     
   )
