@@ -16,8 +16,8 @@ function About() {
   return (
     <div>
         {/* Section-1 */}
-        <div className='bg-navbarBgColor p-[10px]'>
-        <section className='  pb-[18rem] mb-[70rem] lg:mb-0 pt-[30px]'>
+        
+        <section className='bg-footer pb-[18rem] mb-[70rem] lg:mb-0 pt-[30px]'>
             <div className='w-11/12 max-w-maxContent relative flex flex-col gap-5 mx-auto justify-center items-center pt-14'>
                 <p className='text-richblack-5 text-4xl font-semibold w-[70%] text-center'>Driving Innovation in Online Education for a <Hilighted text={"Brighter Future"}></Hilighted> </p>
                 <p className='text-[16px] text-richblack-200 text-center w-[62%] mt-2'>Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
@@ -28,17 +28,17 @@ function About() {
                 </div>
             </div>
         </section>
-
+        
         {/* Section-2 */}
-        <section className='bg-navbarBgColor  mt-24 pt-4 w-11/12 max-w-maxContent mx-auto mb-8'>
-            <div>
+        <div className='bg-navbarBgColor'>
+        <section className='pt-4 w-11/12 max-w-maxContent mx-auto mb-8'>
+            <div className="mt-32 ">
                 <Quate></Quate>
             </div>
         </section>
-        </div>
 
         {/* Section-3 */}
-        <section className='bg-white'>
+        <section className='bg-navbarBgColor mb-32'>
             <div className='w-11/12 max-w-maxContent mx-auto mt-32 flex flex-col md:flex-row gap-32 justify-center items-center px-4 py-8'>
                 <div className='md:w-[40%] flex w-[65%] flex-col gap-4'>
                     <p className='text-4xl font-bold pinkGradient'>Our Founding Story</p>
@@ -50,6 +50,8 @@ function About() {
                 </div>
             </div>
         </section>
+        </div>
+
 
          {/* Section-4 */}
         
@@ -80,19 +82,17 @@ function About() {
         </section>
 
         {/* section-7 */}
-        <section className='mb-[3rem] bg-navbarBgColor'>
+        <div className="bg-navbarBgColor">
+        <section className=' bg-navbarBgColor p-4'>
             <AboutForm></AboutForm>
         </section>
 
         {/* section-8 */}
-        <section className='bg-navbarBgColor'>
-            <div className='w-11/12 max-w-maxContent mx-auto flex flex-col gap-12 mt-24 px-4 py-2 mb-[7rem] justify-center items-center'>
-                <div>
-                    <p className='text-4xl font-semibold text-richblack-5'>Reviews from other learners</p>
-                    <CourseSlider></CourseSlider>
-                </div>
-            </div>
-        </section>
+        <div className='flex flex-col w-11/12 max-w-maxContent justify-center items-center gap-14  text-richblack-300  mx-auto mb-0'>
+                  <h2 className='text-4xl font-semibold'>Reviews from other learners</h2>
+                  <CourseSlider></CourseSlider>
+              </div>
+        </div>
 
         {/* section-9 */}
         <section>

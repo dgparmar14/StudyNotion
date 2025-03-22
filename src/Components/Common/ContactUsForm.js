@@ -58,7 +58,7 @@ const ContactUsForm = () => {
             name="firstname"
             id="firstname"
             placeholder="Enter first name"
-            className='px-4 py-2 rounded-md bg-richblack-800 text-[14px] text-richblack-200'
+            className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
             {...register("firstname", { required: true })}
           />
           {errors.firstname && (
@@ -76,7 +76,7 @@ const ContactUsForm = () => {
             name="lastname"
             id="lastname"
             placeholder="Enter last name"
-            className='px-4 py-2 rounded-md bg-richblack-800 text-[14px] text-richblack-200'
+            className='px-4 py-2 rounded-md bg-footer text-[14px] text-richblack-200'
             {...register("lastname")}
           />
         </div>
@@ -91,7 +91,7 @@ const ContactUsForm = () => {
           name="email"
           id="email"
           placeholder="Enter email address"
-          className='px-4 py-2 rounded-md bg-richblack-800 text-[14px] text-richblack-200'
+          className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
           {...register("email", { required: true })}
         />
         {errors.email && (
@@ -113,7 +113,7 @@ const ContactUsForm = () => {
               name="firstname"
               id="firstname"
               placeholder="Enter first name"
-              className='px-4 py-2 rounded-md bg-richblack-800 text-[14px] text-richblack-200'
+              className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
               {...register("countrycode", { required: true })}
             >
               {CountryCode.map((ele, i) => {
@@ -131,7 +131,7 @@ const ContactUsForm = () => {
               name="phonenumber"
               id="phonenumber"
               placeholder="12345 67890"
-              className='px-4 py-2 rounded-md bg-richblack-800 text-[14px] text-richblack-200'
+              className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
               {...register("phoneNo", {
                 required: {
                   value: true,
@@ -160,7 +160,7 @@ const ContactUsForm = () => {
           cols="30"
           rows="7"
           placeholder="Enter your message here"
-          className='px-4 py-2 rounded-md bg-richblack-800 text-[14px] text-richblack-200'
+          className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
           {...register("message", { required: true })}
         />
         {errors.message && (
@@ -173,7 +173,7 @@ const ContactUsForm = () => {
       <button
         disabled={loading}
         type="submit"
-        className={`rounded-md bg-yellow-50 px-6 py-3 text-center text-[14px] text-black shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+        className={`rounded-md bg-yellow-50 px-6 py-3 text-center text-[14px] text-white shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
          ${
            !loading &&
            "transition-all duration-200 hover:scale-95 hover:shadow-none"

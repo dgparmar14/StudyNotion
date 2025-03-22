@@ -74,7 +74,7 @@ function CourseSlider({Courses}) {
                 modules={[Autoplay, FreeMode, Pagination]} className='w-[100%]'>
                 {
                   reviews.map((review, index)=>(
-                    <SwiperSlide key={index} className='bg-richblack-800 rounded-sm flex flex-col gap-3 px-7 py-4'>
+                    <SwiperSlide key={index} className='bg-footer rounded-sm flex flex-col gap-3 px-7 py-4 mb-12'>
                       <div className='h-max flex gap-3'>
                         <div className='w-[45px] aspect-square rounded-full bg-cover'>
                           <img src={review.user.image ? review.user.image : `https://api.dicebear.com/5.x/initials/svg?seed=${review.user.firstName} ${review.user.lastName}`}
@@ -91,14 +91,16 @@ function CourseSlider({Courses}) {
                         }
                       </div>
                     
-                      <div className='flex gap-2 items-center'>
-                        <span className='text-[16px] text-yellow-100'>{review.rating}</span>
+                      <div className='flex flex-row gap-2 items-center'>
+                        <span className=' text-[16px] text-yellow-100'>{review.rating}</span>
+                        <div className='flex flex-row'>
                         <ReactStars
                                     count={5}
                                     value={review.rating}
                                     size={20}
                                     edit={false}
-                                    color2={'#ffd700'}></ReactStars>
+                                    color2={'#ffd700'} ></ReactStars>
+                        </div>
                         
                       </div>
 

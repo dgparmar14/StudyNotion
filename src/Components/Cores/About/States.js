@@ -24,7 +24,7 @@ const data = [
 function States() {
 
   return (
-    <div className='bg-[linear-gradient(to_top,#07A698,#1B282F)] mt-24 px-8 py-12'>
+    <div className='bg-custom-gradient mt-24 px-8 py-12'>
         <div className='w-11/12 max-w-maxContent mx-auto px-1'>
             <div className='flex flex-row flex-wrap justify-between'>
                 {
