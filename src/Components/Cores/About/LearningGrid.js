@@ -47,7 +47,7 @@ const LearningGridArray = [
 
 function LearningGrid() {
   return (
-    <div className="bg-richblack-900 px-4 py-12">
+    <div className="bg-white px-4 py-12">
         <div className="w-11/12 max-w-maxContent grid grid-cols-1 lg:grid-cols-4 mx-auto px-4 py-4">
             {
                 LearningGridArray.map( (element, index) => {
@@ -60,7 +60,7 @@ function LearningGrid() {
 
                             element.order<0 ? (
                                 <div className='px-4 py-3 flex flex-col gap-3'>
-                                    <div className='text-4xl font-bold text-richblack-5'>
+                                    <div className='text-4xl font-bold text-black'>
                                         <p>{element.heading}</p>
                                         <HilightedText text={element.highlightText}></HilightedText>
                                     </div>

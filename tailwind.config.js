@@ -10,12 +10,11 @@ module.exports = {
     colors: {
       white: "#fff",
       black: "#000",
-      // navbarBgColor: "#1B282F",
-      // green:"#07A698",
+      navbarBgColor: "#1B282F",
+      green:"#07A698",
       transparent: "#ffffff00",
-      backgroundImage: {
-        'custom-gradient': "linear-gradient(to right, #07A698, #4ADE80)", // Green blend
-      },
+      footer:"#27445D",
+      
       richblack: {
         5: "#F1F2FF",
         25: "#DBDDEA",
@@ -140,6 +139,12 @@ module.exports = {
       maxWidth: {
         maxContent: "1260px",
         maxContentTab: "650px"
+      },
+      boxShadow: {
+        'custom': 'rgba(0, 0, 0, 0.45) 0px 25px 20px -20px',
+      },
+      backgroundImage: {
+        'custom-gradient': "linear-gradient(to right, #07A698, #4ADE80)", // Green blend
       },
     },
   },

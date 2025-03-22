@@ -7,7 +7,7 @@ function Templet({heading, subHeading1, subHeading2, image, setIsLoggedIn, type}
   return (
     <div className='w-11/12 max-w-fit flex flex-col md:flex-row gap-24 justify-between mx-auto px-4 py-4 mt-20'>
 
-      <div className='flex gap-4 text-[#F1F2FF] flex-col md:w-[38%]'>
+      <div className='bg-navbarBgColor flex gap-4 text-[#F1F2FF] flex-col md:w-[38%] p-5'>
         <div>
           <p className='text-3xl font-semibold'>{heading}</p>
           <p className='text-[17px] text-[#AFB2BF] mt-4'>

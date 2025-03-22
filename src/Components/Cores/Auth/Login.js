@@ -41,12 +41,12 @@ function LoginForm({setIsLoggedIn}) {
 
 
   return (
-    <div className='flex flex-col gap-6'>
+    <div className='bg-navbarBgColor flex flex-col gap-6'>
       {/* <div className="flex rounded-3xl mt-3 border-richblack-700 bg-richblack-600 w-max">
-                    <button className={`px-4 py-2 rounded-3xl ${accounttype ==="student" ? "bg-richblack-800 text-white" : "bg-richblack-600 text-richblack-100"}`} onClick={studentClickHandler}>Student</button>
-                    <button className={`px-4 py-2 rounded-3xl ${accounttype === "instuctor" ? "bg-richblack-800 text-white" : "bg-richblack-600 text-richblack-100"}`} onClick={inStructorClickHandler}>Instructor</button>
+                    <button className={`px-4 py-2 rounded-3xl ${accounttype ==="student" ? "bg-footer text-white" : "bg-richblack-600 text-richblack-100"}`} onClick={studentClickHandler}>Student</button>
+                    <button className={`px-4 py-2 rounded-3xl ${accounttype === "instuctor" ? "bg-footer text-white" : "bg-richblack-600 text-richblack-100"}`} onClick={inStructorClickHandler}>Instructor</button>
       </div> */}
-      <form className='flex flex-col gap-6 text-[15px]' onSubmit={onSubmitHandler}>
+      <form className='flex flex-col gap-6 text-[15px] p-5' onSubmit={onSubmitHandler}>
         <label className='flex flex-col gap-1 w-[100%]'>
               <p>Email <sup className= " text-[#EF476F]">*</sup></p>
               <input type='email'
@@ -55,7 +55,7 @@ function LoginForm({setIsLoggedIn}) {
                       name='email'
                       onChange={changeHandler}
                       required
-                      className='bg-richblack-800 px-4 py-2 rounded-[8px] shadowBox'>
+                      className='bg-footer px-4 py-2 rounded-[8px] shadowBox'>
                   </input>
         </label>
           <label  className='flex flex-col gap-1 relative w-[100%]'>
@@ -65,7 +65,7 @@ function LoginForm({setIsLoggedIn}) {
                         name='password'
                         onChange={changeHandler}
                         required
-                        className='bg-richblack-800 px-4 py-2 rounded-[8px] shadowBox'>
+                        className='bg-footer px-4 py-2 rounded-[8px] shadowBox'>
                     </input>
                     <div className='absolute right-4 top-9'>
                         {passwordVisible?(<AiOutlineEyeInvisible  onClick={changePasswordVisible} className="h-[20px] w-[20px]"></AiOutlineEyeInvisible>) : (<MdOutlineVisibility  onClick={changePasswordVisible} className="h-[20px] w-[20px]"></MdOutlineVisibility>)}
@@ -73,7 +73,7 @@ function LoginForm({setIsLoggedIn}) {
                     <Link to={"/forgotpassword"} className='text-[#47A5C5] text-[12px] flex justify-end'>Forgot Password</Link>
             </label>
             <div className="w-full"> 
-                    <button className="w-full py-2 bg-[#FFD60A] rounded-md mt-3 mb-1 text-richblack-900 font-semibold">Sign In</button>
+                    <button className="w-full py-2 bg-green rounded-md mt-3 mb-1 text-richblack-900 font-semibold">Sign In</button>
             </div>
 
       </form>
