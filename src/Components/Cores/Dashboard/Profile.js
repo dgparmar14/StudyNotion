@@ -11,7 +11,7 @@ function Profile() {
     
   return (
     <div className=''>
-        <p className='text-3xl font-semibold mx-5 text-richblack-5'>My Profile</p>
+        <p className='text-3xl font-semibold mx-5 text-richblack-800'>My Profile</p>
         <div className='md:w-7/12 mx-auto my-auto flex flex-col justify-center gap-5 mt-[2rem]'>
             
             <div className='flex flex-row flex-wrap justify-between bg-richblack-800 px-5 border border-richblack-500 py-3 items-center rounded-md text-richblack-200'>
@@ -24,7 +24,7 @@ function Profile() {
  
                 </div>
                 
-                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] flex gap-1 mt-2 md:mt-0 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-richblack-900 bg-yellow-200'>
+                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] flex gap-1 mt-2 md:mt-0 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-100'>
                     <FiEdit></FiEdit>
                     Edit
                 </button>
@@ -37,7 +37,7 @@ function Profile() {
                     </div>
                 </div>
                
-                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] flex gap-1 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-richblack-900 bg-yellow-200'>
+                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] flex gap-1 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-100'>
                     <FiEdit></FiEdit>
                     Edit
                 </button>
@@ -80,7 +80,7 @@ function Profile() {
                         </div>
                     </div>
                 </div>
-                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] mt-2 md:mt-0 flex gap-1 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-richblack-900 bg-yellow-200'>
+                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] mt-2 md:mt-0 flex gap-1 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-100'>
                     <FiEdit></FiEdit>
                     Edit
                 </button>

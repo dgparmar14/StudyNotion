@@ -32,9 +32,9 @@ function MyCourses() {
   return (
     <div>
         <div className='flex justify-between gap-1 items-center'>
-          <p className='text-3xl font-semibold text-richblack-5'>My Courses</p>
+          <p className='text-3xl font-semibold text-richblack-800'>My Courses</p>
           <div>
-          <button onClick={()=>{navigate("/dashboard/add-course")}} className='px-4 py-2 bg-yellow-200 flex gap-1 items-center rounded-md text-[14px] justify-center font-[600] text-richblack-900'>
+          <button onClick={()=>{navigate("/dashboard/add-course")}} className='px-4 py-2 bg-yellow-100 flex gap-1 items-center rounded-md text-[14px] justify-center font-[600] text-white'>
             <IoAddCircleOutline className='font-semibold'></IoAddCircleOutline>
             New
           </button>

@@ -6,7 +6,7 @@ function NewCourse() {
     <div className="">
         <div  className="flex gap-5 justify-start flex-col lg:flex-row">
             <div className="flex flex-col gap-4 lg:w-[60%]">
-                <p className="text-3xl text-richblack-5 font-semibold">Add Course</p>
+                <p className="text-3xl text-richblack-900 font-semibold">Add Course</p>
                 <div>
                     <RenderSteps>
 

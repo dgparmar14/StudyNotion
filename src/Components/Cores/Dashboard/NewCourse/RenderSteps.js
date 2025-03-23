@@ -44,7 +44,7 @@ function RenderSteps() {
                                 <div className={`${item.id!==steps.length? "border stepsBorder h-[1px]":""} ${item.id<step ? "bg-yellow-50" : "bg-richblack-200"} w-full`}></div>
                             </div>
                             <div>
-                                <p className={`${item.id===step ? "text-richblack-5" : "text-richblack-200"} text-[15px] font-[400]`}>
+                                <p className={`${item.id===step ? "text-yellow-50" : "text-richblack-600"} text-[15px] font-[400]`}>
                                     {
                                         item.title
                                     }
