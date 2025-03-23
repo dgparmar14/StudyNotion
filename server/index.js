@@ -6,6 +6,7 @@ const courseRoute = require("./Routes/Course");
 const paymentRoute = require("./Routes/Payment");
 const profileRoute = require("./Routes/Profile");
 const contactRoute = require("./Routes/Contact");
+const quizRoute = require("./Routes/Quiz")
 
 const database = require("./Configs/databse");
 const coockieParser = require("cookie-parser");
@@ -40,7 +41,8 @@ app.use(
  app.use("/api/v1/profile", profileRoute);
  app.use("/api/v1/payment", paymentRoute);
  app.use("/api/v1/reach", contactRoute);
-
+ app.use("/api/v1/quiz", quizRoute);
+ 
  app.get('/', (req, res) => {
    res.sendStatus(200)
  })

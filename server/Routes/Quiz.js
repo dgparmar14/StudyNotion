@@ -1,0 +1,21 @@
+const express = require("express");
+const { createQuiz, UpdateQuiz, getQuiz, deleteQuiz } = require("../Controllers/Quiz");
+const { isInstructor, quizRoleCheck, auth } = require("../Middlewares/auth");
+const { checkResult, getResult } = require("../Controllers/Result");
+const { addQuestions, UpdateQuestions, deleteQuestions, getAllQuestions } = require("../Controllers/Questions");
+const router = express.Router();
+
+router.post("/createQuiz", auth, quizRoleCheck, createQuiz)
+router.put("/updateQuiz", auth, quizRoleCheck, UpdateQuiz)
+router.get("/getQuiz", auth, getQuiz)
+router.delete("/deleteQuiz",auth, quizRoleCheck, deleteQuiz)
+
+router.post("/checkResult",auth, checkResult)
+router.get("/getResult", auth, getResult)
+
+router.post("/addQuestion", auth, quizRoleCheck, addQuestions)
+router.put("/updateQuestions", auth, quizRoleCheck, UpdateQuestions)
+router.get("/getAllQuestions", auth, getAllQuestions)
+router.delete("/deleteQuestions", auth, deleteQuestions)
+
+module.exports = router;

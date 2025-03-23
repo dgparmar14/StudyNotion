@@ -27,7 +27,7 @@ exports.auth = async (req, res, next) => {
         //token verifivation
         try{
             const decode = jwt.verify(token, process.env.JWT_SECRET);
-            console.log("After decoding : ");
+            // console.log("After decoding : ");
             //console.log(decode);
             req.user = decode
         }
@@ -107,6 +107,47 @@ exports.isInstructor = async (req, res, next) => {
         return res.status(500).json({
             success : false,
             message : "Failed for valideting as Instructor, please try again"
+        })
+    }
+}
+
+//isAdmin
+exports.isAdmin = async (req, res, next) => {
+    try{
+       
+        if(req.user.accountType !== "Admin"){
+            return res.status(403).json({
+                success : false,
+                message : "This is protected route for Instructors"
+            })
+        }
+        next();
+
+    }catch(err){
+        console.error(err);
+        return res.status(500).json({
+            success : false,
+            message : "Failed for valideting as Admin, please try again"
+        })
+    }
+}
+
+exports.quizRoleCheck = async (req, res, next) => {
+    try{
+       
+        if((req.body.categoryId && req.user.accountType !== "Admin") || (req.body.courseId && req.user.accountType !== "Instructor")){
+            return res.status(403).json({
+                success : false,
+                message : "This is protected route for Admins and Instructors"
+            })
+        }
+        next();
+
+    }catch(err){
+        console.error(err);
+        return res.status(500).json({
+            success : false,
+            message : "Failed for valideting as Admin or Instructor, please try again"
         })
     }
 }
