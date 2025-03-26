@@ -16,7 +16,7 @@ function HomePage() {
   return (
     <div className=" bg-navbarBgColor">
     {/* section-1 */}
-      <div className='relative mx-auto w-11/12 max-w-maxContent text-white flex flex-col items-center justify-between pb-[8rem]'>
+      <div className='bg-navbarBgColor relative mx-auto w-screen max-w-maxContent text-white flex flex-col items-center justify-between pb-[8rem]'>
         <Link to={"/signUp"}>
          
           <div className='flex mx-auto mt-16  group rounded-full text-[1rem] font-bold bg-green InstructorShadow

@@ -76,10 +76,10 @@ const Catalog = () => {
         <div className='w-11/12 mx-auto py-8'>
             {/* section1 */}
             <div className='flex flex-col gap-3'>
-                <div className='text-[18px] font-[500] text-richblack-5'>Courses to get you started</div>
+                <div className='text-[18px] font-[500] text-black'>Courses to get you started</div>
                 <div className=' flex gap-x-3 text-richblack-25 text-[15px]'>
                     <div onClick={()=>{setCurrentTab("mostPopular")}} className={`${currentTab=="mostPopular" ? "text-yellow-100 border-b border-b-richblack-100" : "text-richblack-25"} cursor-pointer transition-all duration-200`}>Most Popular</div>
-                    <div onClick={()=>(setCurrentTab("new"))} className={`${currentTab=="new" ? "text-yellow-100 border-b border-b-richblack-100" : "text-richblack-25"} cursor-pointer transition-all duration-200`}>New</div>
+                    <div onClick={()=>(setCurrentTab("new"))} className={`${currentTab=="new" ? "text-yellow-100 border-b border-b-richblack-100" : "text-richblack-500"} cursor-pointer transition-all duration-200`}>New</div>
                    
                 </div>
                 <div className='h-[1px] w-[100%] bg-richblack-700 -mt-[12px]'></div>
@@ -90,7 +90,7 @@ const Catalog = () => {
 
                 {/* section2 */}
             <div className='flex flex-col gap-2 py-7'>
-                <div className='text-[18px] font-[500] text-richblack-5'>Top Courses in {catalogPageData?.data?.selectedCategory?.name}</div> 
+                <div className='text-[18px] font-[500] text-black'>Top Courses in {catalogPageData?.data?.selectedCategory?.name}</div> 
 
                 <div >
                     <CatagoryCourseSlider Courses={catalogPageData?.data?.differentCategory.courses}/>
@@ -99,7 +99,7 @@ const Catalog = () => {
             </div>
             {/* section3 */}
             <div className='flex flex-col gap-2 min-w-maxContent'>
-                <div className='text-[18px] font-[500] text-richblack-5'>Frequently Bought</div>
+                <div className='text-[18px] font-[500] text-black'>Frequently Bought</div>
                 <div className='mt-4 max-w-fit'>
 
                     <div className='flex flex-wrap max-w-[1000px] gap-7'>

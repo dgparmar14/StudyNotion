@@ -11,10 +11,10 @@ function Profile() {
     
   return (
     <div className=''>
-        <p className='text-3xl font-semibold mx-5 text-richblack-800'>My Profile</p>
+        <p className='text-3xl font-semibold mx-5 text-black'>My Profile</p>
         <div className='md:w-7/12 mx-auto my-auto flex flex-col justify-center gap-5 mt-[2rem]'>
             
-            <div className='flex flex-row flex-wrap justify-between bg-richblack-800 px-5 border border-richblack-500 py-3 items-center rounded-md text-richblack-200'>
+            <div className='flex flex-row flex-wrap justify-between bg-richblack-900 px-5 border border-richblack-500 py-3 items-center rounded-md text-richblack-200'>
                 <div className='flex gap-5 flex-wrap justify-center items-center'>
                     <img src={user?.image} alt={`Profile-${user.firstName}`} className='w-[50px] h-[50px] rounded-full'></img>
                     <div className='flex flex-col gap-1'>
