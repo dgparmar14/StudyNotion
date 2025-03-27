@@ -73,7 +73,7 @@ function LoginForm({setIsLoggedIn}) {
                     <Link to={"/forgotpassword"} className='text-[#47A5C5] text-[12px] flex justify-end'>Forgot Password</Link>
             </label>
             <div className="w-full"> 
-                    <button className="w-full py-2 bg-green rounded-md mt-3 mb-1 text-richblack-900 font-semibold">Sign In</button>
+                    <button className="w-full py-2 bg-green rounded-md mt-3 mb-1 text-white font-semibold">Sign In</button>
             </div>
 
       </form>

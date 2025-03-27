@@ -53,14 +53,14 @@ function VerifyEmail() {
   
     
   return (
-    <div className='w-11/12 max-w-maxContent flex justify-center items-center h-[90vh] mx-auto text-richblack-5'>
+    <div className='w-11/12 max-w-maxContent flex justify-center items-center h-[90vh] mx-auto text-richblack-900'>
         {
             loader ? (<div>Loading</div>) : (
                 <div className='flex flex-col gap-5 justify-center'>
                     <p className='text-3xl font-bold'>
                         Verify email
                     </p>
-                    <p className='text-[18px] text-richblack-200'>
+                    <p className='text-[18px] text-richblack-400'>
                         A verification code has been sent to you. Enter the code below
                     </p>
                     <form onSubmit={submitHandler} className='flex flex-col gap-4'>
@@ -75,7 +75,7 @@ function VerifyEmail() {
                         }}
                         className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"/>}
                     />
-                        <button type='submit' className='text-[17px] font-medium bg-yellow-200 rounded-md transition-all duration-200 text-richblack-900 py-2 mt-4'>Verify Email</button>
+                        <button type='submit' className='text-[17px] font-medium bg-yellow-50 rounded-md transition-all duration-200 text-white py-2 mt-4'>Verify Email</button>
                     </form>
                     <div className='flex justify-between items-center'>
                         <Link to={"/login"} className='flex gap-2 items-center text-richblack-5 justify-start font-medium tracking-wide'>

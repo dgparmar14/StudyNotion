@@ -17,10 +17,10 @@ function About() {
     <div>
         {/* Section-1 */}
         
-        <section className='bg-footer pb-[18rem] mb-[70rem] lg:mb-0 pt-[30px]'>
+        <section className='bg-pure-greys-5 pb-[18rem] mb-[70rem] lg:mb-0 pt-[30px]'>
             <div className='w-11/12 max-w-maxContent relative flex flex-col gap-5 mx-auto justify-center items-center pt-14'>
-                <p className='text-richblack-5 text-4xl font-semibold w-[70%] text-center'>Driving Innovation in Online Education for a <Hilighted text={"Brighter Future"}></Hilighted> </p>
-                <p className='text-[16px] text-richblack-200 text-center w-[62%] mt-2'>Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
+                <p className='text-richblack-800 text-4xl font-semibold w-[70%] text-center'>Driving Innovation in Online Education for a <Hilighted text={"Brighter Future"}></Hilighted> </p>
+                <p className='text-[16px] text-richblack-600 text-center w-[62%] mt-2'>Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
                 <div className='flex gap-3 absolute top-[45%] translate-y-[50%] flex-col lg:flex-row'>
                     <img src={cover1} className=' w-[384px] h-[311px]'></img>
                     <img src={cover2} className=' w-[384px] h-[311px]'></img>
@@ -30,7 +30,7 @@ function About() {
         </section>
         
         {/* Section-2 */}
-        <div className='bg-navbarBgColor'>
+        <div className='bg-richblack-900'>
         <section className='pt-4 w-11/12 max-w-maxContent mx-auto mb-8'>
             <div className="mt-32 ">
                 <Quate></Quate>
@@ -38,7 +38,7 @@ function About() {
         </section>
 
         {/* Section-3 */}
-        <section className='bg-navbarBgColor mb-32'>
+        <section className='bg-richblack-900 mb-32'>
             <div className='w-11/12 max-w-maxContent mx-auto mt-32 flex flex-col md:flex-row gap-32 justify-center items-center px-4 py-8'>
                 <div className='md:w-[40%] flex w-[65%] flex-col gap-4'>
                     <p className='text-4xl font-bold pinkGradient'>Our Founding Story</p>

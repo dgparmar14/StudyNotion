@@ -34,7 +34,7 @@ function EnrolledCourses() {
         {
             !enrolledcourses ? (<div className='loading h-[100%] w-[100%] flex self-center'></div>) : (
                 <div className='flex flex-col gap-4 mx-auto my-auto'>
-                    <p className='text-3xl font-semibold text-richblack-5'>Enrolled Courses</p>
+                    <p className='text-3xl font-semibold text-richblack-900'>Enrolled Courses</p>
                     {
                         enrolledcourses.length>0 ? 
                         (<div>
@@ -75,7 +75,7 @@ function EnrolledCourses() {
                                 }
                             </div>
                         </div>) 
-                        : (<div className='text-richblack-25 text-[14px]'>You are not enrolled in any course yet</div>)
+                        : (<div className='text-richblack-700 text-[14px]'>You are not enrolled in any course yet</div>)
                     }
                 </div>
             )

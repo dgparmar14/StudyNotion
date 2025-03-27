@@ -55,7 +55,7 @@ function Navbar() {
     },[])
   return (  
     
-    <div className='w-[100%] flex bg-opacity-95 justify-between items-center  px-[30px] py-2 shadow-[rgba(0,0,0,0.89)_0px_25px_20px_-20px] bg-navbarBgColor '>
+    <div className='w-screen flex justify-between items-center px-[30px] py-2 shadow-md shadow-white bg-navbarBgColor  '>
         <div>
             <img src={Logo} className='h-[35px]'></img>
         </div>
