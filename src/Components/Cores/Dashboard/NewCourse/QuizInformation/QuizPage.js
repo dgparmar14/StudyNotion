@@ -97,7 +97,7 @@ function QuizPage() {
           <button
             type="button"
             onClick={() => navigateQuestion("next")}
-            className={`text-[14px] text-white bg-yellow-100 rounded-md px-4 py-1 w-fit cursor-pointer ${
+            className={`text-[14px] text-white bg-yellow-50 rounded-md px-4 py-1 w-fit cursor-pointer ${
               currentIndex === questions.length - 1
                 ? "opacity-50 cursor-not-allowed"
                 : ""

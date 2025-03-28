@@ -85,7 +85,7 @@ function ChangePassword() {
 
             </div>
             
-            <button onClick={handleSubmit(onSubmitHandler)} className='text-[14px] mt-4 text-richblack-900 self-end bg-yellow-100 rounded-md px-4 py-1'>Change</button>
+            <button onClick={handleSubmit(onSubmitHandler)} className='text-[14px] mt-4 text-richblack-900 self-end bg-yellow-50 rounded-md px-4 py-1'>Change</button>
         </form>
 
     }

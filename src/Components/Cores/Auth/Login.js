@@ -41,7 +41,7 @@ function LoginForm({setIsLoggedIn}) {
 
 
   return (
-    <div className='bg-navbarBgColor flex flex-col gap-6'>
+    <div className='bg-richblack-900 flex flex-col gap-6'>
       {/* <div className="flex rounded-3xl mt-3 border-richblack-700 bg-richblack-600 w-max">
                     <button className={`px-4 py-2 rounded-3xl ${accounttype ==="student" ? "bg-footer text-white" : "bg-richblack-600 text-richblack-100"}`} onClick={studentClickHandler}>Student</button>
                     <button className={`px-4 py-2 rounded-3xl ${accounttype === "instuctor" ? "bg-footer text-white" : "bg-richblack-600 text-richblack-100"}`} onClick={inStructorClickHandler}>Instructor</button>
@@ -73,7 +73,7 @@ function LoginForm({setIsLoggedIn}) {
                     <Link to={"/forgotpassword"} className='text-[#47A5C5] text-[12px] flex justify-end'>Forgot Password</Link>
             </label>
             <div className="w-full"> 
-                    <button className="w-full py-2 bg-green rounded-md mt-3 mb-1 text-white font-semibold">Sign In</button>
+                    <button className="w-full py-2 bg-yellow-50 rounded-md mt-3 mb-1 text-white font-semibold">Sign In</button>
             </div>
 
       </form>

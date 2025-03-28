@@ -17,7 +17,7 @@ function ResetPassword() {
     <div className=' flex w-11/12 max-w-maxContent mx-auto flex-col items-center gap-4 h-[90vh] justify-center'>
         {
             loading  ? ( <div className='flex justify Center items-center text-3xl w-[50%] lg:w-[30%] font-semibold'> Loading....</div>) : (
-                <div className='bg-navbarBgColor flex flex-col gap-4 justify-center w-[30%] '>
+                <div className='bg-richblack-900 flex flex-col gap-4 justify-center w-[30%] '>
                     <h1 className='text-richblack-5 text-4xl text-semibold p-5'>
                         {
                             !emailSent ? ("Reset your password") : "Check your email"
@@ -50,7 +50,7 @@ function ResetPassword() {
                             }
                         </div>
                         <div>
-                            <button type='submit' className='w-full bg-green text-white text-[16px] rounded-md mt-3 hover:scale-105 transition-all duration-200 py-2'>
+                            <button type='submit' className='w-full bg-yellow-50 text-white text-[16px] rounded-md mt-3 hover:scale-105 transition-all duration-200 py-2'>
                                 {
                                     !emailSent ? "Reset Password" : "Resend Email "
                                 }

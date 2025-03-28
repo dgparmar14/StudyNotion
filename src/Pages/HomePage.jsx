@@ -14,12 +14,12 @@ import Footer from "../Components/Common/Footer"
 
 function HomePage() {
   return (
-    <div className=" bg-navbarBgColor">
+    <div className=" bg-richblack-900">
     {/* section-1 */}
-      <div className='bg-navbarBgColor relative mx-auto w-screen max-w-maxContent text-white flex flex-col items-center justify-between pb-[8rem]'>
+      <div className='bg-richblack-900 relative mx-auto w-screen max-w-maxContent text-white flex flex-col items-center justify-between pb-[8rem]'>
         <Link to={"/signUp"}>
          
-          <div className='flex mx-auto mt-16  group rounded-full text-[1rem] font-bold bg-green InstructorShadow
+          <div className='flex mx-auto mt-16  group rounded-full text-[1rem] font-bold bg-yellow-100 InstructorShadow
 border-radius: 500px; hover:scale-95 text-white transition-all duration-200 '> 
             <div className='flex gap-2 items-center px-8 py-[7px] group-hover:bg-white group-hover:text-black rounded-full transition-all duration-200'>
               <p>Bocome an instuctor</p>

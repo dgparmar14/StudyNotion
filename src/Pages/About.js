@@ -82,8 +82,8 @@ function About() {
         </section>
 
         {/* section-7 */}
-        <div className="bg-navbarBgColor">
-        <section className=' bg-navbarBgColor p-4'>
+        <div className="bg-richblack-900">
+        <section className=' bg-richblack-900 p-4'>
             <AboutForm></AboutForm>
         </section>
 

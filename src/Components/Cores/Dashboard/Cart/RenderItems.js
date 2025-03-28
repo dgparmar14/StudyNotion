@@ -55,7 +55,7 @@ function RenderItems() {
 
                         </div>
                         <div className='flex flex-col gap-3 ml-auto'>
-                            <button onClick={()=>dispatch(removeItem(course._id))} className='flex gap-1 justify-center items-center px-4 py-2 bg-richblack-800 rounded-md border w-fit border-richblack-700 text-[16px] text-green'>
+                            <button onClick={()=>dispatch(removeItem(course._id))} className='flex gap-1 justify-center items-center px-4 py-2 bg-richblack-800 rounded-md border w-fit border-richblack-700 text-[16px] text-yellow-100'>
                             <RiDeleteBin6Line/>
                             Remove</button>
                             <p className='text-[18px] font-[550] text-yellow-200 '>Rs. {course.price}</p>

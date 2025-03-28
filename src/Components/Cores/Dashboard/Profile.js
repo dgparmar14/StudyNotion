@@ -24,7 +24,7 @@ function Profile() {
  
                 </div>
                 
-                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] flex gap-1 mt-2 md:mt-0 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-100'>
+                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] flex gap-1 mt-2 md:mt-0 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-50'>
                     <FiEdit></FiEdit>
                     Edit
                 </button>
@@ -37,7 +37,7 @@ function Profile() {
                     </div>
                 </div>
                
-                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] flex gap-1 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-100'>
+                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] flex gap-1 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-50'>
                     <FiEdit></FiEdit>
                     Edit
                 </button>
@@ -80,7 +80,7 @@ function Profile() {
                         </div>
                     </div>
                 </div>
-                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] mt-2 md:mt-0 flex gap-1 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-100'>
+                <button onClick={()=>navigate("/dashboard/settings")} className='text-[14px] mt-2 md:mt-0 flex gap-1 px-4 justify-center font-semibold h-fit py-2 items-center rounded-md text-white bg-yellow-50'>
                     <FiEdit></FiEdit>
                     Edit
                 </button>

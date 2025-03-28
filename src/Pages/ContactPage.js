@@ -10,7 +10,7 @@ import ContactUsForm from '../Components/Common/ContactUsForm'
 
 function ContactPage() {
   return (
-    <div className='bg-navbarBgColor'>
+    <div className='bg-richblack-900'>
     <div className="w-11/12 max-w-maxContent mx-auto flex flex-col gap-5 mt-4 px-4 py-4 overflow-x-hidden">
         <div className='flex flex-wrap mt-7 flex-row gap-12 self-center px-4 mx-18'>
             <div className='flex mx-4 ml-4 mr-4 flex-col gap-5 px-8 py-5 h-max bg-footer rounded-md'>

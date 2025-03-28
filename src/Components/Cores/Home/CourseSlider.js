@@ -92,7 +92,7 @@ function CourseSlider({Courses}) {
                       </div>
                     
                       <div className='flex flex-row gap-2 items-center'>
-                        <span className=' text-[16px] text-yellow-100'>{review.rating}</span>
+                        <span className=' text-[16px] text-yellow-50'>{review.rating}</span>
                         <div className='flex flex-row'>
                         <ReactStars
                                     count={5}

@@ -55,7 +55,7 @@ function Navbar() {
     },[])
   return (  
     
-    <div className='w-screen flex justify-between items-center px-[30px] py-2 shadow-md shadow-white bg-navbarBgColor  '>
+    <div className='w-screen flex justify-between items-center px-[30px] py-2 shadow-md shadow-white bg-richblack-900  '>
         <div>
             <img src={Logo} className='h-[35px]'></img>
         </div>
@@ -91,7 +91,7 @@ function Navbar() {
                                   
 
                                 ) : (
-                                    <Link to={link?.path} className={`${matchRoute(link.path)? "text-green" : "text-white"}`}>
+                                    <Link to={link?.path} className={`${matchRoute(link.path)? "text-yellow-100" : "text-white"}`}>
                                     {
                                         link.title
                                     }
@@ -129,14 +129,14 @@ function Navbar() {
             {
                 token === null && (
                     <Link to={"/signUp"}>
-                        <button className=' bg-green border cursor-pointer border-richblack-700 px-4 py-1 text-white text-[14px] rounded-md'>Sign Up</button>
+                        <button className=' bg-yellow-50 border cursor-pointer border-richblack-700 px-4 py-1 text-white text-[14px] rounded-md'>Sign Up</button>
                     </Link>
                 )
             }
             {
                 token === null && (
                     <Link to={"/login"}>
-                        <button className=' bg-green border border-richblack-700 cursor-pointer px-2 py-1 text-white text-[14px] rounded-md'>Log in</button>
+                        <button className=' bg-yellow-100 border border-richblack-700 cursor-pointer px-2 py-1 text-white text-[14px] rounded-md'>Log in</button>
                     </Link>
                 )
             }

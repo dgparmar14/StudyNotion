@@ -88,7 +88,7 @@ export default function QuizDetails() {
           <button
             type="button"
             onClick={handleNext}
-            className="text-richblack-900e bg-yellow-100 rounded-md px-4 py-2"
+            className="text-richblack-900e bg-yellow-50 rounded-md px-4 py-2"
           >
             Next (Submit Quiz)
           </button>
@@ -121,11 +121,11 @@ export default function QuizDetails() {
             />
           </div>
         ))} */}
-        <button onClick={addQuestion} type="button" className="text-richblack-900 bg-yellow-100 rounded-md px-4 py-2 w-fit">Add</button>
+        <button onClick={addQuestion} type="button" className="text-richblack-900 bg-yellow-50 rounded-md px-4 py-2 w-fit">Add</button>
 
         <div className="flex gap-3 self-end">
           <button type="reset" className="text-[15px] text-richblack-900 bg-richblack-400 rounded-md px-4 py-2">Reset</button>
-          <button type="submit" className="text-[15px] text-richblack-900 bg-yellow-100 rounded-md px-4 py-2">Save</button>
+          <button type="submit" className="text-[15px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-2">Save</button>
         </div>
       </form>
     </div>

@@ -124,7 +124,7 @@ export default function CoursesTable({ courses, setMyCourses }) {
                       navigate(`/dashboard/edit-course/${course._id}`)
                     }}
                     title="Edit"
-                    className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300"
+                    className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeanyellow-100-300"
                   >
                     <FiEdit2 size={20} />
                   </button>

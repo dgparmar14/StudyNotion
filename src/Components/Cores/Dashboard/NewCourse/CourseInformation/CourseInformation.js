@@ -77,7 +77,9 @@ function CourseInformation() {
 
 //handles next button click 
 const onSubmitHandler = async(data) => {
-
+  debugger
+  console.log("inside fun");
+  
     if(editCourse) {
         if(isFormUpdated()) {
             const currentValues = getValues();
@@ -131,7 +133,8 @@ const onSubmitHandler = async(data) => {
 
           return;
       }
-
+      console.log("outstide ifffff");
+      
     //create a new course
     console.log("Printing data : ", data);
     const formData = new FormData();
@@ -163,7 +166,7 @@ const onSubmitHandler = async(data) => {
 }
   return (
     <div className='px-7 py-5 bg-richblack-800 border border-richblack-400 rounded-md'>
-      <form className='flex gap-5 flex-col' onSubmit={handleSubmit(onSubmitHandler)}>
+      <form className='flex gap-5 flex-col'  onSubmit={()=>console.log("submitted")}>
           <div className='flex flex-col gap-1 justify-center'>
               <label htmlFor='courseTitle' className='text-[14px] text-richblack-5'>Course Name<sup className='text-pink-200'>*</sup></label>
               <input id='courseTitle'
@@ -261,23 +264,26 @@ const onSubmitHandler = async(data) => {
               </textarea>
                 {
                   errors.courseBenefits && (
-                    <span className='text-[14px] text-pink-200'>Course benefits rareequired<sup>**</sup></span>
+                    <span className='text-[14px] text-pink-200'>Course benefits required<sup>**</sup></span>
                   )
                 }
           </div>
 
-          <RequirementField name="courseRequirements"
+          {/* <RequirementField name="courseRequirements"
                             label="Instructions/Requirements"
                             errors={errors}
                             register={register}
                             getValues={getValues}
-                            setValue={setValue}></RequirementField>
+                            setValue={setValue}></RequirementField> */}
                           
 
           <div className='flex gap-3 self-end'>
             {editCourse &&  <button onClick={()=>{dispatch(setStep(2))}} className='text-[15px] text-richblack-900 bg-yellow-200 rounded-md px-4 py-2'>Continue without Saving</button>}
            
-            <button type='submit' className='text-[15px] text-richblack-900 bg-yellow-200 rounded-md px-4 py-2'>{editCourse? "Save Changes" : "Next"}</button>
+            <button type='submit' className='text-[15px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-2'>
+  {editCourse ? "Save Changes" : "Next"}
+</button>
+
           </div>
         
       </form>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import {IoMdCheckmark} from "react-icons/io"
-import CourseInformation from './CourseInformation/CourseForm'
+import CourseInformation from './CourseInformation/CourseInformation'
 import CourseBuilder from './CourseBuilder/CourseBuilder'
 import EnrolledCourses from '../EnrolledCourses'
 import Publish from './Publish'
@@ -59,9 +59,9 @@ function RenderSteps() {
         </div>
        
         <div>
-            {step===3 && <CourseInformation></CourseInformation>}
+            {step===1 && <CourseInformation></CourseInformation>}
             {step===2 && <CourseBuilder></CourseBuilder>}
-            {step===1 && <QuizDetails></QuizDetails>}
+            {step===3 && <QuizDetails></QuizDetails>}
             {step===4 && <Publish></Publish>}
         </div>
 

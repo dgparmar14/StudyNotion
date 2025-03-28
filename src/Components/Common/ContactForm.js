@@ -165,7 +165,7 @@ function ContactForm() {
                     )
                 }
             </div>
-            <button onClick={handleSubmit(submitHandler)} className='bg-green rounded-md text-white w-[100%] py-2 mt-3'>Send Message</button>
+            <button onClick={handleSubmit(submitHandler)} className='bg-yellow-50 rounded-md text-white w-[100%] py-2 mt-3'>Send Message</button>
 
           
       </form>

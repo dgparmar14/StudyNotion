@@ -195,7 +195,7 @@ function SignUpForm({setIsLoggedIn}) {
         </div>
         
         <div className="w-full"> 
-                    <button className="w-full py-2 bg-green rounded-md mt-3 mb-1 text-white font-semibold">Create Account</button>
+                    <button className="w-full py-2 bg-yellow-100 rounded-md mt-3 mb-1 text-white font-semibold">Create Account</button>
         </div>
     </form>
 
