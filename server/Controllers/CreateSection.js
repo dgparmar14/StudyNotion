@@ -9,7 +9,7 @@ var ObjectId = require('mongodb').ObjectId;
 exports.createSection = async (req, res) => {
     try{
         //fetch data
-        const {sectionName, courceId} = rezq.body;
+        const {sectionName, courceId} = req.body;
         //console.log("Printing body : ", req.body);
 
         //Validate Data

@@ -73,7 +73,7 @@ export function signUp(
         navigate("/login")
       } catch (error) {
         console.log("SIGNUP API ERROR............", error)
-        toast.error("Signup Failed")
+        toast.error(error.message)
         navigate("/signup")
       }
       dispatch(setLoading(false))
@@ -110,7 +110,7 @@ export function signUp(
         navigate("/dashboard/my-profile")
       } catch (error) {
         console.log("LOGIN API ERROR............", error)
-        toast.error("Login Failed")
+        toast.error(error.message)
       }
       dispatch(setLoading(false))
       toast.dismiss(toastId)

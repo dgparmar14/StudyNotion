@@ -32,7 +32,7 @@ exports.auth = async (req, res, next) => {
             req.user = decode
         }
         catch(err){
-            return res.status(200).json({
+            return res.status(403).json({
                 success : false,
                 message : "Veification error in json web token",
                 error: err.message

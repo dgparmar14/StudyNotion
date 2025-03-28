@@ -75,7 +75,7 @@ function CourseBuilder() {
           sectionName : data.sectionName,
           sectionId : editSectionname,
           coid}, token);
-          console.log("Wrinting result",result);
+          console.log("Wrinting result",result);    
     }
 
     else{
@@ -122,7 +122,7 @@ function CourseBuilder() {
 
           <div className='flex gap-4 flex-row items-end'>
             <button type='submit'>{
-              <div className='flex gap-2 bg-richblack-800 border border-yellow-200 rounded-md px-4 py-1 mt-4 justify-center items-center text-yellow-200'>
+              <div className='flex gap-2 text-[15px] bg-richblack-800 border border-yellow-200 rounded-md px-2 py-1 mt-4 justify-center items-center text-yellow-200'>
                 <IoAddCircleOutline></IoAddCircleOutline>
                 {
                   editSectionname ? "Edit Section Name" : "Create Section"
@@ -142,8 +142,8 @@ function CourseBuilder() {
           }
         </div>
         <div className='flex gap-3 justify-end'>
-          <button onClick={goBack} className='text-richblack-900 bg-yellow-200 rounded-md px-4 py-1'>Back</button>
-          <button onClick={goNext} className='text-richblack-900 bg-yellow-200 rounded-md px-4 py-1 flex gap-1 justify-center items-center'>Next <MdOutlineNavigateNext></MdOutlineNavigateNext></button>
+          <button onClick={goBack} className='text-richblack-900 bg-yellow-200 text-[15px] rounded-md px-2 py-1'>Back</button>
+          <button onClick={goNext} className='text-richblack-900 bg-yellow-200 text-[15px] rounded-md px-2 py-1 flex gap-1 justify-center items-center'>Next <MdOutlineNavigateNext></MdOutlineNavigateNext></button>
         </div>
         
       </div>

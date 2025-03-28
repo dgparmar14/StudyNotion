@@ -87,11 +87,22 @@ function SubSectionModal({
     }
 
     if(result){
-      console.log("Printin result in side course update : ", result);
-      const updatedCourseContent = course.courceContent.map( (section) => (section._id === modalData.sectionId ? result : section));
-      const updatedCourse = {...course, courceContent:updatedCourseContent}
-      console.log("Updated course : ", updatedCourse);
-      dispatch(setCourse(updatedCourse));
+      if (result) {
+        const updatedCourseContent = course.courceContent.map((section) => {
+            if (section._id === modalData.sectionId) {
+                return {
+                    ...section,
+                    subSections: [...section.subSections, result], // ✅ Append instead of replace
+                };
+            }
+            return section;
+        });
+    
+        const updatedCourse = { ...course, courceContent: updatedCourseContent };
+        console.log("Updated course:", updatedCourse);
+        dispatch(setCourse(updatedCourse));
+    }
+    
     }
     setLoading(false);
     setModal(null);
@@ -141,11 +152,22 @@ function SubSectionModal({
     }
 
     if(result){
-      const updatedCourseContent = course.courceContent.map( (section) => (section._id===modalData.sectionId ? section : result));
-      const updatedCourse = {...course, courceContent:updatedCourseContent}
-      console.log("Updated course : ", updatedCourse);
-      dispatch(setCourse(updatedCourse));
-      console.log("Printing course : ", course);
+      if (result) {
+        const updatedCourseContent = course.courceContent.map((section) => {
+            if (section._id === modalData.sectionId) {
+                return {
+                    ...section,
+                    subSections: [...section.subSections, result], // ✅ Append instead of replace
+                };
+            }
+            return section;
+        });
+    
+        const updatedCourse = { ...course, courceContent: updatedCourseContent };
+        console.log("Updated course:", updatedCourse);
+        dispatch(setCourse(updatedCourse));
+    }
+    
     }
     setLoading(false);
     setModal(null);

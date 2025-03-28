@@ -89,7 +89,7 @@ function NestedView({handleChangeEdit}) {
                     <details key={section._id} className='w-[100%]'>
                         <summary className='flex justify-between items-center border-b-[1px] border-b-richblack-400 bg-richblack-700 text-richblack-200 w-[100%] px-4 py-1'>
                             <div className='flex gap-3 justify-center items-center'>
-                                <RxDropdownMenu className='scale-150'></RxDropdownMenu>
+                                <RxDropdownMenu className='scale-150' />
                                 <p className='text-richblack-5 text-[14px]'>{section.title}</p>
                             </div>
                             <div className='flex gap-1 text-richblack-200'>

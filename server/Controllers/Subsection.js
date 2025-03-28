@@ -45,7 +45,7 @@ exports.createSubSection = async (req, res) => {
 
         //Upload subSection Id in section
 
-        const updateSection = await Section.findByIdAndUpdate({_id:sectionId}, 
+        const updateSection = await Section.findByIdAndUpdate({_id:new mongoose.Types.ObjectId(sectionId)}, 
                                                             {
                                                                 $push : {
                                                                     subSections : newSubSection._id
@@ -85,7 +85,7 @@ exports.updateSubsection = async (req, res) => {
                                                                     timeDureation : timeDureation,
                                                                     videoUrl : newVideo.secure_url}, 
                                                                     {new : true})
-                                    
+                                     
         //console.log("Printing updated subsection : ------", updatedSubSection);
         const updatdSection = await Section.findById(sectionId).populate("subSections");
 
@@ -108,23 +108,28 @@ exports.updateSubsection = async (req, res) => {
 
 exports.deleteSubsection = async (req, res) => {
     try{
-        const {subSectionId, sectionId1} = req.body;
+        const {subSectionId, sectionId, courseId} = req.body;
         const userId = req.user.id;
-        const updatedSubSection = await SubSection.findByIdAndDelete({_id : subSectionId});
+        const updatedSubSection = await SubSection.findByIdAndDelete({_id : new mongoose.Types.ObjectId(subSectionId)});
 
-        const updateSection = await Section.findByIdAndUpdate({_id:sectionId1}, {
+        const updateSection = await Section.findByIdAndUpdate({_id : new mongoose.Types.ObjectId(sectionId)}, {
                                                                                     $pull : {
-                                                                                        subSections : {_id : subSectionId}
+                                                                                        subSections : {_id : new mongoose.Types.ObjectId(subSectionId)}
                                                                                     }
                                                                                 }, {new : true}).populate("subSections").exec();
 
-        const completedLectures = await CourseProgress.findByIdAndUpdate({courseId : courseId, userId : userId}, {
-            $pull : {
-                completedVideos : {
-                    _id : subSectionId
+        const completedLectures = await CourseProgress.findOneAndUpdate(
+            { courseId: new mongoose.Types.ObjectId(courseId), userId: new mongoose.Types.ObjectId(userId) }, //  Correct query
+            {
+                $pull: {
+                    completedVideos: {
+                        _id: new mongoose.Types.ObjectId(subSectionId) // Ensure it's an ObjectId
+                    }
                 }
-            }
-        })
+            },
+            { new: true }
+        );
+
 
         return res.status(200).json({
             success : true,
