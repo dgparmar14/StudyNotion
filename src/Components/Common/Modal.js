@@ -8,7 +8,7 @@ function Modal({modalData}) {
             <p className='text-[20px] text-richblack-5 font-semibold'>{modalData.text1}</p>
             <p className='text-richblack-100 text-[15px]'>{modalData.text2}</p>
             <div className='flex gap-3 mt-4 mb-3 justify-center items-center'>
-              <button onClick={modalData.button1Handler} className='px-4 py-1 rounded-md text-richblack-900 bg-yellow-200 cursor-pointer'>{modalData.button1Text}</button>
+              <button onClick={modalData.button1Handler} className='px-4 py-1 rounded-md text-richblack-900 bg-yellow-100 cursor-pointer'>{modalData.button1Text}</button>
               <button onClick={modalData.button2Handler} className='px-4 py-1 rounded-md text-richblack-5 bg-richblack-700 cursor-pointer'>{modalData.button2Text}</button>
             </div>
         </div>

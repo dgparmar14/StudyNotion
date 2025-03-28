@@ -47,7 +47,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
             currency: orderResponce.data.message.currency,
             amount: `${orderResponce.data.message.amount}`,
             order_id:orderResponce.data.message.id,
-            name:"StudyNotion",
+            name:"LearningBuddy",
             description: "Thank You for Purchasing the Course",
             image:razorpayLogo,
             prefill: {

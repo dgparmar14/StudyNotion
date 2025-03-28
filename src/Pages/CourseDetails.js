@@ -133,7 +133,7 @@ function CourseDetails() {
                     <p className='text-2xl text-richblack-5 font-semibold'>{courceName}</p>
                     <p className='text-[16px] text-richblack-50'>{description}</p>
                     <div className='flex flex-wrap md:flex-row gap-2 mt-2 items-center'>
-                        <span className='text-[15px] text-yellow-200'>{average}</span>
+                        <span className='text-[15px] text-yellow-50'>{average}</span>
                         <RatingStars Review_Count={average} Star_Size={20}></RatingStars>
                         <span className='text-[15px] text-richblack-25'>{`(${ratingAndReviews.length} Reviews)`}</span>
                         <span className='text-[15px] text-richblack-25'>{`${studentsEnrolled.length} Enrolled`}</span>
@@ -166,8 +166,8 @@ function CourseDetails() {
 
         <div className='w-11/12 mt-8 max-w-maxContent mx-auto py-8'>
             <div className='flex gap-1 flex-col'>
-                <p className='text-[24px] font-semibold text-richblack-900'>What You Will Learn</p>
-                <div className='text-[16px] font-[400] text-richblack-900'>
+                <p className='text-[24px] font-semibold text-white'>What You Will Learn</p>
+                <div className='text-[16px] font-[400] text-richblack-50'>
                     {
                         whatYouWillLearn
                     }
@@ -179,11 +179,11 @@ function CourseDetails() {
 
         <div className='w-11/12 max-w-maxContent mx-auto mt-8'>
             <div className='md:w-[60%] w-[90%] flex flex-col gap-4'>
-                <div className='text-[24px] font-semibold text-richblack-900'>
+                <div className='text-[24px] font-semibold text-white'>
                     Course Content  
                 </div>
                 <div className='flex justify-between'>
-                    <div className='flex gap-2 text-[15]px] font-[400] text-richblack-900'>
+                    <div className='flex gap-2 text-[15]px] font-[400] text-richblack-50'>
                         <span>{courceContent.length} Section(s)</span>
                         <span>{numberOfLectures} Lectures</span>
                         <span>{duration} Total Length</span>         
@@ -200,7 +200,7 @@ function CourseDetails() {
                                     <summary className='px-7 summeryCourse py-4 bg-richblack-700 transition-all duration-400'>
                                         <div className='flex justify-between w-full'>
                                             <div className='flex gap-1 items-center text-[15px] text-richblack-5'>
-                                                <BsChevronDown className={`transition-all duration-200 text-richblack-5`}></BsChevronDown>
+                                                <BsChevronDown className={`transition-all duration-200 text-richblack-50`}></BsChevronDown>
                                                 {
                                                     section.title
                                                 }
@@ -218,7 +218,7 @@ function CourseDetails() {
                                     <div className='border-x-[1px]'>
                                             {
                                                 section.subSections.map((subSection, index)=>(
-                                                    <div key={index} className='px-7 py-4 transition-all font-[500] duration-400 text-richblack-700 flex gap-3 text-[15px] items-center'>
+                                                    <div key={index} className='px-7 py-4 transition-all font-[500] duration-400 text-richblack-50 flex gap-3 text-[15px] items-center'>
                                                         <BsCameraVideo className='text-[14px]'></BsCameraVideo>
                                                         {
                                                             subSection.title
@@ -238,10 +238,10 @@ function CourseDetails() {
 
         </div>
         <div className='w-11/12 max-w-maxContent  mb-24 mx-auto flex flex-col'>
-            <p className='text-2xl font-semibold text-richblack-700'>Author</p>
+            <p className='text-2xl font-semibold text-white'>Author</p>
             <div className='flex items-center gap-2 mt-3'>
                 <img src={instructor.image} className='w-[50px] aspect-square rounded-full'></img>
-                <div className='text-[15px] text-richblack-900'>
+                <div className='text-[15px] text-richblack-50'>
                     {
                         `${instructor.firstName} ${instructor.lastName}`
                     }
@@ -262,4 +262,4 @@ function CourseDetails() {
 
 export default CourseDetails
 
-//<button onClick={()=>handleSubmit()} className='text-richblack-900 bg-yellow-100 rounded-md px-4 py-2'>Buy Now</button>
+//<button onClick={()=>handleSubmit()} className='text-white bg-yellow-100 rounded-md px-4 py-2'>Buy Now</button>

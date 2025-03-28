@@ -6,7 +6,7 @@ function SignUp({setIsLoggedIn}) {
   return (
     <div>
       <Template
-                  heading = {"Join the millions learning to code with StudyNotion for free"}
+                  heading = {"Join the millions learning to code with LearningBuddy for free"}
                   subHeading1={"Build skills for today, tomorrow, and beyond."}
                   subHeading2={"Education to future-proof your career"}
                   setIsLoggedIn={setIsLoggedIn}

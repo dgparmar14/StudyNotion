@@ -65,7 +65,7 @@ function CourseDetailsCard({course, setConfirmationModal, handleSubmit}) {
            }
            <p className='text-richblack-50 text-center text-[14px] mt-2'>30-Day Money-Back Gurentee</p>
             <p className='text-richblack-5 text-[14px] mt-1'>This Course Includes : </p>
-            <div className='flex flex-col gap-1 text-caribbeanyellow-100-300 -mt-1'>
+            <div className='flex flex-col gap-1 text-yellow-5 -mt-1'>
                 {
                     course.instructions.map((instruction, index) => (
                         <div className='flex gap-2 items-center' key={index}>

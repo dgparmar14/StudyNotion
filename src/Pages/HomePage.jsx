@@ -19,15 +19,16 @@ function HomePage() {
       <div className='bg-richblack-900 relative mx-auto w-screen max-w-maxContent text-white flex flex-col items-center justify-between pb-[8rem]'>
         <Link to={"/signUp"}>
          
-          <div className='flex mx-auto mt-16  group rounded-full text-[1rem] font-bold bg-yellow-100 InstructorShadow
-border-radius: 500px; hover:scale-95 text-white transition-all duration-200 '> 
-            <div className='flex gap-2 items-center px-8 py-[7px] group-hover:bg-white group-hover:text-black rounded-full transition-all duration-200'>
+        <div className='flex mx-auto mt-16  group rounded-full text-[1rem] font-bold bg-richblack-800 InstructorShadow
+border-radius: 500px; hover:scale-95 text-richblack-200 transition-all duration-200 '> 
+            <div className='flex gap-2 items-center px-8 py-[7px] group-hover:bg-richblack-900 rounded-full transition-all duration-200'>
               <p>Bocome an instuctor</p>
               <FaArrowRight></FaArrowRight>
 
             </div>
 
            </div>
+
 
         </Link>
 
@@ -177,7 +178,7 @@ border-radius: 500px; hover:scale-95 text-white transition-all duration-200 '>
                 <div className='flex flex-col gap-7 justify-between items-center'>
 
                   <div className='text-[16px]'>
-                    The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
+                    The modern LearningBuddy is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                   </div>
                   <div>
                     <CTABUtton active={"true"} routLocation={"/signup"}>

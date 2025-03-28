@@ -10,8 +10,8 @@ module.exports = {
     colors: {
       white: "#fff",
       black: "#000",
-      navbarBgColor: "#1B282F",
-      green:"#07A698",
+      // bg-richblack-900: "#1B282F",
+      // green:"#07A698",
       transparent: "#ffffff00",
       footer:"#27445D",
       
@@ -27,8 +27,8 @@ module.exports = {
         600: "#424854",
         700: "#2C333F",
         800: "#161D29",
-        900: "#1B282F", //navbar bg
-        // 900: "#000814",
+        // 900: "#1B282F", //navbar bg
+        900: "#000814",
       },
       richblue: {
         5: "#ECF5FF",
@@ -104,18 +104,19 @@ module.exports = {
         5: "#FFF970",
         25: "#FFE83D",
         // green button color
-        50: "#07A698",
-        100: "#07A698",
-        // 50: "#FFD60A",
-        // 100: "#E7C009",
-        200: "#07A698",
+        // 50: "#07A698",
+        // 100: "#07A698",
+        50: "#FFD60A",
+        100: "#E7C009",
+        200: "#E7C009",
         300: "#B69507",
         400: "#9E8006",
         500: "#866A04",
         600: "#6E5503",
         700: "#553F02",
         //nav active bg
-        800: "#154E4F",
+        // 800: "#154E4F",
+        800: "#3D2A01",
         900: "#251400",
       },
       "pure-greys": {

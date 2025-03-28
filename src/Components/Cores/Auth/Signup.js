@@ -104,7 +104,7 @@ function SignUpForm({setIsLoggedIn}) {
                     value={formData.firstName}
                     name='firstName'
                     onChange={changeHandler}
-                    className='bg-white px-4 py-1 rounded-[8px] shadowBox text-black'
+                    className='bg-footer px-4 py-1 rounded-[8px] shadowBox text-white'
                 
                     required>
                 </input>
@@ -117,7 +117,7 @@ function SignUpForm({setIsLoggedIn}) {
                     name='lastName'
                     onChange={changeHandler}
                     required
-                    className='bg-white px-4 py-1 rounded-[8px] shadowBox text-black'>
+                    className='bg-footer px-4 py-1 rounded-[8px] shadowBox text-white'>
                 </input>
         </label>
 
@@ -131,13 +131,13 @@ function SignUpForm({setIsLoggedIn}) {
                     name='email'
                     onChange={changeHandler}
                     required
-                    className='bg-white px-4 py-1 rounded-[8px] shadowBox text-black'>
+                    className='bg-footer px-4 py-1 rounded-[8px] shadowBox text-white'>
                 </input>
         </label>
         {/* <label className='flex flex-col gap-1 w-[100%]'>
             <p>Phone Number <sup className= "text-[#EF476F]">*</sup></p>
             <div className='flex gap-4'>
-                <select id='countryCode' value={formData.countryCode} required name='countryCode' onChange={changeHandler} className='bg-white w-[20%] px-4 py-1 rounded-[8px] shadowBox'>
+                <select id='countryCode' value={formData.countryCode} required name='countryCode' onChange={changeHandler} className='bg-footer w-[20%] px-4 py-1 rounded-[8px] shadowBox'>
                     {   
                         CountryCode.map((element, index) => {
                             return(
@@ -159,7 +159,7 @@ function SignUpForm({setIsLoggedIn}) {
                         maxLength={10}
                         minLength={10}
                         required
-                        className='bg-white px-4 w-full py-1 rounded-[8px] shadowBox'>
+                        className='bg-footer px-4 w-full py-1 rounded-[8px] shadowBox'>
                     </input>
                 </div>
                 
@@ -173,7 +173,7 @@ function SignUpForm({setIsLoggedIn}) {
                         name='password'
                         onChange={changeHandler}
                         required
-                        className='bg-white px-4 py-1 rounded-[8px] shadowBox text-black'>
+                        className='bg-footer px-4 py-1 rounded-[8px] shadowBox text-white'>
                     </input>
                     <div className='absolute right-4 top-8'>
                         {passwordVisible?(<AiOutlineEyeInvisible  onClick={onPasswordVisibleChange} className="h-[20px] w-[20px]"></AiOutlineEyeInvisible>) : (<MdOutlineVisibility  onClick={onPasswordVisibleChange} className="h-[20px] w-[20px]"></MdOutlineVisibility>)}
@@ -186,7 +186,7 @@ function SignUpForm({setIsLoggedIn}) {
                         name='confirmpassword'
                         onChange={changeHandler}
                         required
-                        className='bg-white px-4 py-1 rounded-[8px] shadowBox text-black'>
+                        className='bg-footer px-4 py-1 rounded-[8px] shadowBox text-white'>
                     </input>
                     <div className='absolute right-3 top-8'>
                         {confirmPasswordVisible?(<AiOutlineEyeInvisible  onClick={onConfirmPasswordChange} className="h-[20px] w-[20px]"></AiOutlineEyeInvisible>) : (<MdOutlineVisibility  onClick={onConfirmPasswordChange} className="h-[20px] w-[20px]"></MdOutlineVisibility>)}
@@ -195,7 +195,7 @@ function SignUpForm({setIsLoggedIn}) {
         </div>
         
         <div className="w-full"> 
-                    <button className="w-full py-2 bg-yellow-100 rounded-md mt-3 mb-1 text-white font-semibold">Create Account</button>
+                    <button className="w-full py-2 bg-yellow-100 rounded-md mt-3 mb-1 text-black font-semibold">Create Account</button>
         </div>
     </form>
 

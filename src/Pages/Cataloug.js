@@ -90,7 +90,7 @@ const Catalog = () => {
 
                 {/* section2 */}
             <div className='flex flex-col gap-2 py-7'>
-                <div className='text-[18px] font-[500] text-black'>Top Courses in {catalogPageData?.data?.selectedCategory?.name}</div> 
+                <div className='text-[18px] font-[500] text-white'>Top Courses in {catalogPageData?.data?.selectedCategory?.name}</div> 
 
                 <div >
                     <CatagoryCourseSlider Courses={catalogPageData?.data?.differentCategory.courses}/>
@@ -99,7 +99,7 @@ const Catalog = () => {
             </div>
             {/* section3 */}
             <div className='flex flex-col gap-2 min-w-maxContent'>
-                <div className='text-[18px] font-[500] text-black'>Frequently Bought</div>
+                <div className='text-[18px] font-[500] text-white'>Frequently Bought</div>
                 <div className='mt-4 max-w-fit'>
 
                     <div className='flex flex-wrap max-w-[1000px] gap-7'>

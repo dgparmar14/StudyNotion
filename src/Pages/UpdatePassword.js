@@ -107,7 +107,7 @@ function ResetPassword() {
                         </li>
                     </ul>
                 </div>
-                <button className='bg-yellow-200 text-richblack-900 py-2 rounded-md mt-4 transition-all duration-200 hover:scale-105'>Reset Password</button>
+                <button className='bg-yellow-100 text-richblack-900 py-2 rounded-md mt-4 transition-all duration-200 hover:scale-95'>Reset Password</button>
             </form> 
             <div>
                 <Link to={"/login"} className='flex gap-3 items-center text-richblack-5 justify-start font-medium tracking-wide'>

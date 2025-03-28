@@ -28,10 +28,10 @@ function MyCourses() {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <p className="text-3xl font-semibold text-richblack-800">My Courses</p>
+        <p className="text-3xl font-semibold text-white">My Courses</p>
         <button
           onClick={() => navigate('/dashboard/add-course')}
-          className="px-4 py-2 bg-yellow-200 flex gap-1 items-center rounded-md text-[14px] justify-center font-[600] text-white"
+          className="px-4 py-2 bg-yellow-200 flex gap-1 items-center rounded-md text-[14px] justify-center font-[600] text-black"
         >
           <IoAddCircleOutline className="font-semibold" />
           New

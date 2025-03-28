@@ -73,7 +73,7 @@ function ContactForm() {
                       id="firstname"
                       name='firstname'
                       placeholder='Enter your name'
-                      className='px-4 py-2 rounded-md bg-white text-[14px] text-black'
+                      className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
                       {...register("firstname", {require:true})}>
               </input>
               {
@@ -87,7 +87,7 @@ function ContactForm() {
               <input type='text'
                       id="lastname"
                       name='lastname'
-                      className='px-4 py-2 rounded-md bg-white text-[14px] text-black'
+                      className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
                       placeholder='Enter your lastname'
                       {...register("lastname")}>
               </input>
@@ -100,7 +100,7 @@ function ContactForm() {
                       id="email"
                       name='email'
                       placeholder='Enter your email'
-                      className='px-4 py-2 rounded-md bg-white text-[14px] text-black'
+                      className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
                       {...register("email", {require:true})}>
               </input>
               {
@@ -116,7 +116,7 @@ function ContactForm() {
                 <select
                       name='dropedown'
                       id='dropedown'
-                      className='px-5 py-2  bg-white text-[14px] text-black rounded-md w-[30%]'
+                      className='px-2 py-2 bg-footer text-[14px] text-richblack-5 rounded-md w-[20%]'
                       {...register("dropedown", {required:true})}>
                         {
                           countryCode.map( (element, index) => {
@@ -127,7 +127,7 @@ function ContactForm() {
                 <input type='tel'
                         name='contactNumber'
                         id='contactNumber'
-                        className='px-4 py-2 rounded-md  bg-white text-[14px] text-black w-[100%]'
+                        className='px-4 py-2 rounded-md  bg-footer text-[14px] text-white w-[100%]'
                         placeholder='Enter contact number'
                         {...register("phoneNo",  
                             {
@@ -154,7 +154,7 @@ function ContactForm() {
                     cols="30"
                     rows="7"
                     placeholder='Enter Your message here'
-                    className='px-4 py-2 rounded-md bg-white text-[14px] text-black'
+                    className='px-4 py-2 rounded-md bg-footer text-[14px] text-white'
                     {...register("message", {required:true})}
                 />
                 {
@@ -165,9 +165,7 @@ function ContactForm() {
                     )
                 }
             </div>
-            <button onClick={handleSubmit(submitHandler)} className='bg-yellow-50 rounded-md text-white w-[100%] py-2 mt-3'>Send Message</button>
-
-          
+            <button onClick={handleSubmit(submitHandler)} className='bg-yellow-50 rounded-md text-black w-[100%] py-2 mt-3'>Send Message</button>      
       </form>
 
     </div>

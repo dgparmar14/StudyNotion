@@ -50,7 +50,7 @@ function ResetPassword() {
                             }
                         </div>
                         <div>
-                            <button type='submit' className='w-full bg-yellow-50 text-white text-[16px] rounded-md mt-3 hover:scale-105 transition-all duration-200 py-2'>
+                            <button type='submit' className='w-full bg-yellow-100 text-black text-[16px] rounded-md mt-3 hover:scale-95 transition-all duration-200 py-2'>
                                 {
                                     !emailSent ? "Reset Password" : "Resend Email "
                                 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 function HilightedText({text}) {
   return (
-    <span className="font-bold text-yellow-100">
+    <span className="font-bold hilightGradient">
         {" "}
         {text} 
     </span>

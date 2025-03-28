@@ -54,7 +54,7 @@ function VideoSideBar({setReviewModal}) {
     <div className='w-[14rem] py-4 min-h-[calc(1000vh-2rem)] bg-richblack-800'>
         <div className='mt-4 flex flex-col gap-2'>
             <div className='flex justify-between px-3 items-center'>
-                <button onClick={()=>{navigate("/dashboard/enrolled-courses")}} className="w-[25px] aspect-square rounded-full flex justify-center items-center bg-richblack-200">
+                <button onClick={()=>{navigate("/dashboard/enrolled-courses")}} className="w-[25px] aspect-square rounded-full flex justify-center items-center bg-richblack-900">
                     <IoChevronBack className="text-richblack-5"></IoChevronBack>
                 </button>
                 <button onClick={()=>{setReviewModal(true)}} className='px-4 py-1 text-[14px] text-richblack-900 bg-yellow-200 rounded-md'>
