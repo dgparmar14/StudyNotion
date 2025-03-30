@@ -81,7 +81,7 @@ export default function CoursesTable({ courses, setMyCourses }) {
                     className="h-[148px] w-[220px] rounded-lg object-cover"
                   />
                   <div className="flex flex-col justify-between">
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <p className="text-lg font-semibold text-white">
                       {course.courceName}
                     </p>
                     <p className="text-xs text-richblack-300">

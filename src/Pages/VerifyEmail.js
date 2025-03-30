@@ -75,7 +75,7 @@ function VerifyEmail() {
                         }}
                         className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"/>}
                     />
-                        <button type='submit' className='text-[17px] font-medium bg-yellow-50 rounded-md transition-all duration-200 text-white py-2 mt-4'>Verify Email</button>
+                        <button type='submit' className='text-[17px] font-medium bg-yellow-50 rounded-md transition-all duration-200 text-black py-2 mt-4'>Verify Email</button>
                     </form>
                     <div className='flex justify-between items-center'>
                         <Link to={"/login"} className='flex gap-2 items-center text-richblack-5 justify-start font-medium tracking-wide'>
