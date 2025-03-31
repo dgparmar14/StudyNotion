@@ -5,7 +5,7 @@ import CourseInformation from './CourseInformation/CourseInformation'
 import CourseBuilder from './CourseBuilder/CourseBuilder'
 import EnrolledCourses from '../EnrolledCourses'
 import Publish from './Publish'
-import QuizDetails from './QuizInformation/QuizDetails'
+import QuizDetails from '../../../Common/Quiz/QuizDetails.js'
 
 const steps = [
     {

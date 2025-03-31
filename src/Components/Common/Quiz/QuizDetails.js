@@ -1,6 +1,6 @@
 import { useState } from "react";
 import QuestionDetails from "./QuestionDetails";
-import { createQuiz } from "../../../../../Services/Operations/quizApi"; // Import API call
+import { createQuiz } from "../../../Services/Operations/quizApi"; // Import API call
 import { IoIosArrowDown } from "react-icons/io";
 
 export default function QuizDetails() {
