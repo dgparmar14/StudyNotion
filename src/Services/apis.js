@@ -73,6 +73,20 @@ export const categoryEndpoint = {
     DELETE_CATEGORY_REQUEST_API : BASE_URL + "/categoryRequest/deleteCategoryRequest",
     GET_CATEGORY_CREATED_BY_USER_API : BASE_URL + "/categoryRequest/getCategoryRequestCreatedByUser",
     REQUEST_FOR_ADMIN : BASE_URL + "/categoryRequest/getRequestForAdmin",
+    GET_CATEGORY_COURSE_DETAILS : BASE_URL + "/course/getCategoryCourseDetails"
+}
+
+export const quizEndPoint = {
+    CREATE_QUIZ_API : BASE_URL + "/quiz/createQuiz",
+    UPDATE_QUIZ_API : BASE_URL + "/quiz/updateQuiz",
+    GET_QUIZ_API : BASE_URL + "/quiz/getQuiz",
+    DELETE_QUIZ_API : BASE_URL + "/quiz/deleteQuiz",
+    CHECK_RESULT_API : BASE_URL + "/quiz/checkResult",
+    GET_RESULT_QUIZ_API : BASE_URL + "/quiz/getResult",
+    ADD_QUESTION_API : BASE_URL + "/quiz/addQuestion",
+    UPDATE_QUESTION_API : BASE_URL + "/quiz/updateQuestions",
+    GET_QUESTION_API : BASE_URL + "/quiz/getAllQuestions",
+    DELETE_QUESTION_API : BASE_URL + "/quiz/deleteQuestions",
 }
 
 
