@@ -440,12 +440,12 @@ exports.deleteCourse = async(req, res)=>{
           await Section.findByIdAndDelete(sectionId)
         }
 
-        const completedLectures = await CourceProgress.findByIdAndDelete({courseId : courseId, userId: userId})
+        const completedLectures = await CourceProgress.findOneAndDelete({courseId : courseId, userId: userId})
     
         // Delete the course
         await Cource.findByIdAndDelete(courseId)
     
-        return res.status(200).json({
+        return res.status(200).json({   
           success: true,
           message: "Course deleted successfully",
         })

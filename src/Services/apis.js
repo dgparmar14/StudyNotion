@@ -65,6 +65,15 @@ export const contactusEndpoint = {
      CONTACT_US_API: BASE_URL + "/reach/contact",
   }
   
+export const categoryEndpoint = {
+    CREATE_CATEGORY_API : BASE_URL + "/course/createCatagory",
+    ADD_CATEGORY_REQUEST_API : BASE_URL + "/categoryRequest/createCategoryRequest",
+    UPDATE_CATEGORY_REQUEST_API : BASE_URL + "/categoryRequest/updateCategoryRequest",
+    GET_CATEGORY_REQUEST_API : BASE_URL + "/categoryRequest/getCategoryRequest",
+    DELETE_CATEGORY_REQUEST_API : BASE_URL + "/categoryRequest/deleteCategoryRequest",
+    GET_CATEGORY_CREATED_BY_USER_API : BASE_URL + "/categoryRequest/getCategoryRequestCreatedByUser",
+    REQUEST_FOR_ADMIN : BASE_URL + "/categoryRequest/getRequestForAdmin",
+}
 
 
 

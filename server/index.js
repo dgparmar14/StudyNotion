@@ -43,9 +43,9 @@ app.use(
  app.use("/api/v1/payment", paymentRoute);
  app.use("/api/v1/reach", contactRoute);
  app.use("/api/v1/quiz", quizRoute); 
+ app.use("api/v1/categoryRequest")
 
- app.use("/api/v1/quiz", quizRoute);
- 
+
  app.get('/', (req, res) => {
    res.sendStatus(200)
  })

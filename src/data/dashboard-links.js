@@ -1,3 +1,4 @@
+import { icons } from "react-icons";
 import { ACCOUNT_TYPE } from  "../Utils/Constants";
 export const sidebarLinks = [
   {
@@ -41,4 +42,25 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.STUDENT,
     icon: "VscHistory",
   },
+  {
+    id : 7,
+    name : "Manage Categories",
+    path : "/dashboard/manageCategories",
+    type : ACCOUNT_TYPE.ADMIN,
+    icon : "VscOutput"
+  },
+  {
+    id: 8,
+    name : "Category Requests",
+    path : "/dashboard/categoryRequests",
+    type : ACCOUNT_TYPE.ADMIN,
+    icon : "VscRequestChanges"
+  },
+  {
+    id : 9,
+    name : "Add Category",
+    path : "dashboard/createCategory",
+    type : ACCOUNT_TYPE.ADMIN,
+    icon : "VscAdd"
+  }
 ];

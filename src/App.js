@@ -27,6 +27,10 @@ import ViewCourse from "./Pages/ViewCourse";
 import VideoSection from "./Components/Cores/ViewCourse/VideoSection";
 import Details from "./Components/Cores/Dashboard/InstructorDashboard/Details";
 import Settings from "./Components/Cores/Dashboard/Settings/ProfileSetting";
+import AddCategory from "./Components/Cores/Dashboard/AdminPannel/AddCategory";
+import ManageCategories from "./Components/Cores/Dashboard/AdminPannel/ManageCategories";
+import CategoryRequests from "./Components/Cores/Dashboard/AdminPannel/CategoryRequests";
+import CategoryDetails from "./Components/Cores/Dashboard/AdminPannel/CategoryDetails";
 
 
 function App() {
@@ -71,7 +75,20 @@ function App() {
                 <Route path="/dashboard/instructor" element={<Details></Details>}></Route>
               </>
             )
+          
           }
+          {
+              user != null && user.accountType === ACCOUNT_TYPE.ADMIN && (
+                <>
+                  <Route path="dashboard/manageCategories" element={<ManageCategories></ManageCategories>}></Route>
+                  <Route path="dashboard/categoryDetails/:categoryId" element={<CategoryDetails></CategoryDetails>}></Route>
+                  <Route path="dashboard/categoryRequests" element={<CategoryRequests></CategoryRequests>}></Route>
+                  <Route path="dashboard/createCategory" element={<AddCategory></AddCategory>}></Route>
+                </>
+              )
+          }
+            
+          
           
         </Route>
         <Route path="/catalouge/:catagoryname" element={<Cataloug></Cataloug>}></Route>
@@ -91,10 +108,7 @@ function App() {
           </>
         }
           
-        </Route>
-
-        
-        
+        </Route>  
       </Routes>
 
 

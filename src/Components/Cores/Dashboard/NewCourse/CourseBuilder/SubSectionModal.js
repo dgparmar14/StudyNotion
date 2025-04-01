@@ -90,10 +90,12 @@ function SubSectionModal({
       if (result) {
         const updatedCourseContent = course.courceContent.map((section) => {
             if (section._id === modalData.sectionId) {
-                return {
-                    ...section,
-                    subSections: [...section.subSections, result], // ✅ Append instead of replace
-                };
+              return {
+                ...section,
+                subSections: section.subSection.map((subSec) => 
+                  subSec._id === result._id ? result : subSec
+                )
+              };
             }
             return section;
         });
@@ -156,8 +158,8 @@ function SubSectionModal({
         const updatedCourseContent = course.courceContent.map((section) => {
             if (section._id === modalData.sectionId) {
                 return {
-                    ...section,
-                    subSections: [...section.subSections, result], // ✅ Append instead of replace
+                  ...section,
+                  subSections: [...section.subSection, result]
                 };
             }
             return section;

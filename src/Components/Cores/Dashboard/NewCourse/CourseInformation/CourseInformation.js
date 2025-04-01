@@ -77,7 +77,7 @@ function CourseInformation() {
 
 //handles next button click 
 const onSubmitHandler = async(data) => {
-  debugger
+  //debugger
   console.log("inside fun");
   
     if(editCourse) {
