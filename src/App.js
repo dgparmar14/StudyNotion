@@ -30,7 +30,8 @@ import Settings from "./Components/Cores/Dashboard/Settings/ProfileSetting";
 import AddCategory from "./Components/Cores/Dashboard/AdminPannel/AddCategory";
 import ManageCategories from "./Components/Cores/Dashboard/AdminPannel/ManageCategories";
 import CategoryRequests from "./Components/Cores/Dashboard/AdminPannel/CategoryRequests";
-import CategoryDetails from "./Components/Cores/Dashboard/AdminPannel/CategoryDetails";
+import CategoryCourseDetails from "./Components/Cores/Dashboard/AdminPannel/CategoryCourseDetails";
+import QuizDetails from "./Components/Common/Quiz/QuizDetails";
 
 
 function App() {
@@ -81,9 +82,10 @@ function App() {
               user != null && user.accountType === ACCOUNT_TYPE.ADMIN && (
                 <>
                   <Route path="dashboard/manageCategories" element={<ManageCategories></ManageCategories>}></Route>
-                  <Route path="dashboard/categoryDetails/:categoryId" element={<CategoryDetails></CategoryDetails>}></Route>
+                  <Route path="dashboard/categoryCourseDetails/:categoryId" element={<CategoryCourseDetails></CategoryCourseDetails>}></Route>
                   <Route path="dashboard/categoryRequests" element={<CategoryRequests></CategoryRequests>}></Route>
                   <Route path="dashboard/createCategory" element={<AddCategory></AddCategory>}></Route>
+                  <Route path="dashboard/categoryQuizDetails/:categoryId" element={<QuizDetails></QuizDetails>}></Route>
                 </>
               )
           }

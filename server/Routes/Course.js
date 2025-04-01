@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const {createCategory, showAllCategories, catagoryPageDetails} = require("../Controllers/Catagory");
+const {createCategory, showAllCategories, catagoryPageDetails, getCategoryCourseList} = require("../Controllers/Catagory");
 // const {sendOtp, signUp, login, changepassword} = require("../Controllers/Auth");
 const {createCource, getAllCources, getAllCourcesDetails, getAllInstructorCourses,getAllCourseCategories, getFullDetailsOfCourse, editCourse, deleteCourse} = require("../Controllers/CreateCource");
 const {createSection, updateSection, deleteSection} = require("../Controllers/CreateSection");
@@ -34,6 +34,7 @@ router.post("/createCatagory", auth, isAdmin, createCategory);
 router.get("/showAllCatagory", showAllCategories);
 router.post("/getCatagoryPageDetails", catagoryPageDetails);
 router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress);
+router.get("/getCategoryCourseDetails", auth, isAdmin, getCategoryCourseList);
 
 //Rating and Review Routers
 router.post("/createRatingAndReview", auth, isStudent, createRatingAndReview);

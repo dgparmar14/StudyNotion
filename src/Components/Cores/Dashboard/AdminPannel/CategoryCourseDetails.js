@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CategoryDetails() {
+export default function CategoryCourseDetails() {
   return (
     <div>CategoryDetails</div>
   )

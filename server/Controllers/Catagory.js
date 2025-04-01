@@ -144,6 +144,39 @@ exports.catagoryPageDetails = async (req, res) => {
     }
   }
 
+  exports.getCategoryCourseList = async (req, res) => {
+    try{
+      const {categoryId} = req.body;
+      if(!categoryId){
+        return res.status(400).json({
+          success : false,
+          message : "Category id is required"
+        })
+      }
+
+      const category = await Catagories.findById(categoryId).populate({path : "courses", populate : {path : "instructor"}}).exec();
+      if(!category){
+        return res.status(404).json({
+          success : false,
+          message : "Category details not found"
+        })
+      }
+
+      return res.status(200).json({
+        success : true,
+        message : "Category details fetched successfully",
+        data : category
+      })
+    }
+    catch(error){
+      return res.status(500).json({
+        success : false,
+        message : "Error occured while fetching category course details",
+        error : error.message
+      })
+    }
+  }
+
 
 
 
