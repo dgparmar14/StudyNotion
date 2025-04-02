@@ -2,7 +2,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { deleteQuestion } from "../../../Services/Operations/Question";
 
-function QuizQuestion({ question, questionIndex, setQuestions, handleOptionSelect, selectedOptions }) {
+function QuizQuestion({ question, questionIndex, setQuestions, handleOptionSelect, selectedOptions,handleEditQuestion }) {
   const quizId = window.location.pathname.split("/")[4];
 
   const deleteQuestionHandler = async () => {
@@ -14,6 +14,11 @@ function QuizQuestion({ question, questionIndex, setQuestions, handleOptionSelec
     }
   };
 
+
+  const editQuestionHandler = () => {
+    handleEditQuestion(question);
+  }
+
   return (
     <div className="w-full max-w-3xl flex flex-col gap-6">
       <div className="flex flex-col gap-4 p-6 rounded-2xl bg-gray-800 shadow-md">
@@ -22,7 +27,7 @@ function QuizQuestion({ question, questionIndex, setQuestions, handleOptionSelec
             {questionIndex + 1}. {question.questionText}
           </h2>
           <div className="flex space-x-2">
-            <button className="text-blue-100 hover:underline mb-2">
+            <button className="text-blue-100 hover:underline mb-2" onClick={editQuestionHandler} >
               <FaEdit />
             </button>
             <button className="text-red-600 mb-2" onClick={deleteQuestionHandler}>

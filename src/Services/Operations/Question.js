@@ -24,8 +24,6 @@ export const deleteQuestion = async (questions, quizId, token) => {
 
 
 export const addQuestion = async (questions, quizId, token) => {
-    console.log("Questions==========", questions)
-    console.log("quizId==========", quizId)
     try {
         const response = await apiConnector(
             "POST",
@@ -40,6 +38,25 @@ export const addQuestion = async (questions, quizId, token) => {
         return response.data;
     } catch (error) {
         console.error("Error occurred while adding question:", error.message);
+        return null;
+    }
+}
+
+
+export const updateQuestion = async (questions, quizId, token) => {
+    try {
+        const response = await apiConnector(
+            "PUT",
+            quizEndPoint.UPDATE_QUESTION_API,
+            { questions, quizId },
+            { Authorization: `Bearer${token}` }
+        );
+        if (!response.data.success) {
+            throw new Error(response.data.message);
+        }
+        return response.data;
+    } catch (error) {
+        console.error("Error occurred while updating question:", error.message);
         return null;
     }
 }

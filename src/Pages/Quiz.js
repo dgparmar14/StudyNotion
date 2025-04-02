@@ -7,6 +7,7 @@ function QuizPage() {
   const [questions, setQuestions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [questionToEdit, setQuestionToEdit] = useState(null);
 
   const categorySlug = window.location.pathname.split("/")[2];
   const categoryName = categorySlug
@@ -45,8 +46,16 @@ function QuizPage() {
   };
 
   const handleAddQuestion = (newQuestion) => {
-    setQuestions((prevQuestions) => [...prevQuestions, newQuestion]);
+    setQuestions((prevQuestions) => [newQuestion, ...prevQuestions]);
   };
+
+
+  const handleEditQuestion = (question) => {
+    console.log("Edit question", question);
+    setQuestionToEdit(question);
+    setIsModalOpen(true);
+  };
+
 
   return (
     <div className="w-full flex flex-col items-center justify-center text-white p-6 min-h-screen bg-gray-900">
@@ -69,6 +78,7 @@ function QuizPage() {
               setQuestions={setQuestions}
               questionIndex={questionIndex}
               selectedOptions={selectedOptions}
+              handleEditQuestion={handleEditQuestion}
             />
           ))
         ) : (
@@ -81,6 +91,7 @@ function QuizPage() {
         onAddQuestion={handleAddQuestion}
         quizId={quizId}
         token={token}
+        questionToEdit={questionToEdit}
       />
     </div>
   );
