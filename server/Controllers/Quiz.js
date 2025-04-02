@@ -206,6 +206,7 @@ exports.createQuiz = async (req, res) => {
                     message : "Quiz not found"
                 })
             }
+            console.log("quzzzzzzzzzzzzzzzzzzzzzzzzzzz",quiz)
             return res.status(200).json({
                 success : true,
                 message : "Quiz found successfully",

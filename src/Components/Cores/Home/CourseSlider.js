@@ -22,7 +22,7 @@ function CourseSlider({Courses}) {
 
         const responce = await apiConnector("GET", ratingsEndpoints.REVIEWS_DETAILS_API);
 
-        console.log("Writing user reviews : ", responce);
+        // console.log("Writing user reviews : ", responce);
         if(!responce.data.success){
           console.log("Could not find review");
         }
