@@ -32,6 +32,7 @@ import ManageCategories from "./Components/Cores/Dashboard/AdminPannel/ManageCat
 import CategoryRequests from "./Components/Cores/Dashboard/AdminPannel/CategoryRequests";
 import CategoryCourseDetails from "./Components/Cores/Dashboard/AdminPannel/CategoryCourseDetails";
 import QuizDetails from "./Components/Common/Quiz/QuizDetails";
+import QuizPage from "./Pages/Quiz";
 
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
         </Route>
         <Route path="/catalouge/:catagoryname" element={<Cataloug></Cataloug>}></Route>
         <Route path="course/:courseId" element={<CourseDetails></CourseDetails>}></Route>
+        <Route path="/quiz/:category/quiz/:categoryId" element={<QuizPage></QuizPage>}></Route>
        
         <Route path="*" element={<Error></Error>}></Route>
 
