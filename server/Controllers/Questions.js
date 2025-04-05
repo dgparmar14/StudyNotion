@@ -52,7 +52,7 @@ exports.addQuestions = async(req, res) => {
       return res.status(200).json({
          success : true,
          message : "Questions added successfully into quiz",
-         data : quiz
+         data : questionList
       })
    }
    catch(err){
@@ -74,7 +74,7 @@ exports.UpdateQuestions = async(req, res) => {
             message : "Quiz Id is required"
          })
       }
-      if(!questions || !Array(questions) || questions.length < 1){
+      if(!questions || !Array.isArray(questions) || questions.length < 1){
          return res.status(400).json({
             success : false,
             message : "Questions must be array and atleas one question is required to update"
@@ -104,6 +104,13 @@ exports.UpdateQuestions = async(req, res) => {
          
          
          const oldQuestion = await Questions.findById(new mongoose.Types.ObjectId(id));
+         if (!oldQuestion) {
+            return res.status(404).json({
+              success: false,
+              message: "Question not found",
+            });
+          }
+          
          oldQuestion.set(updates);
          await oldQuestion .save()
          
