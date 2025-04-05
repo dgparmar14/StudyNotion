@@ -12,10 +12,6 @@ axiosInstance.interceptors.response.use(
     }
 )
 export const apiConnector = (method, url, bodyData, headers, params) => {
-    // console.log("API URL: ", url);
-    // console.log("API Method: ", method);
-    // console.log("API Body Data: ", bodyData);
-    // console.log("API Headers: ", headers);
 
     return axiosInstance({
         method:`${method}`,
