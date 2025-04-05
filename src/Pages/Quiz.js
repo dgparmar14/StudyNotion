@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getQuiz } from "../Services/Operations/Category";
 import QuizQuestion from "../Components/Common/Quiz/QuizQuestion";
 import AddQuestionModal from "../Components/Common/Quiz/AddQuestionModal";
+import QuizDetails from "../Components/Common/Quiz/QuizDetails";
 
 function QuizPage() {
   const [questions, setQuestions] = useState([]);
@@ -9,12 +10,13 @@ function QuizPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [questionToEdit, setQuestionToEdit] = useState(null);
 
-  const categorySlug = window.location.pathname.split("/")[2];
+  const categorySlug = window.location.pathname.split("/")[1];
   const categoryName = categorySlug
     .split("-")
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
   const quizId = window.location.pathname.split("/")[4];
+  const categoryId = window.location.pathname.split("/")[2];
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -41,7 +43,7 @@ function QuizPage() {
     }));
   };
 
-  const addQuestionHandler = async() => {
+  const addQuestionHandler = async () => {
     setIsModalOpen(true);
   };
 
@@ -51,7 +53,6 @@ function QuizPage() {
 
 
   const handleEditQuestion = (question) => {
-    console.log("Edit question", question);
     setQuestionToEdit(question);
     setIsModalOpen(true);
   };
@@ -59,42 +60,46 @@ function QuizPage() {
 
   return (
     <div className="w-full flex flex-col items-center justify-center text-white p-6 min-h-screen bg-gray-900">
-      <div className="w-full max-w-3xl flex items-center justify-between mb-6">
-        <h1 className="text-white text-3xl font-bold">{categoryName} Quiz</h1>
-        <button 
-          className="bg-yellow-200 text-black font-semibold py-2 px-4 rounded-lg flex items-center gap-2"
-          onClick={addQuestionHandler}
-        >
-          Add Question
-        </button>
-      </div>
-      <div className="w-full max-w-3xl flex flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((question, questionIndex) => (
-            <QuizQuestion
-              key={questionIndex}
-              handleOptionSelect={handleOptionSelect}
-              question={question}
-              setQuestions={setQuestions}
-              questionIndex={questionIndex}
-              selectedOptions={selectedOptions}
-              handleEditQuestion={handleEditQuestion}
+      {
+        quizId == "0" ?
+          (<QuizDetails categoryId={categoryId} />) :
+          (<div className="w-full max-w-3xl flex flex-col items-center justify-center">
+            <div className="w-full max-w-3xl flex items-center justify-between mb-6">
+              <h1 className="text-white text-3xl font-bold">{categoryName} Quiz</h1>
+              <button
+                className="bg-yellow-200 text-black font-semibold py-2 px-4 rounded-lg flex items-center gap-2"
+                onClick={addQuestionHandler}
+              >
+                Add Question
+              </button>
+            </div>
+            <div className="w-full max-w-3xl flex flex-col gap-6">
+              {questions.length > 0 ? (
+                questions.map((question, questionIndex) => (
+                  <QuizQuestion
+                    key={questionIndex}
+                    handleOptionSelect={handleOptionSelect}
+                    question={question}
+                    setQuestions={setQuestions}
+                    questionIndex={questionIndex}
+                    selectedOptions={selectedOptions}
+                    handleEditQuestion={handleEditQuestion}
+                  />
+                ))
+              ) : (
+                <p className="text-gray-400 text-center text-lg">Loading questions...</p>
+              )}
+            </div>
+            <AddQuestionModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              onAddQuestion={handleAddQuestion}
+              quizId={quizId}
+              token={token}
+              questionToEdit={questionToEdit}
             />
-          ))
-        ) : (
-          <p className="text-gray-400 text-center text-lg">Loading questions...</p>
-        )}
-      </div>
-      <AddQuestionModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onAddQuestion={handleAddQuestion}
-        quizId={quizId}
-        token={token}
-        questionToEdit={questionToEdit}
-      />
-    </div>
-  );
+          </div>)
+      }
+    </div>);
 }
-
 export default QuizPage;

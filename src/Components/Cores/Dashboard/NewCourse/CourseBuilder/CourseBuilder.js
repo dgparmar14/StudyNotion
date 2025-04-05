@@ -39,16 +39,15 @@ function CourseBuilder() {
     dispatch(setEditCourse(true));
   }
   function goNext(){
-    if(course.courceContent.length==0){
-      toast.error("Atleast add one section to the course");
-      return
-    }
-    if(course.courceContent.some((section) => section.subSections.length===0)){
-      toast.error("Atleast add one lecture to your course");
-      return
-    }
+    // if(course.courceContent.length==0){
+    //   toast.error("Atleast add one section to the course");
+    //   return
+    // }
+    // if(course.courceContent.some((section) => section.subSections.length===0)){
+    //   toast.error("Atleast add one lecture to your course");
+    //   return
+    // }
     dispatch(setStep(3));
-
   }
 
   function handleChangeEdit(sectionId, sectionName){

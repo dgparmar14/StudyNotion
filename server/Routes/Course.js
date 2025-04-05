@@ -30,7 +30,8 @@ router.post("/editCourse", auth, isInstructor, editCourse);
 router.post("/deleteCourse", auth, isInstructor, deleteCourse);
 router.post("/getAllDetailsofCourse",auth, getFullDetailsOfCourse);
 //Catagory Routes
-router.post("/createCatagory", auth, isAdmin, createCategory);
+// router.post("/createCatagory", auth, isAdmin, createCategory);
+router.post("/createCatagory", createCategory);
 router.get("/showAllCatagory", showAllCategories);
 router.post("/getCatagoryPageDetails", catagoryPageDetails);
 router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress);
