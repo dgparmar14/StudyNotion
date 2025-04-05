@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  IoIosArrowDown,
   IoIosArrowDropleft,
   IoIosArrowDropright,
 } from "react-icons/io";
@@ -38,9 +37,9 @@ export default function QuestionDetails({ questions, setQuestions }) {
   const addNewQuestion = () => {
     setQuestions([
       ...questions,
-      { text: "", marks: "", options: [""], correctAnswer: "" },
+      { questionText: "", marks: "", options: ["", "", "", ""], answer: "", difficultyLevel: "" },
     ]);
-    setCurrentIndex(questions.length); // Move to newly added question
+    setCurrentIndex(questions.length); // Move to the newly added question
   };
 
   const navigateQuestion = (direction) => {
@@ -51,12 +50,25 @@ export default function QuestionDetails({ questions, setQuestions }) {
     }
   };
 
+  const saveCurrentQuestion = () => {
+    if (
+      !questions[currentIndex].questionText ||
+      !questions[currentIndex].marks ||
+      questions[currentIndex].options.some((opt) => !opt) ||
+      !questions[currentIndex].answer
+    ) {
+      alert("Please fill out all fields for the current question.");
+      return;
+    }
+    alert("Question saved successfully!");
+  };
+
   return (
     <div className="bg-richblack-700 p-4 rounded-md flex flex-col gap-2 leading-7">
       <label className="text-richblack-5 text-[14px]">Add Question :</label>
       <textarea
-        value={questions[currentIndex]?.text || ""}
-        onChange={(e) => handleInputChange("text", e.target.value)}
+        value={questions[currentIndex]?.questionText || ""}
+        onChange={(e) => handleInputChange("questionText", e.target.value)}
         className="bg-richblack-600 text-richblack-200 px-2 py-1 rounded-md min-h-[100px]"
       ></textarea>
 
@@ -69,41 +81,53 @@ export default function QuestionDetails({ questions, setQuestions }) {
           className="bg-richblack-600 text-richblack-200 px-2 py-1 rounded-md w-16"
         />
       </div>
+      <div>
+        <label className="text-richblack-5 text-[14px]">Difficulty Level :</label>
+        <select
+          value={questions[currentIndex]?.difficultyLevel || ""}
+          onChange={(e) => handleInputChange("difficultyLevel", e.target.value)}
+          className="bg-richblack-600 text-richblack-200 px-4 py-2 rounded-md"
+        >
+          <option value="">Select Difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
 
-      {questions[currentIndex]?.options.map((opt, index) => (
-        <div key={index} className="flex gap-2 items-center">
-          <label className="text-richblack-5 text-[14px]">
-            Option {index + 1}:
-          </label>
-          <input
-            type="text"
-            value={opt}
-            onChange={(e) => handleOptionChange(index, e.target.value)}
-            className="bg-richblack-600 text-richblack-200 px-2 py-1 rounded-md"
-          />
-          {questions[currentIndex].options.length > 1 && (
-            <RiDeleteBinLine
-              className="text-[20px] text-pink-200 cursor-pointer"
-              onClick={() => removeOption(index)}
+      {/* Options Container */}
+      <div className="grid grid-cols-2 gap-2 max-h-[100px] overflow-y-auto pr-2">
+        {questions[currentIndex]?.options.map((opt, index) => (
+          <div key={index} className="flex gap-2 items-center">
+            <label className="text-richblack-5 text-[14px]">{index + 1}:</label>
+            <input
+              type="text"
+              value={opt}
+              onChange={(e) => handleOptionChange(index, e.target.value)}
+              className="bg-richblack-600 text-richblack-200 px-2 py-1 rounded-md w-full"
             />
-          )}
-        </div>
-      ))}
+            {questions[currentIndex].options.length > 1 && (
+              <RiDeleteBinLine
+                className="text-[20px] text-pink-200 cursor-pointer"
+                onClick={() => removeOption(index)}
+              />
+            )}
+          </div>
+        ))}
+      </div>
 
       <button
         type="button"
         onClick={addOption}
-        className="text-[14px] text-white bg-yellow-50 rounded-md px-4 py-1 w-fit"
+        className="text-[14px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-1 w-fit"
       >
         Add Option
       </button>
 
-      <label className="text-richblack-5 text-[14px]">
-        Select Correct Answer:
-      </label>
+      <label className="text-richblack-5 text-[14px]">Select Correct Answer:</label>
       <select
-        value={questions[currentIndex]?.correctAnswer || ""}
-        onChange={(e) => handleInputChange("correctAnswer", e.target.value)}
+        value={questions[currentIndex]?.answer || ""}
+        onChange={(e) => handleInputChange("answer", e.target.value)}
         className="bg-richblack-600 text-richblack-200 px-4 py-2 rounded-md"
       >
         <option value="">Select Answer</option>
@@ -114,22 +138,18 @@ export default function QuestionDetails({ questions, setQuestions }) {
         ))}
       </select>
 
-      {/* navigate */}
-      <IoIosArrowDown className="absolute right-4 top-[50%] text-richblack-200 text-lg" />
-
       <div className="flex gap-3 justify-between">
         <div className="flex items-center gap-2">
           <IoIosArrowDropleft
             onClick={() => currentIndex > 0 && navigateQuestion("prev")}
             className={`text-[45px] text-white cursor-pointer px-2 py-1 rounded-md 
-    ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+              ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
           />
 
           {/* Question Count Display */}
           <span className="text-richblack-200 text-sm">
             {questions.length > 0
-
-              ? `${currentIndex + 1} / ${questions.length}`
+              ?` ${currentIndex + 1} / ${questions.length}`
               : "0 / 0"}
           </span>
 
@@ -138,20 +158,26 @@ export default function QuestionDetails({ questions, setQuestions }) {
               currentIndex < questions.length - 1 && navigateQuestion("next")
             }
             className={`text-[45px] text-white cursor-pointer px-2 py-1 rounded-md 
-    ${
-      currentIndex === questions.length - 1
-        ? "opacity-50 cursor-not-allowed"
-        : "cursor-pointer"
-    }`}
+              ${currentIndex === questions.length - 1
+                ? "opacity-50 cursor-not-allowed"
+                : "cursor-pointer"}`}
           />
         </div>
 
         <button
           type="button"
-          onClick={addNewQuestion}
-          className={`{text-[14px] text-white bg-yellow-50 rounded-md px-4 py-1 w-fit`}
+          onClick={saveCurrentQuestion}
+          className="text-[14px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-1 w-fit"
         >
           Save Question
+        </button>
+
+        <button
+          type="button"
+          onClick={addNewQuestion}
+          className="text-[14px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-1 w-fit"
+        >
+          Add New Question
         </button>
       </div>
     </div>

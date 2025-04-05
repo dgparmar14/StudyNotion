@@ -4,8 +4,7 @@ import { quizEndPoint } from "../apis";
 
 export const deleteQuestion = async (questions, quizId, token) => {
     try {
-        console.log("Questions to delete:", questions);
-        console.log("Quiz ID:", quizId);
+
         const response = await apiConnector(
             "DELETE",
             quizEndPoint.DELETE_QUESTION_API,
@@ -31,7 +30,6 @@ export const addQuestion = async (questions, quizId, token) => {
             { questions, quizId },
             { Authorization: `Bearer${token}` }
         );
-        console.log("Response add question", response)
         if (!response.data.success) {
             throw new Error(response.data.message);
         }

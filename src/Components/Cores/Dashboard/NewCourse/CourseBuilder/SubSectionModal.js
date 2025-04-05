@@ -141,6 +141,8 @@ function SubSectionModal({
     console.log("Printing videoUrl", JSON.stringify(data.lectureVideourl));
     console.log("Printing Form data",typeof(formData.sectionId));
     
+    console.log("Printing Form data", data.lectureVideourl);
+
     let result;
 
     try{

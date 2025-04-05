@@ -98,7 +98,7 @@ function App() {
         </Route>
         <Route path="/catalouge/:catagoryname" element={<Cataloug></Cataloug>}></Route>
         <Route path="course/:courseId" element={<CourseDetails></CourseDetails>}></Route>
-        <Route path="/quiz/:category/quiz/:categoryId" element={<QuizPage></QuizPage>}></Route>
+        <Route path="/:category/:categoryId/quiz/:categoryId" element={<QuizPage></QuizPage>}></Route>
        
         <Route path="*" element={<Error></Error>}></Route>
 

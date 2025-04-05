@@ -10,29 +10,29 @@ exports.createCategory = async (req, res) => {
 
         //Data validate
         if(!name){
-            return res.status(403).json({
-                success : false,
-                message : "All the feilds are require"
-            });
+          return res.status(403).json({
+            success : false,
+            message : "All the feilds are require"
+          });
         }
-
+        
         //creation of tag in db
         const catagory = await Catagories.create({
-            name : name,
-            description : description,
-        });
-
-
+          name : name,
+          description : description,
+        });        
+        
         //Respince return
         return res.status(200).json({
-            success : true,
-            message : "Tag successfully created"
+          success : true,
+          message : "Tag successfully created",
+          data : catagory
         });
-
-    }catch(err){
+        
+      }catch(err){
         console.error(err);
         return res.status(500).json({
-            success : false,
+          success : false,
             message : "Something went wrong in creation of tag, please try gain",
             error : err
         })
@@ -42,7 +42,7 @@ exports.createCategory = async (req, res) => {
 
 exports.showAllCategories = async (req, res) => {
     try{
-        const allCatagories = await Catagories.find({}, {name : true, description : true, });
+        const allCatagories = await Catagories.find({}, {name : true, description : true, courses:true,quiz: true });
         
         return res.status(200).json({
             success : true,

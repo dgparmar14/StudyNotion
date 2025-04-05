@@ -5,17 +5,24 @@ const { checkResult, getResult } = require("../Controllers/Result");
 const { addQuestions, UpdateQuestions, deleteQuestions, getAllQuestions } = require("../Controllers/Questions");
 const router = express.Router();
 
-router.post("/createQuiz", auth, quizRoleCheck, createQuiz)
+router.post("/createQuiz", createQuiz)
+// router.post("/createQuiz", auth, quizRoleCheck, createQuiz)
 router.put("/updateQuiz", auth, quizRoleCheck, UpdateQuiz)
-router.get("/getQuiz", auth, getQuiz)
+// router.post("/getQuiz",auth ,getQuiz)
+router.post("/getQuiz", getQuiz)
 router.delete("/deleteQuiz",auth, quizRoleCheck, deleteQuiz)
 
 router.post("/checkResult",auth, checkResult)
 router.get("/getResult", auth, getResult)
 
-router.post("/addQuestion", auth, quizRoleCheck, addQuestions)
-router.put("/updateQuestions", auth, quizRoleCheck, UpdateQuestions)
+// router.post("/addQuestion", auth, quizRoleCheck, addQuestions)
+router.post("/addQuestion", addQuestions)
+
+// router.put("/updateQuestions", auth, quizRoleCheck, UpdateQuestions)
+router.put("/updateQuestions", UpdateQuestions)
 router.get("/getAllQuestions", auth, getAllQuestions)
-router.delete("/deleteQuestions", auth, deleteQuestions)
+
+// router.delete("/deleteQuestions",auth, deleteQuestions)
+router.delete("/deleteQuestions", deleteQuestions)
 
 module.exports = router;
