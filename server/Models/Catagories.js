@@ -10,7 +10,7 @@ const CatagorySchema = new mongoose.Schema({
         {
             type : mongoose.Schema.Types.ObjectId,
             ref : "Cource",
-            required : true
+            required : false
         },
 
     ] ,

@@ -98,10 +98,8 @@ function QuizPage() {
               token={token}
               questionToEdit={questionToEdit}
             />
-          </div>
-        )}
-      </div>
-  );
+          </div>)
+      }
+    </div>);
 }
-
 export default QuizPage;
