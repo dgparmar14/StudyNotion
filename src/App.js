@@ -32,6 +32,8 @@ import ManageCategories from "./Components/Cores/Dashboard/AdminPannel/ManageCat
 import CategoryRequests from "./Components/Cores/Dashboard/AdminPannel/CategoryRequests";
 import CategoryCourseDetails from "./Components/Cores/Dashboard/AdminPannel/CategoryCourseDetails";
 import QuizDetails from "./Components/Common/Quiz/QuizDetails";
+import QuizIntro from "./Components/Common/Quiz/QuizIntro";
+import QuizResult from "./Components/Common/Quiz/QuizResult";
 import QuizPage from "./Pages/Quiz";
 
 
@@ -109,6 +111,8 @@ function App() {
           user!==null && user.accountType===ACCOUNT_TYPE.STUDENT &&
           <>
             <Route path="/view-course/:courseId/section/:sectionId/sub-section/:subSectionId" element=<VideoSection></VideoSection>></Route>
+            {/* <Route path="/quiz/quiz-intro/:courseId" element={<QuizIntro></QuizIntro>}></Route> */}
+            // <Route path="/quiz/quiz-intro" element={<QuizIntro></QuizIntro>}></Route>
           </>
         }
           
