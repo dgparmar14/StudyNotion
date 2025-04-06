@@ -19,3 +19,4 @@ export const createQuiz = async (quizData,courseId, categoryId ,token) => {
         throw error;
     }
 };
+

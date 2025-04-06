@@ -35,7 +35,7 @@ import QuizDetails from "./Components/Common/Quiz/QuizDetails";
 import QuizIntro from "./Components/Common/Quiz/QuizIntro";
 import QuizResult from "./Components/Common/Quiz/QuizResult";
 import QuizPage from "./Pages/Quiz";
-
+import CategoryRequestsByUser from "./Pages/CategoryRequestsByUser";
 
 function App() {
   //console.log("inside App");
@@ -77,6 +77,7 @@ function App() {
                 <Route path="/dashboard/add-course" element={<NewCourse></NewCourse>}></Route>
                 <Route path="/dashboard/edit-course/:courseId" element={<EditCourse></EditCourse>}></Route>
                 <Route path="/dashboard/instructor" element={<Details></Details>}></Route>
+                <Route path="/dashboard/categoryRequestsByUser" element={<CategoryRequestsByUser></CategoryRequestsByUser>}></Route>
               </>
             )
           
@@ -118,7 +119,7 @@ function App() {
           <>
             <Route path="/view-course/:courseId/section/:sectionId/sub-section/:subSectionId" element=<VideoSection></VideoSection>></Route>
             {/* <Route path="/quiz/quiz-intro/:courseId" element={<QuizIntro></QuizIntro>}></Route> */}
-            // <Route path="/quiz/quiz-intro" element={<QuizResult></QuizResult>}></Route>
+            <Route path="/quiz/quiz-intro" element={<QuizIntro></QuizIntro>}></Route>
           </>
         }
           

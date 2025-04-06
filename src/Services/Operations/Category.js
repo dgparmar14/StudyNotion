@@ -4,6 +4,7 @@ import {categoryEndpoint, quizEndPoint} from '../apis'
 
 import { useDispatch } from 'react-redux';
 import { setLoading } from '../../Reducer/Slices/authSlice';
+import { toast } from 'react-toastify';
 
 
 const {
@@ -75,3 +76,25 @@ export const getQuiz = async (quizId, token) => {
   } finally {
   }
 };
+
+export const  getCategoryRequestForUser = async(token) =>{
+  const toastId = toast.loading("Loading...");
+  
+  try{
+      const responce = await apiConnector("GET", GET_CATEGORY_CREATED_BY_USER_API, null, { Authorization : `Bearer${token}`});
+      console.log("After fetching categtory request by user");
+      console.log(responce.data);
+
+      if(!responce.data.success){
+          throw new Error("Could not get category request created by user");
+      }
+      toast.dismiss(toastId);
+      return responce.data;
+
+  }catch(error){
+      console.error(error);
+      toast.error("Could not get category request created by user");
+  }
+
+  
+}
