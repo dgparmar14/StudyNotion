@@ -1,7 +1,10 @@
-import { apiConnector } from "../apiConnector";
-import { categoryEndpoint, quizEndPoint } from "../apis";
-import { useDispatch } from "react-redux";
-import { setLoading } from "../../Reducer/Slices/authSlice";
+import React from 'react'
+import { apiConnector } from '../apiConnector'
+import {categoryEndpoint, quizEndPoint} from '../apis'
+
+import { useDispatch } from 'react-redux';
+import { setLoading } from '../../Reducer/Slices/authSlice';
+
 
 const {
   CREATE_CATEGORY_API,
@@ -60,8 +63,7 @@ export const getQuiz = async (quizId, token) => {
       "POST",
       GET_QUIZ_API,
       { quizId },
-      { Authorization: `Bearer${token}` },
-      { quizId },
+      { Authorization: `Bearer${token}` }
     );
     if (!response.data.success) {
       throw new Error(response.data.message);

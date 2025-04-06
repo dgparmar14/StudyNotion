@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { addQuestion, updateQuestion } from "../../../Services/Operations/Question";
 
-const AddQuestionModal = ({ isOpen, onClose, onAddQuestion, quizId, token, questionToEdit }) => {
+const AddQuestionModal = ({ isOpen, onClose, onAddQuestion, OnQuestionUpdate, quizId, token, questionToEdit }) => {
   const [questionText, setQuestionText] = useState("");
   const [options, setOptions] = useState(["", "", "", ""]);
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [difficultyLevel, setDifficultyLevel] = useState("easy");
   const [marks, setMarks] = useState(1);
+  const [questionId, setQuestionId] = useState("");
 
   // Pre-fill the form fields if editing a question
   useEffect(() => {
     if (questionToEdit) {
+      console.log("Question to edit",questionToEdit)
+      setQuestionId(questionToEdit._id);
       setQuestionText(questionToEdit.questionText);
       setOptions(questionToEdit.options);
       setCorrectAnswer(questionToEdit.answer);
@@ -18,6 +21,7 @@ const AddQuestionModal = ({ isOpen, onClose, onAddQuestion, quizId, token, quest
       setMarks(questionToEdit.marks);
     } else {
       // Reset fields if no question is being edited
+      setQuestionId("")
       setQuestionText("");
       setOptions(["", "", "", ""]);
       setCorrectAnswer("");
@@ -38,38 +42,41 @@ const AddQuestionModal = ({ isOpen, onClose, onAddQuestion, quizId, token, quest
       alert("Please fill out all fields.");
       return;
     }
-
+  
     if (!options.includes(correctAnswer)) {
       alert("Correct answer must be one of the options.");
       return;
     }
-
+  
     if (marks < 1) {
       alert("Marks must be at least 1.");
       return;
     }
-
-    const newQuestion = {
+  
+    let newQuestion = {
       questionText,
       options,
       answer: correctAnswer,
       difficultyLevel,
       marks: parseInt(marks, 10),
     };
-
+  
     if (questionToEdit) {
-      // If editing, update the question
-      onAddQuestion({ ...newQuestion, id: questionToEdit.id });
-      await updateQuestion([newQuestion], quizId, token);
+      console.log("Question to edit:", questionToEdit);
+      
+      await updateQuestion([{ id: questionToEdit._id, updates: newQuestion }], quizId, token);
+      newQuestion = {...newQuestion, _id : questionToEdit._id}
+      OnQuestionUpdate(newQuestion)
     } else {
-      // If adding, create a new question
-      await addQuestion([newQuestion], quizId, token);
-      onAddQuestion(newQuestion);
+      const res = await addQuestion([newQuestion], quizId, token); 
+      console.log("Add question response in the add question modal : ", res)
+      newQuestion = {...newQuestion, _id : res.data?.[0]}
+      onAddQuestion(newQuestion)
     }
-
+  
     onClose();
   };
-
+  
   if (!isOpen) return null;
 
   return (

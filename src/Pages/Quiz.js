@@ -2,54 +2,62 @@ import { useEffect, useState } from "react";
 import { getQuiz } from "../Services/Operations/Category";
 import QuizQuestion from "../Components/Common/Quiz/QuizQuestion";
 import AddQuestionModal from "../Components/Common/Quiz/AddQuestionModal";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import QuizDetails from "../Components/Common/Quiz/QuizDetails";
 
 function QuizPage() {
+
+  const {categoryQuizId} = useParams() 
   const [questions, setQuestions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [questionToEdit, setQuestionToEdit] = useState(null);
+  const {course} = useSelector((state) => state.course)
+  const {token} = useSelector((state) => state.auth)
+  
+  const fetchQuiz = async (quizId) => {
+    try {
+      //console.log("Quiz id in quiz page :  ", quizId)
+      const response = await getQuiz(quizId, token);
 
-  const categorySlug = window.location.pathname.split("/")[1];
-  const categoryName = categorySlug
-    .split("-")
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-  const quizId = window.location.pathname.split("/")[4];
-  const categoryId = window.location.pathname.split("/")[2];
-  const token = localStorage.getItem("token");
+      //console.log("Quiz question List : ", response);
 
-  useEffect(() => {
-    const fetchQuiz = async () => {
-      try {
-        const response = await getQuiz(quizId, token);
-
-        if (response.success !== true) {
-          throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
-
-        setQuestions(response.data[0].questions);
-      } catch (error) {
-        console.error("Error fetching quiz data:", error);
+      if (response.success !== true) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
-    };
-    fetchQuiz();
-  }, []);
 
-  const handleOptionSelect = (questionIndex, option) => {
-    setSelectedOptions(prev => ({
-      ...prev,
-      [questionIndex]: option,
-    }));
+      setQuestions(response.data[0].questions);
+    } catch (error) {
+      console.error("Error fetching quiz data:", error);
+    }
   };
+
+ useEffect(() => {
+  if(categoryQuizId){
+    fetchQuiz(categoryQuizId)
+  }else{
+    fetchQuiz(course.quizId)
+  }
+ }, [])
+  
+ 
+  
 
   const addQuestionHandler = async () => {
     setIsModalOpen(true);
   };
 
+  const handleUpdatedQuestion  = (question) => {
+    console.log("Updated question in quiz page : ", question)
+    const updatedQuestion = questions.map((que) => que._id === question._id ? {...que, ...question} : que)
+    setQuestions(updatedQuestion)
+  }
   const handleAddQuestion = (newQuestion) => {
     setQuestions((prevQuestions) => [newQuestion, ...prevQuestions]);
+    
   };
+
 
 
   const handleEditQuestion = (question) => {
@@ -60,46 +68,52 @@ function QuizPage() {
 
   return (
     <div className="w-full flex flex-col items-center justify-center text-white p-6 min-h-screen bg-gray-900">
-      {
-        quizId == "0" ?
-          (<QuizDetails categoryId={categoryId} />) :
-          (<div className="w-full max-w-3xl flex flex-col items-center justify-center">
-            <div className="w-full max-w-3xl flex items-center justify-between mb-6">
-              <h1 className="text-white text-3xl font-bold">{categoryName} Quiz</h1>
-              <button
-                className="bg-yellow-200 text-black font-semibold py-2 px-4 rounded-lg flex items-center gap-2"
-                onClick={addQuestionHandler}
-              >
-                Add Question
-              </button>
-            </div>
-            <div className="w-full max-w-3xl flex flex-col gap-6">
-              {questions.length > 0 ? (
-                questions.map((question, questionIndex) => (
-                  <QuizQuestion
-                    key={questionIndex}
-                    handleOptionSelect={handleOptionSelect}
-                    question={question}
-                    setQuestions={setQuestions}
-                    questionIndex={questionIndex}
-                    selectedOptions={selectedOptions}
-                    handleEditQuestion={handleEditQuestion}
-                  />
-                ))
-              ) : (
-                <p className="text-gray-400 text-center text-lg">Loading questions...</p>
-              )}
-            </div>
-            <AddQuestionModal
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-              onAddQuestion={handleAddQuestion}
-              quizId={quizId}
-              token={token}
-              questionToEdit={questionToEdit}
+      <div className="w-full max-w-3xl flex items-center justify-between mb-6">
+        <div className="flex mr-[7rem] self-end">
+          <button 
+            className="px-4 py-1 rounded-md text-richblack-900 bg-yellow-100 cursor-pointer"
+            onClick={() => {
+              setQuestionToEdit(null)
+              setIsModalOpen(true);
+            }}
+          >
+            Add Questions
+          </button>
+        </div>
+      </div>
+      <div className="w-full max-w-3xl flex flex-col gap-6">
+        {questions.length > 0 ? (
+          questions.map((question, questionIndex) => (
+            <QuizQuestion
+              key={questionIndex}
+              question={question}
+              setQuestions={setQuestions}
+              questionIndex={questionIndex}
+              selectedOptions={selectedOptions}
+              handleEditQuestion={handleEditQuestion}
+              quizId = {categoryQuizId ? categoryQuizId : course.quizId}
             />
-          </div>)
-      }
-    </div>);
+          ))
+        ) : (
+          <p className="text-gray-400 text-center text-lg">Loading questions...</p>
+        )}
+      </div>
+
+      
+
+      {
+      isModalOpen &&   (<AddQuestionModal
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      onAddQuestion={handleAddQuestion}
+      OnQuestionUpdate = {handleUpdatedQuestion}
+      quizId={categoryQuizId ? categoryQuizId : course.quizId}
+      token={token}
+      questionToEdit={questionToEdit}
+    />)
+    }
+    </div>
+    
+  );
 }
 export default QuizPage;

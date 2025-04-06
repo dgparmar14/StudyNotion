@@ -4,6 +4,7 @@ import { catagories, categoryEndpoint } from '../../../../Services/apis';
 import CategoryCourseDetails from './CategoryCourseDetails';
 import { toast } from 'react-toastify';
 import CategoryModal from './CategoryModal';
+import CategoryDetails from './CatrgoryDetails';
 
 function ManageCategories() {
   const [categoryList, setCategpryList] = useState([]);
@@ -76,7 +77,7 @@ function ManageCategories() {
         <div className='w-[90%] max-w-maxContent flex flex-col gap-2'>
           {
             categoryList.map((category, index) => (
-              <CategoryCourseDetails
+              <CategoryDetails
                 key={index}
                 category={category}
               />

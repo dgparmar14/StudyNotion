@@ -1,22 +1,36 @@
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { deleteQuestion } from "../../../Services/Operations/Question";
+import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
-function QuizQuestion({ question, questionIndex, setQuestions, handleOptionSelect, selectedOptions,handleEditQuestion }) {
-  const quizId = window.location.pathname.split("/")[4];
+function QuizQuestion({ question, questionIndex, setQuestions, quizId, selectedOptions,handleEditQuestion }) {
 
+  const {token} = useSelector((state) => state.auth)
+  
   const deleteQuestionHandler = async () => {
     try {
-      await deleteQuestion([question], quizId);
+      var result = await deleteQuestion([{...question}], quizId, token);
+      //console.log("Result of delete api call ", result)
+      if(!result.success){
+        toast.error("Error occured while deleting the question")
+        return;
+      }
       setQuestions(prevQuestions => prevQuestions.filter((_, index) => index !== questionIndex));
     } catch (error) {
       console.error("Error deleting question:", error);
     }
   };
 
+  const getOptionIndex = () => {
+    if (!question || !question.options) return "N/A";
+    const answerIndex = question.options.indexOf(question.answer)
+    return String.fromCharCode(65 + answerIndex)
+  }
+
 
   const editQuestionHandler = () => {
-    handleEditQuestion(question);
+    handleEditQuestion({...question});
   }
 
   return (
@@ -36,19 +50,34 @@ function QuizQuestion({ question, questionIndex, setQuestions, handleOptionSelec
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          {question.options.map((option, optionIndex) => (
-            <button
+          {question.options?.map((option, optionIndex) => (
+            <div
               key={optionIndex}
               className={`p-4 rounded-lg text-white font-medium text-lg transition-all duration-200 border-2 ${
                 selectedOptions[questionIndex] === option
                   ? "bg-blue-600 border-blue-400"
                   : "bg-gray-700 hover:bg-gray-600 border-gray-600"
               }`}
-              onClick={() => handleOptionSelect(questionIndex, option)}
             >
               {option}
-            </button>
+            </div>
           ))}
+        </div>
+        <div className="flex justify-between text 1.5rem">
+          <div>
+            <span>Option : </span>
+            <span>
+              {
+                getOptionIndex()
+              }
+            </span>
+          </div>
+          <div>
+            Marks : {question.marks}
+          </div>
+          <div>
+            Difficulty Level : {question.difficultyLevel}
+          </div>
         </div>
       </div>
     </div>

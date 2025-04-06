@@ -8,8 +8,7 @@ const router = express.Router();
 router.post("/createQuiz", createQuiz)
 // router.post("/createQuiz", auth, quizRoleCheck, createQuiz)
 router.put("/updateQuiz", auth, quizRoleCheck, UpdateQuiz)
-// router.post("/getQuiz",auth ,getQuiz)
-router.post("/getQuiz", getQuiz)
+router.post("/getQuiz", auth, getQuiz)
 router.delete("/deleteQuiz",auth, quizRoleCheck, deleteQuiz)
 
 router.post("/checkResult",auth, checkResult)
