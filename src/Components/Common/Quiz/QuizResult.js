@@ -1,3 +1,5 @@
+import Certificate from "../../../Pages/Certificate";
+
 export default function QuizResult() {
   return (
     <div className="px-7 py-10 bg-richblack-800 border border-richblack-400 rounded-md text-center flex flex-col items-center gap-4">
@@ -15,9 +17,8 @@ export default function QuizResult() {
       <p className="text-richblack-200  text-[16px]">
         You have successfully passed the quiz and now it's time to claim your <span className="text-blue-100">Certificate of Completion!</span>
       </p>
-      <button className="mt-3 text-black bg-yellow-100 border border-black font-semibold rounded-md px-6 py-2 hover:scale-95 transition-all">
-        Claim Certificate
-      </button>
+      
+      <Certificate></Certificate>
       {/* block terminated */}
       {/*display this block - if instructor */}
       <p className="text-richblack-200 text-[16px]">

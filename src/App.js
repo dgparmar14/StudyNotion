@@ -112,7 +112,7 @@ function App() {
           <>
             <Route path="/view-course/:courseId/section/:sectionId/sub-section/:subSectionId" element=<VideoSection></VideoSection>></Route>
             {/* <Route path="/quiz/quiz-intro/:courseId" element={<QuizIntro></QuizIntro>}></Route> */}
-            // <Route path="/quiz/quiz-intro" element={<QuizIntro></QuizIntro>}></Route>
+            // <Route path="/quiz/quiz-intro" element={<QuizResult></QuizResult>}></Route>
           </>
         }
           
