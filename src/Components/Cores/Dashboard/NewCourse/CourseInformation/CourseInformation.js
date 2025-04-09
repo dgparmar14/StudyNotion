@@ -15,6 +15,11 @@ import { addCourseDetails } from '../../../../../Services/Operations/CourseAPI';
 import { COURSE_STATUS } from '../../../../../Utils/Constants';
 import CourseTagNames from './CourseTagNames';
 import Upload from '../../../../Common/Upload';
+import CategoryRequestModal from '../../CategoryRequest/CategoryRequestModal';
+import { getQuizResult } from '../../../../../Services/Operations/quizApi';
+import { Link } from 'react-router-dom';
+import { createCategoryRequest } from '../../../../../Services/Operations/Category';
+
 function CourseInformation() {
   const {
     register,
@@ -25,17 +30,64 @@ function CourseInformation() {
 } = useForm();
 
   const {token} = useSelector((state)=> state.auth);
+  const user = useSelector((state) => state.profile);
   const {course, editCourse} = useSelector((state) => state.course);
   const [loading, setLoading] = useState(false);
   const [courseCatagories, setCourseCatagoties] = useState([]);
+  const [isPass, setIsPass] = useState(false);
+  const [createRequestModalOpen, setCreateRequestModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [isTakeQuiz, setIsTakeQuiz] = useState(false);
+  const [displayMessage, segtDisplayMessage] = useState(false)
   const dispatch = useDispatch();
-
   const {step} = useSelector((state)=> state.course);
+  
+  const handleCategoryRequest = async(categoryName) => {
+    try{
+      const result = await createCategoryRequest(categoryName, token);
+      console.log("Careate Category Request api result : ", result);
+      if(result.success){
+        setIsTakeQuiz(false)
+        segtDisplayMessage(true)
+        setCreateRequestModalOpen(false)
+      }
+    }
+    catch(error){
+      toast.error("Error occured while creating category request")
+    }
+  }
+  const handleCheckResult = async () => {
+    if (!selectedCategory) {
+      toast.error("Please select a category first!");
+      return;
+    }
+    try {
+      const result = await getQuizResult(selectedCategory.quiz, user.user._id, token);
+      console.log("Quiz result: ", result);
+      
+      // Assuming result contains a pass/fail status
+      if (result && result.isPassed) {
+        setIsPass(true);
+      } else {
+        setIsPass(false);
+        setIsTakeQuiz(true);
+        toast.error("You did not pass the quiz.");
+      }
+    } catch (error) {
+      console.error("Error occurred while getting result", error);
+    }
+  };
+  const handleCategoryChange = (event) => {
+    const selectedCategoryId = event.target.value;
+    const category = courseCatagories.find(cat => cat._id === selectedCategoryId);
+    setSelectedCategory(category);
+  };
   useEffect(()=>{
     const getCatagories = async()=>{
       setLoading(true);
       try{
         const result = await apiConnector("GET", catagories.CATAGORIES_API);
+        console.log("Category data : ", result)
         setCourseCatagoties(result.data.data);
 
         }catch(error){
@@ -55,6 +107,7 @@ function CourseInformation() {
         setValue("courseCategory", course.catagory);
         setValue("courseRequirements", course.instructions);
         setValue("courseImage", course.thumbNail);
+        setIsPass(true)
       }
 
   }, []);
@@ -167,56 +220,13 @@ const onSubmitHandler = async(data) => {
   return (
     <div className='px-7 py-5 bg-richblack-800 border border-richblack-400 rounded-md'>
       <form className='flex gap-5 flex-col'  onSubmit={handleSubmit(onSubmitHandler)}>
-          <div className='flex flex-col gap-1 justify-center'>
-              <label htmlFor='courseTitle' className='text-[14px] text-richblack-5'>Course Name<sup className='text-pink-200'>*</sup></label>
-              <input id='courseTitle'
-                      placeholder='Enter course name'
-                      {...register("courseTitle", {required:true})}
-                      className='text-[14px] text-richblack-200 px-4 py-2 bg-richblack-700 rounded-md'>
-              </input>
-                {
-                  errors.courseTitle && (
-                    <span className='text-[14px] text-pink-200'>Course name is required<sup>**</sup></span>
-                  )
-                }
-          </div>
-
-
-          <div className='flex flex-col gap-1 justify-center'>
-              <label htmlFor='courseShortDesc' className='text-[14px] text-richblack-5'>Short Description<sup className='text-pink-200'>*</sup></label>
-              <textarea id='courseShortDesc'
-                      placeholder='Enter course description'
-                      {...register("courseShortDesc", {required:true})}
-                      className='text-[14px] text-richblack-200 px-4 py-2 min-h-[140px] bg-richblack-700 rounded-md'>
-              </textarea>
-                {
-                  errors.courseShortDesc && (
-                    <span className='text-[14px] text-pink-200'>Course description is required<sup>**</sup></span>
-                  )
-                }
-          </div>
-
-          <div className='relative flex flex-col gap-1 justify-center'>
-              <label htmlFor='coursePrice' className='text-[14px] text-richblack-5'>Course Price<sup className='text-pink-200'>*</sup></label>
-              
-              <input id='coursePrice'
-                      placeholder='Enter course price'
-                      {...register("coursePrice", {required:true, valueAsNumber:true})}
-                      className='text-[14px] text-richblack-200 px-4 pl-8 py-2 bg-richblack-700 rounded-md'>
-              </input>
-                {
-                  errors.coursePrice && (
-                    <span className='text-[14px] text-pink-200'>Course price is required<sup>**</sup></span>
-                  )
-                }
-                <TbCoinRupee className='absolute text-richblack-200 top-[55%] left-2 text-[18px]'></TbCoinRupee>
-          </div>
-
-          <div className='flex flex-col gap-1 justify-center'>
+          
+      <div className='flex flex-col gap-1 justify-center'>
             <label htmlFor='courseCategory' className='text-[14px] text-richblack-5'>Catagories<sup className='text-pink-200'>*</sup></label>
             <select
               id='courseCategory'
               {...register("courseCategory", {required:true})}
+              onChange={handleCategoryChange}
               className='text-[14px] text-richblack-200 px-4 py-2 bg-richblack-700 rounded-md'>
                 
                 <option value="">Choose a catagory</option>
@@ -235,59 +245,119 @@ const onSubmitHandler = async(data) => {
 
             </select>
           </div>
-
-          <CourseTagNames
-                        name="courseTags"
-                        label="Tags"
-                        register={register}
-                        setValue={setValue}
-                        error={errors}
-                        getValues={getValues}></CourseTagNames>
-           <Upload 
-                  name="courseImage"
-                  label="Course Image"
-                  register={register}
-                  errors={errors}
-                  getValues={getValues}
-                  setValue={setValue}
-                  video={false}
-                  viewData={null}
-                  editData={null}></Upload>  
-
-         
-          <div className='flex flex-col gap-1 justify-center'>
-              <label htmlFor='courseBenefits' className='text-[14px] text-richblack-5'>Benefits of Course<sup className='text-pink-200'>*</sup></label>
-              <textarea id='courseBenefits'
-                      placeholder='Enter benefits of course'
-                      {...register("courseBenefits", {required:true})}
-                      className='text-[14px] text-richblack-200 px-4 py-2 min-h-[140px] bg-richblack-700 rounded-md'>
-              </textarea>
+          {
+            !isPass && (
+              <div className="flex gap-4 justify-end">
                 {
-                  errors.courseBenefits && (
-                    <span className='text-[14px] text-pink-200'>Course benefits required<sup>**</sup></span>
+                  selectedCategory && (
+                    <button type="button" onClick={handleCheckResult} className='text-[15px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-2'>
+                    Check Result
+                  </button>
                   )
                 }
-          </div>
+                <button className='text-[15px] text-richblack-900 bg-gray-500 rounded-md px-4 py-2 '
+                  onClick={() => setCreateRequestModalOpen(true)}>
+                  Add Category Request
+                </button>
+                
+                  {isTakeQuiz && 
+                    <Link to={`/dashboard/takeQuiz/${selectedCategory.quiz}`}>
+                      <button type="button" className="text-[15px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-2">
+                        Take Quiz
+                      </button>
+                    </Link>
+                                        
+                  }
+                
+              </div>
+            )
+          }
+          {
+            displayMessage && (
+              <p className='text-[14px] text-richblack-5'>Your category requst is created Successfully! You can create course in that category ince admin approves that.</p>
+            )
+          }
+          {isPass && <><div className='flex flex-col gap-1 justify-center'>
+          <label htmlFor='courseTitle' className='text-[14px] text-richblack-5'>Course Name<sup className='text-pink-200'>*</sup></label>
+          <input id='courseTitle'
+            placeholder='Enter course name'
+            {...register("courseTitle", { required: true })}
+            className='text-[14px] text-richblack-200 px-4 py-2 bg-richblack-700 rounded-md'>
+          </input>
+          {errors.courseTitle && (
+            <span className='text-[14px] text-pink-200'>Course name is required<sup>**</sup></span>
+          )}
+        </div><div className='flex flex-col gap-1 justify-center'>
+            <label htmlFor='courseShortDesc' className='text-[14px] text-richblack-5'>Short Description<sup className='text-pink-200'>*</sup></label>
+            <textarea id='courseShortDesc'
+              placeholder='Enter course description'
+              {...register("courseShortDesc", { required: true })}
+              className='text-[14px] text-richblack-200 px-4 py-2 min-h-[140px] bg-richblack-700 rounded-md'>
+            </textarea>
+            {errors.courseShortDesc && (
+              <span className='text-[14px] text-pink-200'>Course description is required<sup>**</sup></span>
+            )}
+          </div><div className='relative flex flex-col gap-1 justify-center'>
+            <label htmlFor='coursePrice' className='text-[14px] text-richblack-5'>Course Price<sup className='text-pink-200'>*</sup></label>
 
-          <RequirementField name="courseRequirements"
-                            label="Instructions/Requirements"
-                            errors={errors}
-                            register={register}
-                            getValues={getValues}
-                            setValue={setValue}></RequirementField>
-                          
+            <input id='coursePrice'
+              placeholder='Enter course price'
+              {...register("coursePrice", { required: true, valueAsNumber: true })}
+              className='text-[14px] text-richblack-200 px-4 pl-8 py-2 bg-richblack-700 rounded-md'>
+            </input>
+            {errors.coursePrice && (
+              <span className='text-[14px] text-pink-200'>Course price is required<sup>**</sup></span>
+            )}
+            <TbCoinRupee className='absolute text-richblack-200 top-[55%] left-2 text-[18px]'></TbCoinRupee>
+          </div><CourseTagNames
+            name="courseTags"
+            label="Tags"
+            register={register}
+            setValue={setValue}
+            error={errors}
+            getValues={getValues}></CourseTagNames><Upload
+              name="courseImage"
+              label="Course Image"
+              register={register}
+              errors={errors}
+              getValues={getValues}
+              setValue={setValue}
+              video={false}
+              viewData={null}
+              editData={null}></Upload><div className='flex flex-col gap-1 justify-center'>
+            <label htmlFor='courseBenefits' className='text-[14px] text-richblack-5'>Benefits of Course<sup className='text-pink-200'>*</sup></label>
+            <textarea id='courseBenefits'
+              placeholder='Enter benefits of course'
+              {...register("courseBenefits", { required: true })}
+              className='text-[14px] text-richblack-200 px-4 py-2 min-h-[140px] bg-richblack-700 rounded-md'>
+            </textarea>
+            {errors.courseBenefits && (
+              <span className='text-[14px] text-pink-200'>Course benefits required<sup>**</sup></span>
+            )}
+          </div><RequirementField name="courseRequirements"
+            label="Instructions/Requirements"
+            errors={errors}
+            register={register}
+            getValues={getValues}
+            setValue={setValue}></RequirementField><div className='flex gap-3 self-end'>
+            {editCourse && <button onClick={() => { dispatch(setStep(2)); } } className='text-[15px] text-richblack-900 bg-yellow-200 rounded-md px-4 py-2'>Continue without Saving</button>}
 
-          <div className='flex gap-3 self-end'>
-            {editCourse &&  <button onClick={()=>{dispatch(setStep(2))}} className='text-[15px] text-richblack-900 bg-yellow-200 rounded-md px-4 py-2'>Continue without Saving</button>}
-           
             <button type='submit' className='text-[15px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-2'>
               {editCourse ? "Save Changes" : "Next"}
             </button>
 
-          </div>
-        
+          </div></>
+          }
       </form>
-      
+      {
+        createRequestModalOpen && (
+          <CategoryRequestModal
+            isOpen={createRequestModalOpen}
+            onClose={() => setCreateRequestModalOpen(false)}
+            onConfirm={handleCategoryRequest}
+          />
+  )
+}
     </div>
   )
 }

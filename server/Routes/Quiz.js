@@ -12,7 +12,7 @@ router.post("/getQuiz", auth, getQuiz)
 router.delete("/deleteQuiz",auth, quizRoleCheck, deleteQuiz)
 
 router.post("/checkResult",auth, checkResult)
-router.get("/getResult", auth, getResult)
+router.post("/getResult", auth, getResult)
 
 // router.post("/addQuestion", auth, quizRoleCheck, addQuestions)
 router.post("/addQuestion", addQuestions)

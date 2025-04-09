@@ -10,12 +10,13 @@ import { toast } from 'react-toastify';
 const {
   CREATE_CATEGORY_API,
   GET_CATEGORY_COURSE_DETAILS,
-  ADD_CATEGORY_REQUEST_API,
+  CREATE_CATEGORY_REQUEST_API,
   UPDATE_CATEGORY_REQUEST_API,
   GET_CATEGORY_REQUEST_API,
   DELETE_CATEGORY_REQUEST_API,
   GET_CATEGORY_CREATED_BY_USER_API,
   REQUEST_FOR_ADMIN,
+  
 } = categoryEndpoint;
 
 const { GET_QUIZ_API } = quizEndPoint;
@@ -98,3 +99,23 @@ export const  getCategoryRequestForUser = async(token) =>{
 
   
 }
+
+export const createCategoryRequest = async (categoryName, token) => {
+  try {
+    const response = await apiConnector(
+      "POST",
+      CREATE_CATEGORY_REQUEST_API,
+      { categoryName },
+      { Authorization: `Bearer${token}` }
+    );
+    console.log("Create category request api response : ", response)
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (error) {
+    console.error("Error occurred while creating category:", error.message);
+    return null;
+  } finally {
+  }
+};

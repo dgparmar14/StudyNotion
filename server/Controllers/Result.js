@@ -40,7 +40,7 @@ exports.checkResult = async (req, res) => {
       for (const answer of answers) {
          const question = await Questions.findById(answer.id);
          if (!question) continue;
-
+            
          if (answer.selectedAnswer != null && answer.selectedAnswer === question.answer) {
             obtainedMarks += question.marks;
          }
@@ -88,9 +88,10 @@ exports.checkResult = async (req, res) => {
 
 
 exports.getResult = async (req, res) => {
+   
    try{
       const {quizId, userId} = req.body
-      
+      console.log("Quiz id : ", req.body)
       if(!quizId){
          return res.status(400).json({
             success : false,
@@ -105,13 +106,6 @@ exports.getResult = async (req, res) => {
          })
       }
       var result = await Result.findOne({userId : userId, quizId : quizId})
-
-      if(!result){
-         return res.status(404).json({
-            success : false,
-            message : "Result not found"
-         })
-      }
 
       return res.status(200).json({
          success : true,

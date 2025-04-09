@@ -177,6 +177,7 @@ exports.UpdateQuiz = async (req, res) => {
 exports.getQuiz = async (req, res) => {
     try {
         const { quizId } = req.body;
+        
         if (!quizId) {
             return res.status(400).json({
                 success: false,
@@ -199,6 +200,7 @@ exports.getQuiz = async (req, res) => {
                 }
             }
         ])
+    
         if (!quiz || quiz.length === 0) {
             return res.status(404).json({
                 success: false,
