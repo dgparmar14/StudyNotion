@@ -169,11 +169,13 @@ exports.getCategoryRequestCreatedByUser = async (req, res) => {
       const userId = req.user.id; // Fix userId extraction
 
       // Find pending category request created by user
-      const data = await CategoryRequest.findOne({ 
+      const data = await CategoryRequest.find({ 
          createdBy: userId, 
          status: "pending"
       });
 
+      console.log("Data fetched for user: ", data); // Debugging line
+      
       if (!data) {
          return res.status(404).json({
             success: false,
@@ -197,7 +199,7 @@ exports.getCategoryRequestCreatedByUser = async (req, res) => {
 
 exports.getRequestForAdmin = async (req, res) => {
    try{
-      var data = await CategoryRequest.findOne({status : "pending"}).populate({path : "createdBy"}).exec();
+      var data = await CategoryRequest.find({status : "pending"}).populate({path : "createdBy"}).exec();
       return res.status(200).json({
          success : true,
          message : "Request data fetched successfully",
