@@ -8,14 +8,14 @@ import QuizDetails from "../Components/Common/Quiz/QuizDetails";
 
 function QuizPage() {
 
-  const {categoryQuizId} = useParams() 
+  const { categoryQuizId } = useParams()
   const [questions, setQuestions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [questionToEdit, setQuestionToEdit] = useState(null);
-  const {course} = useSelector((state) => state.course)
-  const {token} = useSelector((state) => state.auth)
-  
+  const { course } = useSelector((state) => state.course)
+  const { token } = useSelector((state) => state.auth)
+
   const fetchQuiz = async (quizId) => {
     try {
       //console.log("Quiz id in quiz page :  ", quizId)
@@ -33,44 +33,34 @@ function QuizPage() {
     }
   };
 
- useEffect(() => {
-  if(categoryQuizId){
-    fetchQuiz(categoryQuizId)
-  }else{
-    fetchQuiz(course.quizId)
-  }
- }, [])
-  
- 
-  
+  useEffect(() => {
+    if (categoryQuizId) {
+      fetchQuiz(categoryQuizId)
+    } else {
+      fetchQuiz(course.quizId)
+    }
+  }, [])
 
-  const addQuestionHandler = async () => {
-    setIsModalOpen(true);
-  };
-
-  const handleUpdatedQuestion  = (question) => {
+  const handleUpdatedQuestion = (question) => {
     console.log("Updated question in quiz page : ", question)
-    const updatedQuestion = questions.map((que) => que._id === question._id ? {...que, ...question} : que)
+    const updatedQuestion = questions.map((que) => que._id === question._id ? { ...que, ...question } : que)
     setQuestions(updatedQuestion)
   }
   const handleAddQuestion = (newQuestion) => {
     setQuestions((prevQuestions) => [newQuestion, ...prevQuestions]);
-    
+
   };
-
-
 
   const handleEditQuestion = (question) => {
     setQuestionToEdit(question);
     setIsModalOpen(true);
   };
 
-
   return (
     <div className="w-full flex flex-col items-center justify-center text-white p-6 min-h-screen bg-gray-900">
       <div className="w-full max-w-3xl flex items-center justify-between mb-6">
         <div className="flex mr-[7rem] self-end">
-          <button 
+          <button
             className="px-4 py-1 rounded-md text-richblack-900 bg-yellow-100 cursor-pointer"
             onClick={() => {
               setQuestionToEdit(null)
@@ -91,7 +81,7 @@ function QuizPage() {
               questionIndex={questionIndex}
               selectedOptions={selectedOptions}
               handleEditQuestion={handleEditQuestion}
-              quizId = {categoryQuizId ? categoryQuizId : course.quizId}
+              quizId={categoryQuizId ? categoryQuizId : course.quizId}
             />
           ))
         ) : (
@@ -99,21 +89,19 @@ function QuizPage() {
         )}
       </div>
 
-      
-
       {
-      isModalOpen &&   (<AddQuestionModal
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      onAddQuestion={handleAddQuestion}
-      OnQuestionUpdate = {handleUpdatedQuestion}
-      quizId={categoryQuizId ? categoryQuizId : course.quizId}
-      token={token}
-      questionToEdit={questionToEdit}
-    />)
-    }
+        isModalOpen && (<AddQuestionModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onAddQuestion={handleAddQuestion}
+          OnQuestionUpdate={handleUpdatedQuestion}
+          quizId={categoryQuizId ? categoryQuizId : course.quizId}
+          token={token}
+          questionToEdit={questionToEdit}
+        />)
+      }
     </div>
-    
+
   );
 }
 export default QuizPage;
