@@ -340,6 +340,7 @@ exports.getFullDetailsOfCourse = async(req, res) => {
         )
         .populate("studentsEnrolled")
         .populate("ratingAndReviews")
+        .populate("quiz")
         .exec();
 
         // let totalDuration = 0;

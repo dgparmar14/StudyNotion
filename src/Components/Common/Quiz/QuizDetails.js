@@ -15,7 +15,7 @@ export default function QuizDetails({categoryId}) {
   });
   const [duration, setDuration] = useState("");
   const [passingScore, setPassingScore] = useState("");
-  const token = localStorage.getItem("token"); // Get token from local storage
+  const {token} = useSelector((state)=>state.auth)
   const { course } = useSelector((state) => state.course);
   const dispatch = useDispatch();
   const categorySlug = window.location.pathname.split("/")[1];

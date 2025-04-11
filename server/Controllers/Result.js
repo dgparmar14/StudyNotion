@@ -73,7 +73,7 @@ exports.checkResult = async (req, res) => {
       return res.status(200).json({
          success: true,
          message: "Result stored successfully",
-         data: result,
+         data: {result : result, passingPercentage : quiz.passingPercentage},
       });
 
    } catch (err) {
@@ -105,7 +105,11 @@ exports.getResult = async (req, res) => {
             message : "Quiz not found"
          })
       }
-      var result = await Result.findOne({userId : userId, quizId : quizId})
+      var result = await Result.findOne({userId : userId, quiz : quizId})
+
+      console.log("Result : ", result);
+      console.log("userId : ", userId);
+      console.log("Quiz id : ", quizId);
 
       return res.status(200).json({
          success : true,

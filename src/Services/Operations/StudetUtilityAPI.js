@@ -41,9 +41,9 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         if(!orderResponce.data.success){
             throw new Error(orderResponce.data.error);
         }
-
+        
         const options = {
-            key: process.env.RAZORPAY_KEY,
+            key: "rzp_test_W6zCHLZ1xmte5j",
             currency: orderResponce.data.message.currency,
             amount: `${orderResponce.data.message.amount}`,
             order_id:orderResponce.data.message.id,

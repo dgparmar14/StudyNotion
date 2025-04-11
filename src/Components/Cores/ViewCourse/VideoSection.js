@@ -31,7 +31,7 @@ function VideoSection() {
     const [loading, setLoading] = useState(false);
     const playRef = useRef();
 
-    //console.log("PRINTNG COURSE SECTION DATA " , courseSectionData);
+    console.log("PRINTNG COURSE SECTION DATA " , courseSectionData);
 
     useEffect(()=>{
         const setVideoSpecificDetails = async()=>{

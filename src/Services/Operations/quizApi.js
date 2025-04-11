@@ -12,11 +12,12 @@ const {CREATE_QUIZ_API,
 export const createQuiz = async (quizData,courseId, categoryId ,token) => {
 
     try {
-        const response = await apiConnector(CREATE_QUIZ_API, quizData, {
-                Authorization: `Bearer ${token}`,  // Pass auth token
+        const response = await apiConnector('POST',CREATE_QUIZ_API, {quizData, courseId, categoryId}, {
+                Authorization: `Bearer${token}`,  
                 "Content-Type": "application/json",
             
         });
+        
         return response.data;
     } catch (error) {
         console.error("Error creating quiz:", error.response?.data || error.message);

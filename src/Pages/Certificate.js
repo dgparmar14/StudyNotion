@@ -1,7 +1,9 @@
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { useSelector } from "react-redux";
 
-export default function Certificate() {
+export default function Certificate({name, createdOn}) {
+  const {courseEntireData} = useSelector((state) => state.viewCourse)
   const handleDownload = () => {
     const cert = document.getElementById("certificate");
 
@@ -43,7 +45,7 @@ export default function Certificate() {
                 <p className="text-xl font-cursive">
                   This certificate is presented to
                 </p>
-                <p class="text-2xl font-Semibold">Vivek Patel</p>
+                <p class="text-2xl font-Semibold">{name}</p>
               </div>
 
               {/* <!-- Course Title--> */}
@@ -51,11 +53,10 @@ export default function Certificate() {
                 <p class="font-cursive text-xl">
                   for completing the course entitled
                 </p>
-                <p class="font-Semibold text-3xl">Data Science</p>
+                <p class="font-Semibold text-3xl">{courseEntireData.courceName}</p>
                 {/* description of the course */}
                 <p class="text-sm mt-2 font-Semibold">
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                 {courseEntireData.description}
                 </p>
               </div>
               {/* <!-- Course Title --> */}
@@ -68,7 +69,7 @@ export default function Certificate() {
               <div className="border-richblack-600 ">
                 <p>Completon Date :</p>
                 <div class="w-full mt-2 font-Semibold text-[16px]">
-                  30/03/2025
+                  {createdOn}
                 </div>
               </div>
 

@@ -73,9 +73,9 @@ function CourseDetails() {
         
     }, [courseData]);
 
-    function handleSubmit(){
+    async function handleSubmit(){
         if(token){
-            buyCourse(token, [courseId], user, navigate, dispatch);
+            await buyCourse(token, [courseId], user, navigate, dispatch);
             return
         }
         setConfirmationModal({

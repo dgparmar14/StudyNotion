@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { checkResult, getQuiz } from "../../../Services/Operations/quizApi";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { formatdate } from "../../../Services/DateFormat";
 
 function TakeQuiz() {
   // Basic state setup
@@ -119,7 +120,7 @@ function TakeQuiz() {
           ans => ans.id === questions[currentIndex]._id
         );
         if (currentQuestionIndex !== -1) {
-          finalAnswers[currentQuestionIndex].answer = selectedOption;
+          finalAnswers[currentQuestionIndex].selectedAnswer = selectedOption;
         }
       }
       
@@ -134,12 +135,12 @@ function TakeQuiz() {
         throw new Error("Error occurred while submitting quiz");
       }
       
-      console.log("Quiz submitted successfully!");
+      
       toast.success("Quiz submitted successfully!");
-      navigate("/dashboard/quizResult", {state : {isPassed : result.data.isPassed, percentage : result.data.percentage}});
+      navigate("/dashboard/quizResult", {state : {isPassed : result.data.result.isPassed, percentage : result.data.result.percentage, passingPercentage : result.data.passingPercentage, quizId : result.data.result.quiz, createdOn : formatdate(result.data.result.createdAt)}});
     } catch (error) {
       console.error("Error submitting quiz:", error);
-      toast.error("Failed to submit quiz");
+      toast.error("Failed to submit quiz"); 
       hasSubmitted.current = false;
     }
   };

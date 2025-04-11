@@ -12,7 +12,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { SlArrowUp } from "react-icons/sl";
 
 function VideoSideBar({ setReviewModal }) {
-  const dispatch = useDispatch();
+  
   const { sectionId, subSectionId } = useParams();
   const [activeStatus, setActiveStatus] = useState("");
   const [videoActive, setVideoActive] = useState("");
@@ -26,7 +26,7 @@ function VideoSideBar({ setReviewModal }) {
     completedLectures,
   } = useSelector((state) => state.viewCourse);
 
-  console.log("Printing completed course data : ".completedLectures);
+  console.log("Printing completed course data : ",completedLectures);
 
   useEffect(() => {
     setLoading(true);
@@ -54,7 +54,8 @@ function VideoSideBar({ setReviewModal }) {
 
     setActiveFlag();
     setLoading(false);
-  }, [courseSectionData, location.pathname, courseEntireData]);
+  }, [courseSectionData, location.pathname, courseEntireData, sectionId, subSectionId]);
+  console.log("Course data : ", courseEntireData)
 
   return (
     <div className="w-[14rem] py-4 min-h-[calc(1000vh-2rem)] bg-richblack-800">
@@ -147,16 +148,23 @@ function VideoSideBar({ setReviewModal }) {
         </div>
         
         {/* Take Quiz and Claim Certificate */}
-        <div className="bg-transparent w-full py-2 text-sm relative">
-          {/* <span className="w-[0.2rem] h-full bg-yellow-50 absolute left-0 top-0 opacity-0"></span> */}
-          <div
-            className="flex gadiv-2 ml-3 px-3 text-[15px] text-richblack-200"
-            onClick={() => navigate(`/quiz/quiz-intro`)}
-            // onClick={() => navigate(`/quiz/quiz-intro/${courseEntireData._id}`)}
-          >
-            Take Quiz
-          </div>
-        </div>
+        { totalNoOfLectures === (completedLectures?.length || 0) && (
+            <div className="bg-transparent w-full py-2 text-sm relative cursor-pointer">
+              <button
+                className="flex gadiv-2 ml-3 px-3 text-[15px] text-richblack-200"
+                onClick={() => navigate(`/quiz/quiz-intro`, {
+                  state: {
+                    quizId: courseEntireData?.quiz?._id,
+                    duration: courseEntireData?.quiz?.duration,
+                    passingPercentage: courseEntireData?.quiz?.passingPercentage
+                  }
+                })}
+              >
+                Take Quiz
+              </button>
+            </div>
+        )}
+
       </div>
     </div>
   );

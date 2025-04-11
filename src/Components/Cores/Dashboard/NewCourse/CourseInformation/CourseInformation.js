@@ -63,10 +63,10 @@ function CourseInformation() {
     }
     try {
       const result = await getQuizResult(selectedCategory.quiz, user.user._id, token);
-      console.log("Quiz result: ", result);
+      console.log("Quiz result: ", result.data.result.isPassed);
       
       // Assuming result contains a pass/fail status
-      if (result && result.isPassed) {
+      if (result && result.data.result.isPassed) {
         setIsPass(true);
       } else {
         setIsPass(false);
@@ -224,6 +224,7 @@ const onSubmitHandler = async(data) => {
       <div className='flex flex-col gap-1 justify-center'>
             <label htmlFor='courseCategory' className='text-[14px] text-richblack-5'>Catagories<sup className='text-pink-200'>*</sup></label>
             <select
+              disabled = {isPass ? true : false}
               id='courseCategory'
               {...register("courseCategory", {required:true})}
               onChange={handleCategoryChange}

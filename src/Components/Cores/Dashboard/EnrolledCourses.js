@@ -28,6 +28,8 @@ function EnrolledCourses() {
         getAllEnrolledCourses();
     },[])
 
+    
+
   return (
     <div>
     <div className='w-full h-full md:px-4 py-4'>

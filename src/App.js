@@ -67,7 +67,7 @@ function App() {
               <>
                 <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses></EnrolledCourses>}></Route>
                 <Route path="/dashboard/cart" element={<Cart></Cart>}></Route>
-                <Route path="/view-course/:courseId/section/:sectionId/sub-section/:subSectionId" element=<VideoSection></VideoSection>></Route>
+                
                 {/* <Route path="/quiz/quiz-intro/:courseId" element={<QuizIntro></QuizIntro>}></Route> */}
                 <Route path="/quiz/quiz-intro" element={<QuizIntro></QuizIntro>}></Route>
                 <Route path="/dashboard/takeQuiz/:id" element={<TakeQuiz></TakeQuiz>}></Route>
@@ -112,13 +112,23 @@ function App() {
         <Route path="*" element={<Error></Error>}></Route>
 
         <Route element={
-          <PrivateRoute>
-            <ViewCourse></ViewCourse>
-          </PrivateRoute>
-        }>
-       
-          
-        </Route>  
+              <PrivateRoute>
+                <ViewCourse/>
+              </PrivateRoute>
+
+            }>
+              {
+                user?.accountType===ACCOUNT_TYPE.STUDENT && (
+                  <>
+                  <Route path="/view-course/:courseId/section/:sectionId/sub-section/:subSectionId" element=<VideoSection></VideoSection>></Route>
+                    
+                  </>
+                )
+              }
+
+
+
+            </Route>
       </Routes>
 
 
