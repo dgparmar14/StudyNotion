@@ -136,14 +136,16 @@ export const getCategoryRequestsForAdmin = async (token) => {
   }
 }
 
-export const updateCategoryRequestStatus = async (requestId, status, token) => {
+export const updateCategoryRequestStatus = async (requestId, request, token) => {
   try {
+    console.log("updateCategoryRequestStatus service")
     const response = await apiConnector(
-      "POST",
+      "PUT",
       UPDATE_CATEGORY_REQUEST_API,
-      { requestId, status },
+      { requestId, updates: request },
       { Authorization: `Bearer${token}` }
     );
+    console.log("Response Response ", response)
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
@@ -153,4 +155,20 @@ export const updateCategoryRequestStatus = async (requestId, status, token) => {
     return null;
   } finally {
   }
+}
+
+export const deleteCategoryRequest = async (requestId, token) => {
+    try {
+      const response = await apiConnector(
+        "DELETE",
+        DELETE_CATEGORY_REQUEST_API,
+        {requestId},
+        { Authorization: `Bearer${token}` }
+      )
+      console.log("Response insdie the api connector", response)
+      return response
+    } catch (error) {
+      console.error("Error occurred while delete category request:", error.message);
+      return null;
+    }
 }

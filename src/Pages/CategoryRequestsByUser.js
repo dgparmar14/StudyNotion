@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { getCategoryRequestForUser } from '../Services/Operations/Category';
+import { deleteCategoryRequest, getCategoryRequestForUser } from '../Services/Operations/Category';
 import { useSelector } from 'react-redux';
+import { MdDeleteForever } from "react-icons/md";
 
 export default function CategoryRequestsByUser() {
 
@@ -25,6 +26,12 @@ export default function CategoryRequestsByUser() {
     fetchCategoryRequests(token);
   }, [token]);
 
+  const deleteCategoryHandler = async (requestId) => {
+    console.log("Function called ", requestId)
+    const response = await deleteCategoryRequest(requestId, token);
+    console.log("Delet categ request response")
+  }
+
   return (
     <div>
       <h1 className='text-richblack-5 text-[30px] font-bold'>Category Requests</h1>
@@ -48,9 +55,14 @@ export default function CategoryRequestsByUser() {
                   })}
                 </p>
               </div>
-              <h2 className='text-richblack-5 text-[20px] font-semibold'>
-                {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
-              </h2>
+              <div className='flex gap-2'>
+                <h2 className='text-richblack-5 text-[20px] font-semibold'>
+                  {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
+                </h2>
+                <button className='text-red-500' onClick={() => deleteCategoryHandler(request._id)}>
+                  <MdDeleteForever />
+                </button>
+              </div>
             </div>
           ))
         }
