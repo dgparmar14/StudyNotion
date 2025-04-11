@@ -259,16 +259,13 @@ const onSubmitHandler = async(data) => {
                   onClick={() => setCreateRequestModalOpen(true)}>
                   Add Category Request
                 </button>
-                
                   {isTakeQuiz && 
                     <Link to={`/dashboard/takeQuiz/${selectedCategory.quiz}`}>
                       <button type="button" className="text-[15px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-2">
                         Take Quiz
                       </button>
                     </Link>
-                                        
                   }
-                
               </div>
             )
           }

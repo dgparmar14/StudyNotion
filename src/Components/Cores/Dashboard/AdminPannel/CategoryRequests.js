@@ -18,20 +18,23 @@ export default function CategoryRequests() {
     getCategoryRequests(token)
   }, [token])
 
-  const statusHandler = async (requestId, status) => {
+  const statusHandler = async (request, status) => {
     try {
-      const response = await updateCategoryRequestStatus(requestId, status, token)
-      if (response.status === 200) {
+      request.status = status; // Update the status in the request object
+      const response = await updateCategoryRequestStatus(request._id, request, token); // Call the API
+      console.log("Response inside handler", response);
+
+      if (response.success === true) {
+        // Remove the updated request from the categoryRequests state
         setCategoryRequests((prevRequests) =>
-          prevRequests.map((request) =>
-            request._id === requestId ? { ...request, status } : request
-          )
-        )
+          prevRequests.filter((req) => req._id !== request._id)
+        );
+        console.log("Category request updated and removed from the list");
       }
     } catch (error) {
-      console.error("Error updating category request status:", error)
+      console.error("Error updating category request status:", error);
     }
-  }
+  };
 
   return (
     <div className="p-6">
@@ -84,13 +87,13 @@ export default function CategoryRequests() {
                     {/* Actions */}
                     <div className="flex gap-2">
                       <button
-                        onClick={() => statusHandler(request._id, 'Approved')}
+                        onClick={() => statusHandler(request, 'approved')}
                         className="px-4 py-2 text-sm rounded-xl bg-green-600 text-white hover:bg-green-500 transition-all"
                       >
                         Accept
                       </button>
                       <button
-                        onClick={() => statusHandler(request._id, 'Rejected')}
+                        onClick={() => statusHandler(request, 'rejected')}
                         className="px-4 py-2 text-sm rounded-xl bg-red-600 text-white hover:bg-red-500 transition-all"
                       >
                         Reject

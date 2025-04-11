@@ -68,16 +68,19 @@ exports.updateCategoryRequest = async (req, res) => {
    try {
       const { requestId, updates } = req.body;
 
-      // Validate requestId and ensure updates contain categoryName if required
-      if (!requestId) {
+      console.log("Request body for update: ", updates); // Debugging line
+
+      // Validate requestId
+      if (!requestId || !mongoose.Types.ObjectId.isValid(requestId)) {
          return res.status(400).json({
             success: false,
-            message: "Category request ID is required for the update",
+            message: "Invalid or missing category request ID",
          });
       }
 
       // Find category request by ID
       const categoryRequest = await CategoryRequest.findById(requestId);
+      console.log("categoryRequest from controller Before Update", categoryRequest);
 
       if (!categoryRequest) {
          return res.status(404).json({
@@ -86,16 +89,34 @@ exports.updateCategoryRequest = async (req, res) => {
          });
       }
 
-      // Update fields
-      categoryRequest.set(updates);
+      // Filter updates to exclude immutable fields
+      const allowedUpdates = ["status", "categoryName"]; // Add modifiable fields here
+      const filteredUpdates = Object.keys(updates)
+         .filter((key) => allowedUpdates.includes(key))
+         .reduce((obj, key) => {
+            obj[key] = updates[key];
+            return obj;
+         }, {});
+
+      if (Object.keys(filteredUpdates).length === 0) {
+         return res.status(400).json({
+            success: false,
+            message: "No valid fields to update",
+         });
+      }
+
+      // Apply updates
+      categoryRequest.set(filteredUpdates);
       await categoryRequest.save();
+      console.log("categoryRequest from controller After Update", categoryRequest);
 
       return res.status(200).json({
          success: true,
          message: "Category request updated successfully",
-         data: categoryRequest,  // Fixed typo (was 'date')
+         data: categoryRequest,
       });
    } catch (err) {
+      console.error("Error updating category request:", err); // Log the error for debugging
       return res.status(500).json({
          success: false,
          message: "Failed to update request for category",
@@ -148,12 +169,12 @@ exports.deleteCategoryRequest = async (req, res) => {
          })
       }
       const categoryRequest = await CategoryRequest.findByIdAndDelete(requestId)
-
-      return res.status(200).json({
-         success : true,
-         message : "Categpry request deleted successfully"
-      })
-
+      console.log("Reposne when delete categrequest", categoryRequest)
+      if(categoryRequest._id === requestId)
+         return res.status(200).json({
+            success : true,
+            message : "Categpry request deleted successfully"
+         })
    }
    catch(err){
       return res.status(500).json({
@@ -170,12 +191,11 @@ exports.getCategoryRequestCreatedByUser = async (req, res) => {
 
       // Find pending category request created by user
       const data = await CategoryRequest.find({ 
-         createdBy: userId, 
-         status: "pending"
+         createdBy: userId,
       });
 
       console.log("Data fetched for user: ", data); // Debugging line
-      
+
       if (!data) {
          return res.status(404).json({
             success: false,
