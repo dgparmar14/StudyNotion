@@ -39,6 +39,7 @@ export default function Instructor() {
     (acc, curr) => acc + curr.totalStudentsEnrolled,
     0
   );
+ 
 
   // console.log("Writing cources : ", courses);
   // console.log("Writing instructordata : ", instructorData);
@@ -54,7 +55,9 @@ export default function Instructor() {
         </p>
       </div>
       {loading ? (
-        <div className="spinner"></div>
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-500"></div>
+        </div>
       ) : courses.length > 0 ? (
         <div>
           {/* Total Statistics */}

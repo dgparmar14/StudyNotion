@@ -2,11 +2,13 @@ import { useState } from "react";
 import QuestionDetails from "./QuestionDetails";
 import { createQuiz } from "../../../Services/Operations/quizApi"; // Import API call
 import { useDispatch, useSelector } from "react-redux";
-import { setStep } from "../../../Reducer/Slices/courseSlice";
-import { redirect } from "react-router-dom";
+import { setEditCourse, setStep } from "../../../Reducer/Slices/courseSlice";
+import { redirect, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { unsetCategoryId } from "../../../Reducer/Slices/categorySlice";
+import { MdOutlineNavigateNext } from "react-icons/md";
 
-export default function QuizDetails({categoryId}) {
+export default function QuizDetails() {
   const [quizInfo, setQuizInfo] = useState({
     duration: "",
     passingScore: "",
@@ -18,11 +20,22 @@ export default function QuizDetails({categoryId}) {
   const {token} = useSelector((state)=>state.auth)
   const { course } = useSelector((state) => state.course);
   const dispatch = useDispatch();
+  const nevigate = useNavigate();
+  const {categoryId} = useSelector((state)=>state.category);
   const categorySlug = window.location.pathname.split("/")[1];
+  console.log("Category id : ", categoryId)
   const categoryName = categorySlug
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
+
+    function goBack(){
+      dispatch(setStep(2));
+      dispatch(setEditCourse(true));
+    }
+    function goNext(){
+      dispatch(setStep(4));
+    }
 
   const addQuestion = () => {
     setQuizInfo((prevQuizInfo) => ({
@@ -50,6 +63,9 @@ export default function QuizDetails({categoryId}) {
     if (categoryId) {
       try {
         const response = await createQuiz(quizData, null, categoryId ,token);
+        console.log("Category quiz created response : ", response)
+        dispatch(unsetCategoryId())
+        nevigate(`/dashboard/quiz/${response.data.quiz._id}`)
         alert("Quiz Created Successfully! for category");
       } catch (error) {
         alert("Error creating quiz!");
@@ -57,6 +73,8 @@ export default function QuizDetails({categoryId}) {
     } else {
       try {
         const response = await createQuiz(quizData, course._id, null ,token);
+        console.log('quiz response : ', response)
+       
         alert("Quiz Created Successfully! for course");
         dispatch(setStep(4));
       } catch (error) {
@@ -112,20 +130,31 @@ export default function QuizDetails({categoryId}) {
           }
         />
 
-        <div className="flex gap-3 self-end">
-          <button
-            type="button"
-            onClick={addQuestion}
-            className="text-richblack-900 bg-yellow-50 rounded-md px-4 py-2"
-          >
-            Add Question
-          </button>
-          <button
-            type="submit"
-            className="text-[15px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-2"
-          >
-            Save
-          </button>
+        <div className="flex justify-between">
+          <div className="flex gap-3 self-end">
+            <button
+              type="button"
+              onClick={addQuestion}
+              className="text-richblack-900 bg-yellow-50 rounded-md px-4 py-2"
+            >
+              Add Question
+            </button>
+            <button
+              type="submit"
+              className="text-[15px] text-richblack-900 bg-yellow-50 rounded-md px-4 py-2"
+            >
+              Save
+            </button>
+          </div>
+          {
+            !categoryId && (
+              <div>
+                <button></button>
+                <button></button><button onClick={goBack} className='text-richblack-900 bg-yellow-200 text-[15px] rounded-md px-2 py-1'>Back</button>
+                          <button onClick={goNext} className='text-richblack-900 bg-yellow-200 text-[15px] rounded-md px-2 py-1 flex gap-1 justify-center items-center'>Next <MdOutlineNavigateNext></MdOutlineNavigateNext></button>
+              </div>  
+            )
+          }
         </div>
       </form>
     </div>

@@ -17,9 +17,13 @@ export const createQuiz = async (quizData,courseId, categoryId ,token) => {
                 "Content-Type": "application/json",
             
         });
-        
+        console.log("Create quiz data : ", response);
+        if(!response.data.success){
+            throw new Error("Error while creating quiz");
+        }        
         return response.data;
     } catch (error) {
+        toast.error("Can not created quiz")
         console.error("Error creating quiz:", error.response?.data || error.message);
         throw error;
     }

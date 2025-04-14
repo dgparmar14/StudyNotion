@@ -17,7 +17,7 @@ function CategoryRequestModal({ isOpen, onClose, onConfirm }) {
            placeholder="Category Name"
            value={categoryName}
            onChange={(e) => setCategoryName(e.target.value)}
-           className="w-full rounded-md px-3 py-2 text-richblack-900 bg-white focus:outline-none"
+           className="w-full rounded-md bg-richblack-700 px-3 py-2 text-white-100 focus:outline-none"
          />
  
          {/* Buttons */}

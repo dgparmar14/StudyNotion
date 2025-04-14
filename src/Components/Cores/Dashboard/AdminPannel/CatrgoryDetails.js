@@ -1,8 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { setCategoryId } from '../../../../Reducer/Slices/categorySlice';
 
 export default function CategoryDetails(props) {
   const { category } = props;
+  const dispatch = useDispatch();
+  const nevigate = useNavigate();
+  const handleViewQuis = () => {
+    dispatch(setCategoryId(category._id))
+    if(category.quiz){
+      nevigate( `/dashboard/quiz/${category.quiz}`)
+    }else{
+      nevigate(`/dashboard/quiz/0`)
+    }
+
+  }
   //console.log("Categry details in the category course details ", category)
   return (
     <div>
@@ -19,16 +32,17 @@ export default function CategoryDetails(props) {
                 View Courses
               </button>
             </Link>
-            <Link to={category.quiz ? `/dashboard/quiz/${category.quiz}` : '#'}>
+            
               <button 
                 className={`bg-richblack-700 text-richblack-5 text-sm font-semibold py-2 px-6 rounded-lg 
                   transition duration-300 ease-in-out transform 
-                  ${category.quiz ? 'hover:bg-richblack-600 hover:scale-105' : 'opacity-50 cursor-not-allowed'}`}
-                disabled={!category.quiz}
+                  hover:bg-richblack-600 hover:scale-105}`
+                  }
+                  onClick={handleViewQuis}
               >
                 View Quiz
               </button>
-            </Link>
+           
           </div>
         </div>
 

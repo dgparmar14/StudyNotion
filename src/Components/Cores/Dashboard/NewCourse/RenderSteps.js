@@ -5,7 +5,7 @@ import CourseInformation from './CourseInformation/CourseInformation'
 import CourseBuilder from './CourseBuilder/CourseBuilder'
 import EnrolledCourses from '../EnrolledCourses'
 import Publish from './Publish'
-import QuizDetails from '../../../Common/Quiz/QuizDetails.js'
+import QuizPage from '../../../../Pages/Quiz.js'
 
 const steps = [
     {
@@ -61,7 +61,7 @@ function RenderSteps() {
         <div>
             {step===1 && <CourseInformation></CourseInformation>}
             {step===2 && <CourseBuilder></CourseBuilder>}
-            {step===3 && <QuizDetails></QuizDetails>}
+            {step===3 && <QuizPage></QuizPage>}
             {step===4 && <Publish></Publish>}
         </div>
 

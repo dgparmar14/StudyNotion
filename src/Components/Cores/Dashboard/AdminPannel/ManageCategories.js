@@ -47,8 +47,12 @@ function ManageCategories() {
 
       const response = await apiConnector("POST", categoryEndpoint.CREATE_CATEGORY_API, {
         name: newCategoryName,
-        description: newCategoryDescription,
+        description : newCategoryDescription
       });
+      console.log("Printing create category response : ", response)
+      if(!response.data.success){
+        throw new Error("Categpry cannot be created");
+      }
       // toast.success("Category created successfully");
       setCategpryList((prevList) => [...prevList,  response.data.data ]);
       setIsModalOpen(false);

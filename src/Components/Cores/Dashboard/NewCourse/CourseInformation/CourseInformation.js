@@ -272,7 +272,7 @@ const onSubmitHandler = async(data) => {
           }
           {
             displayMessage && (
-              <p className='text-[14px] text-richblack-5'>Your category requst is created Successfully! You can create course in that category ince admin approves that.</p>
+              <p className='text-[14px] text-richblack-5'>Your category requst is created Successfully! You can create course in that category once admin approves that.</p>
             )
           }
           {isPass && <><div className='flex flex-col gap-1 justify-center'>

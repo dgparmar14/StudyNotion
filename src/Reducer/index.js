@@ -6,6 +6,7 @@ import cartReducer from "./Slices/cartSlice";
 import coursereducer from "./Slices/courseSlice.js";
 import viewCourseReducer from "./Slices/viewCourseSlice";
 import resultReducer from "./Slices/ResultSlice.js";
+import categoryReducer from './Slices/categorySlice.js';
 
 const rootReducer = combineReducers(
     {
@@ -14,7 +15,8 @@ const rootReducer = combineReducers(
         cart : cartReducer,
         course : coursereducer, 
         viewCourse : viewCourseReducer,
-        result : resultReducer
+        result : resultReducer,
+        category : categoryReducer
     }
    
 )
